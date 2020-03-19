@@ -39,11 +39,12 @@ namespace Transitor
                         SqlCommand sqlCmd = new SqlCommand("ProjectAddOrEdit", sqlCon);
                         sqlCmd.CommandType = CommandType.StoredProcedure;
                         sqlCmd.Parameters.AddWithValue("@ProjectID", Convert.ToInt32(hfProjectID.Value == "" ? "0" : hfProjectID.Value));
-                        sqlCmd.Parameters.AddWithValue("@UserID", Session["userid"].ToString());
+                        sqlCmd.Parameters.AddWithValue("@UserOwnerID", Session["userid"].ToString());
                         sqlCmd.Parameters.AddWithValue("@ProjectName", txtProjectName.Text.Trim());
                         sqlCmd.Parameters.AddWithValue("@ProjectFileType", ddlUploadedFileType.SelectedValue);
                         sqlCmd.Parameters.AddWithValue("@ProjectOriginalLanguage", ddlOriginalLanguage.SelectedValue);
                         sqlCmd.Parameters.AddWithValue("@ProjectTranslationLanguage", ddlTranslationLanguage.SelectedValue);
+                        sqlCmd.Parameters.AddWithValue("UploadDate", DateTime.Now.ToString("yyyy-MM-dd"));
                         sqlCmd.ExecuteNonQuery();
                     }
                     GoToUpload(txtProjectName.Text.Trim());

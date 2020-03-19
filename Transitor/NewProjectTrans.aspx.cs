@@ -22,7 +22,6 @@ namespace Transitor
                 string query = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, ProjectTranslationLanguage FROM tblProjects";
                 sqlCon.Open();
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@UserID", Session["userid"].ToString());
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
