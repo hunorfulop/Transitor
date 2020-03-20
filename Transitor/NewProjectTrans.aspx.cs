@@ -43,8 +43,8 @@ namespace Transitor
                 GridViewRow row = GridView1.Rows[rowIndex];
 
                 //Fetch value of Name.
-                string projectID = row.Cells[0].Text;
-                Response.Redirect("StartProject.aspx?test=" + projectID);
+                string projectName = row.Cells[0].Text;
+                Response.Redirect("StartProject.aspx?test=" + projectName);
             }
         }
 
