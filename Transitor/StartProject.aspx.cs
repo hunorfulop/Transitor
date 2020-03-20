@@ -13,16 +13,11 @@ namespace Transitor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblErrorMessage.Visible = false;
             if (!this.IsPostBack)
             {
                 getDate();
-                string projectname = Request.QueryString["test"];
             }
-        }
-
-        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        {
-            textBoxFinishDate.Text = Calendar1.SelectedDate.ToString();
         }
 
         private void getDate()
@@ -47,14 +42,24 @@ namespace Transitor
 
         protected void btnStartProject_Click(object sender, EventArgs e)
         {
-            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-            string query1 = "UPDATE tblProjects SET TraslatorWorkingID = @TraslatorWorkingID WHERE ProjectName = @ProjectName";
-            sqlCon1.Open();
-            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-            sqlCmd1.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
-            sqlCmd1.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
-            sqlCmd1.ExecuteNonQuery();
+            if(Calendar1.SelectedDate.ToString() == "1/1/0001 12:00:00 AM")
+            {
+                lblErrorMessage.Visible = true;
+            }
+            else
+            {
+                string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                string query1 = "UPDATE tblProjects SET TraslatorWorkingID = @TraslatorWorkingID, EstimatedFinishDate = @EstimatedFinishDate WHERE ProjectName = @ProjectName";
+                sqlCon1.Open();
+                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                sqlCmd1.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
+                sqlCmd1.Parameters.AddWithValue("@EstimatedFinishDate", Calendar1.SelectedDate.ToString());
+                sqlCmd1.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+                sqlCmd1.ExecuteNonQuery();
+                sqlCon1.Close();
+
+            }
         }
     }
 }

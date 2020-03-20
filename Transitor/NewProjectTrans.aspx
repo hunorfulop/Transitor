@@ -18,6 +18,5 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     </div>
     </asp:Content>

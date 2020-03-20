@@ -26,9 +26,9 @@
         <asp:TextBox ID="textBoxUploadDate" runat="server"></asp:TextBox>
         <div>
         </div>
-        <asp:Label ID="Label4" runat="server" Text="Select a finish date"></asp:Label>
-        <asp:Calendar ID="Calendar1" runat="server" OnClick="Calendar1_SelectionChanged"></asp:Calendar>
-        <asp:TextBox ID="textBoxFinishDate" runat="server"></asp:TextBox>
+        <asp:Label ID="Label4" runat="server" Text="Select a finish date:"></asp:Label>
+        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+         <asp:Label ID="lblErrorMessage" runat="server" Text="Select an end data please" ForeColor="Red"></asp:Label>
         <p>
             <asp:Button ID="btnStartProject" runat="server" Text="Start Project" OnClick="btnStartProject_Click" />
         </p>
