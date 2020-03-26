@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Transitor
 {
-    public partial class Translation : System.Web.UI.Page
+    public partial class WebForm1 : System.Web.UI.Page
     {
         string projectID;
         protected void Page_Load(object sender, EventArgs e)
@@ -18,7 +18,18 @@ namespace Transitor
             if (!this.IsPostBack)
             {
                 projectID = getId();
-                getData(projectID);
+                string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                string query1 = "SELECT Phrase FROM tblPhrase WHERE ProjectID = @ProjectID";
+                sqlCon1.Open();
+                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                GridView1.DataSource = dataTable;
+                GridView1.DataBind();
+                sqlCon1.Close();
             }
         }
 
@@ -41,22 +52,6 @@ namespace Transitor
             return temp;
         }
 
-        void getData(string projectID)
-        {
-            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-            string query1 = "SELECT Phrase FROM tblPhrase WHERE ProjectID = @ProjectID";
-            sqlCon1.Open();
-            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID);
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
-            DataTable dataTable = new DataTable();
-            dataAdapter.Fill(dataTable);
-            GridView1.DataSource = dataTable;
-            GridView1.DataBind();
-            sqlCon1.Close();
-        }
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
@@ -68,7 +63,8 @@ namespace Transitor
                 GridViewRow row = GridView1.Rows[rowIndex];
 
                 //Fetch value of Name.
-                TextBoxPhrase.Text = row.Cells[0].Text;
+                string projectName = row.Cells[0].Text;
+                TextBoxPhrase.Text = projectName;
             }
         }
 

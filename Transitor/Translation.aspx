@@ -1,49 +1,50 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Translation.aspx.cs" Inherits="Transitor.Translation" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Translation.aspx.cs" Inherits="Transitor.WebForm1" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1"/> 
-<style>
-    body {
-      font-family: Arial;
-      color: white;
-    }
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+    <style>
+        body {
+          font-family: Arial;
+          color: white;
+        }
 
-    .split {
-      height: 100%;
-      width: 50%;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      overflow-x: hidden;
-      padding-top: 20px;
-    }
+        .split {
+          height: 100%;
+          width: 50%;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          overflow-x: hidden;
+          padding-top: 20px;
+        }
 
-    .left {
-      left: 0;
-      background-color: #111;
-    }
+        .left {
+          left: 0;
+          background-color: #111;
+        }
 
-    .right {
-      right: 0;
-      background-color: red;
-    }
+        .right {
+          right: 0;
+          background-color: red;
+        }
 
-    .centered {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
+        .centered {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+        }
 
-    .centered img {
-      width: 150px;
-      border-radius: 50%;
-    }
-    </style>
+        .centered img {
+          width: 150px;
+          border-radius: 50%;
+        }
+        </style>
 </head>
 <body>
 
@@ -58,7 +59,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        </asp:GridView>
+    </asp:GridView>
       </div>
     </div>
 

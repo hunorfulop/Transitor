@@ -25,10 +25,10 @@ namespace Transitor
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT  ProjectName, ProjectFileType, ProjectOriginalLanguage, ProjectTranslationLanguage FROM tblProjects WHERE UserID = @UserID";
+            string query = "SELECT  ProjectName, ProjectFileType, ProjectOriginalLanguage, ProjectTranslationLanguage FROM tblProjects WHERE UserOwnerID = @UserOwnerID";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@UserID", Session["userid"].ToString());
+            sqlCmd.Parameters.AddWithValue("@UserOwnerID", Session["userid"].ToString());
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);

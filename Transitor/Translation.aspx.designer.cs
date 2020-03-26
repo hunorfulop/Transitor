@@ -11,7 +11,7 @@ namespace Transitor
 {
 
 
-    public partial class Translation
+    public partial class WebForm1
     {
 
         /// <summary>

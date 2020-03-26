@@ -77,8 +77,8 @@
     <Content Include="ProjectsTrans.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="StartProject.aspx" />
-    <Content Include="Translation.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Translation.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileReadAndUpload.aspx.cs">
