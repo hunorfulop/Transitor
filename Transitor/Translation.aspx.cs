@@ -12,23 +12,25 @@ namespace Transitor
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        string projectID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            string projectID1;
             if (!this.IsPostBack)
             {
-                projectID = getId();
+                projectID1 = getId();
                 string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon1 = new SqlConnection(connectionString1);
                 string query1 = "SELECT Phrase FROM tblPhrase WHERE ProjectID = @ProjectID";
                 sqlCon1.Open();
                 SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-                sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID);
+                sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID1);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
-                GridView1.DataSource = dataTable;
-                GridView1.DataBind();
+                DropDownList1.DataSource = dataTable;
+                DropDownList1.DataValueField = "Phrase";
+                DropDownList1.DataTextField = "Phrase";
+                DropDownList1.DataBind();
                 sqlCon1.Close();
             }
         }
@@ -52,26 +54,48 @@ namespace Transitor
             return temp;
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void btnSelectPhrase_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "Select")
+            string projectID3;
+            projectID3 = getId();
+
+            TextareaPhrase.InnerHtml = DropDownList1.SelectedValue;
+
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectID", projectID3);
+            sqlCmd.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
             {
-                //Determine the RowIndex of the Row whose Button was clicked.
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-
-                //Reference the GridView Row.
-                GridViewRow row = GridView1.Rows[rowIndex];
-
-                //Fetch value of Name.
-                string projectName = row.Cells[0].Text;
-                TextBoxPhrase.Text = projectName;
+               string temp = nwReader["TranslatedPhrase"].ToString();
+               if(temp != null)
+                {
+                    TextareaTranslate.InnerHtml = temp;
+                }
             }
+            nwReader.Close();
+            sqlCon.Close();
         }
 
-        public override void VerifyRenderingInServerForm(Control control)
+        protected void btnTranlate_Click(object sender, EventArgs e)
         {
-            /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
-               server control at run time. */
+            string projectID2;
+            projectID2 = getId();
+
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "UPDATE tblPhrase SET TranslatedPhrase = @TranslatedPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@TranslatedPhrase", TextareaTranslate.InnerHtml);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+            sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
+            sqlCmd1.ExecuteNonQuery();
+            sqlCon1.Close();
         }
     }
 }
