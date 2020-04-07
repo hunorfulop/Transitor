@@ -59,6 +59,7 @@ namespace Transitor
             string projectID3;
             projectID3 = getId();
 
+            lblErrorMessage.Visible = false;
             TextareaPhrase.InnerHtml = DropDownList1.SelectedValue;
 
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
@@ -83,19 +84,32 @@ namespace Transitor
 
         protected void btnTranlate_Click(object sender, EventArgs e)
         {
-            string projectID2;
-            projectID2 = getId();
+            if(TextareaPhrase.InnerHtml == "")
+            {
+                lblErrorMessage.Text = "Please select a phrase which you want to translate";
+                lblErrorMessage.Visible = true;
+            }
+            else if (TextareaTranslate.InnerHtml == "")
+            {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Please translate the phrase!";
+            }
+            else
+            {
+                string projectID2;
+                projectID2 = getId();
 
-            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-            string query1 = "UPDATE tblPhrase SET TranslatedPhrase = @TranslatedPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase";
-            sqlCon1.Open();
-            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-            sqlCmd1.Parameters.AddWithValue("@TranslatedPhrase", TextareaTranslate.InnerHtml);
-            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
-            sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
-            sqlCmd1.ExecuteNonQuery();
-            sqlCon1.Close();
+                string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                string query1 = "UPDATE tblPhrase SET TranslatedPhrase = @TranslatedPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase";
+                sqlCon1.Open();
+                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                sqlCmd1.Parameters.AddWithValue("@TranslatedPhrase", TextareaTranslate.InnerHtml);
+                sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+                sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
+                sqlCmd1.ExecuteNonQuery();
+                sqlCon1.Close();
+            }
         }
     }
 }

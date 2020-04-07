@@ -21,6 +21,9 @@
             <textarea id="TextareaTranslate" runat="server" cols="50" name="S1" rows="10"></textarea>
             &nbsp;<asp:Button ID="btnTranlate" runat="server" Text="Translate" OnClick="btnTranlate_Click" />
         </p>
+        <p>
+            <asp:Label ID="lblErrorMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+            </p>
     </form>
      
 </body>
