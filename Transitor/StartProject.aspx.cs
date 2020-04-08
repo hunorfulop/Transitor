@@ -16,11 +16,11 @@ namespace Transitor
             lblErrorMessage.Visible = false;
             if (!this.IsPostBack)
             {
-                getDate();
+                getData();
             }
         }
 
-        private void getDate()
+        private void getData()
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
@@ -50,12 +50,13 @@ namespace Transitor
             {
                 string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-                string query1 = "UPDATE tblProjects SET TraslatorWorkingID = @TraslatorWorkingID, EstimatedFinishDate = @EstimatedFinishDate WHERE ProjectName = @ProjectName";
+                string query1 = "UPDATE tblProjects SET TraslatorWorkingID = @TraslatorWorkingID, EstimatedFinishDate = @EstimatedFinishDate, IsSomeoneWorkingOnIt = @IsSomeoneWorkingOnIt WHERE ProjectName = @ProjectName";
                 sqlCon1.Open();
                 SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
                 sqlCmd1.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
                 sqlCmd1.Parameters.AddWithValue("@EstimatedFinishDate", Calendar1.SelectedDate.ToString());
                 sqlCmd1.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+                sqlCmd1.Parameters.AddWithValue("@IsSomeoneWorkingOnIt", "Yes");
                 sqlCmd1.ExecuteNonQuery();
                 sqlCon1.Close();
 
