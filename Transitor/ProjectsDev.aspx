@@ -15,6 +15,8 @@
                         <th>ProjectFileType</th>
                         <th>ProjectOriginalLanguage</th>
                         <th>ProjectTranslationLanguage</th>
+                        <th>IsSomeoneWorkingOnIt</th>
+                        <th>IsItReady</th>
                     </tr>
                     <tr id="groupplaceholder" runat="server"></tr>
                 </table>
@@ -29,6 +31,8 @@
                <td><%# Eval("ProjectFileType") %></td>
                <td><%# Eval("ProjectOriginalLanguage") %></td>
                <td><%# Eval("ProjectTranslationLanguage") %></td>
+               <td><%# Eval("IsSomeoneWorkingOnIt") %></td>
+               <td><%# Eval("IsItReady") %></td>
            </ItemTemplate>
        </asp:ListView>
        </center>

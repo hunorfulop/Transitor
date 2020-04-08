@@ -25,7 +25,7 @@ namespace Transitor
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT  ProjectName, ProjectFileType, ProjectOriginalLanguage, ProjectTranslationLanguage FROM tblProjects WHERE UserOwnerID = @UserOwnerID";
+            string query = "SELECT  ProjectName, ProjectFileType, ProjectOriginalLanguage, ProjectTranslationLanguage, IsSomeoneWorkingOnIt, IsItReady FROM tblProjects WHERE UserOwnerID = @UserOwnerID";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@UserOwnerID", Session["userid"].ToString());

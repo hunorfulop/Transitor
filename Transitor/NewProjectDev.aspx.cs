@@ -45,6 +45,8 @@ namespace Transitor
                         sqlCmd.Parameters.AddWithValue("@ProjectOriginalLanguage", ddlOriginalLanguage.SelectedValue);
                         sqlCmd.Parameters.AddWithValue("@ProjectTranslationLanguage", ddlTranslationLanguage.SelectedValue);
                         sqlCmd.Parameters.AddWithValue("UploadDate", DateTime.Now.ToString("yyyy-MM-dd"));
+                        sqlCmd.Parameters.AddWithValue("IsSomeoneWorkingOnIt", "No");
+                        sqlCmd.Parameters.AddWithValue("IsItReady", "No");
                         sqlCmd.ExecuteNonQuery();
                     }
                     GoToUpload(txtProjectName.Text.Trim());
