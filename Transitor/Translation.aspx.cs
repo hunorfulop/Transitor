@@ -157,6 +157,18 @@ namespace Transitor
         {
             if(lblTransNumber.Text == lblEveryPhraseNumber.Text)
             {
+                string projectID4;
+                projectID4 = getId();
+
+                string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon2 = new SqlConnection(connectionString2);
+                string query2 = "UPDATE tblProjects SET IsItReady = @IsItReady WHERE ProjectID = @ProjectID";
+                sqlCon2.Open();
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
+                sqlCmd2.Parameters.AddWithValue("@IsItReady","Yes");
+                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID4);
+                sqlCmd2.ExecuteNonQuery();
+
                 lblErrorMessage.Visible = true;
                 lblErrorMessage.Text = "Translation done";
             }
