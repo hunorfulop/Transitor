@@ -31,7 +31,40 @@ namespace Transitor
                 DropDownList1.DataValueField = "Phrase";
                 DropDownList1.DataTextField = "Phrase";
                 DropDownList1.DataBind();
+
+                int temp = countEveryWord(projectID1);
+                int temp2 = countEveryTransWord(projectID1);
+
+                lblEveryPhraseNumber.Text = temp.ToString();
+                lblTransNumber.Text = temp2.ToString();
+
                 sqlCon1.Close();
+            }
+        }
+
+        int countEveryWord(String projectID1)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
+            {
+                sqlCon.Open();
+                string query2 = "SELECT COUNT (*) FROM tblPhrase WHERE ProjectID = @ProjectID";
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon);
+                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                return (int)sqlCmd2.ExecuteScalar();
+
+            }
+        }
+
+        int countEveryTransWord(String projectID1)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
+            {
+                sqlCon.Open();
+                string query2 = "SELECT COUNT (*) FROM tblPhrase WHERE ProjectID = @ProjectID AND TranslatedPhrase IS NOT NULL";
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon);
+                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                return (int)sqlCmd2.ExecuteScalar();
+
             }
         }
 
@@ -108,7 +141,29 @@ namespace Transitor
                 sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
                 sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
                 sqlCmd1.ExecuteNonQuery();
+
+                lblErrorMessage.Visible = false;
+                TextareaPhrase.InnerHtml = "";
+                TextareaTranslate.InnerHtml = "";
+
+                int temp2 = countEveryTransWord(projectID2);
+                lblTransNumber.Text = temp2.ToString();
+
                 sqlCon1.Close();
+            }
+        }
+
+        protected void btnFinishTranslation_Click(object sender, EventArgs e)
+        {
+            if(lblTransNumber.Text == lblEveryPhraseNumber.Text)
+            {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Translation done";
+            }
+            else
+            {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Please translate every pharese before finalization";
             }
         }
     }

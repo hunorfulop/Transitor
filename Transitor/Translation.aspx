@@ -22,6 +22,13 @@
             &nbsp;<asp:Button ID="btnTranlate" runat="server" Text="Translate" OnClick="btnTranlate_Click" />
         </p>
         <p>
+            <asp:Label ID="lblTransNumber" runat="server" Text=""></asp:Label>
+            /<asp:Label ID="lblEveryPhraseNumber" runat="server" Text=""></asp:Label>
+            </p>
+        <p>
+            <asp:Button ID="btnFinishTranslation" runat="server" Text="Finish Translation" OnClick="btnFinishTranslation_Click" />
+            </p>
+        <p>
             <asp:Label ID="lblErrorMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
             </p>
     </form>
