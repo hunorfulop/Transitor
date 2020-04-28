@@ -5,6 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
+    <style>
+        body{
+            background-color:coral;
+        }
+    </style>
    <div>
                 <asp:HiddenField ID="hfProjectID" runat="server" />
             <table>
