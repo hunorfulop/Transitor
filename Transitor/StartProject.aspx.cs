@@ -59,7 +59,7 @@ namespace Transitor
                 sqlCmd1.Parameters.AddWithValue("@IsSomeoneWorkingOnIt", "Yes");
                 sqlCmd1.ExecuteNonQuery();
                 sqlCon1.Close();
-
+                Response.Write("<script language='javascript'>window.alert('Project started sucessfuly!');window.location='Home.aspx';</script>");
             }
         }
     }
