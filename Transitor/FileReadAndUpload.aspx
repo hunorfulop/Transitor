@@ -10,12 +10,13 @@
     <form id="form1" runat="server">
         <div>
             <asp:HiddenField ID="hfPhraseID" runat="server" />
+            <asp:Label ID="Label1" runat="server" Text="Choose a file please:"></asp:Label>
             <asp:FileUpload ID="FileUpload1" runat="server" />
+            <br />
+            <br />
             <asp:Button ID="btn_Upload" runat="server" Text="Upload File" OnClick="btn_Upload_Click" />
             <br />
-            <br />
             <asp:Label ID="lblMessage" runat="server" Font-Bold="true" ></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         </div>
     </form>
 </body>

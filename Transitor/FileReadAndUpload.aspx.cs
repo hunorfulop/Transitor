@@ -34,6 +34,7 @@ namespace Transitor
                     FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
                     lblMessage.Text = FileUpload1.FileName;
                     ReadAndParcelXml(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
                 }
             }
             else

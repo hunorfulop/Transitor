@@ -21,8 +21,6 @@
                     <td colspan="2">
                         <asp:TextBox ID="txtProjectName" runat="server" />
                         <asp:Label Text="*" runat="server" ForeColor="Red" />                       
-                        <asp:TextBox ID="TextBox1" runat="server" Height="23px"></asp:TextBox>
-                        
                     </td>
                 </tr>
 
