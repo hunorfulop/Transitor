@@ -19,18 +19,17 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="UserName" runat="server" />
+                        <asp:Label Text="UserName:" runat="server" />
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtUserName" runat="server" />
                         <asp:Label Text="*" runat="server" ForeColor="Red" />
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        <asp:Label Text="Password" runat="server" />
+                        <asp:Label Text="Password:" runat="server" />
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Height="22px" />
@@ -40,7 +39,7 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="Role" runat="server" />
+                        <asp:Label Text="Role:" runat="server" />
                     </td>
                     <td colspan="2">
                         <asp:DropDownList ID="ddlRole" runat="server">

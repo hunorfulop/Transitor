@@ -17,13 +17,13 @@
         <table style="margin:auto;border:5px solid white">
             <tr>
                 <td>
-                    <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label></td>
+                    <asp:Label ID="Label1" runat="server" Text="Username:"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label></td>
+                    <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox></td>
             </tr>
