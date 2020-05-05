@@ -42,6 +42,15 @@ namespace Transitor
         protected global::System.Web.UI.HtmlControls.HtmlForm MenuForDevs;
 
         /// <summary>
+        /// Button_LogOutForDevs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_LogOutForDevs;
+
+        /// <summary>
         /// body control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace Transitor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm MenuForTranslators;
+
+        /// <summary>
+        /// Button_LogOutForTrans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_LogOutForTrans;
 
         /// <summary>
         /// body2 control.

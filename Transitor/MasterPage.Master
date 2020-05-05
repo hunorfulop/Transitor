@@ -87,6 +87,7 @@
                 <li><a class="active" href="NewProjectDev.aspx">NewProject</a></li>
                 <li><a class="active" href="ProjectsDev.aspx">Projects</a></li>
                 <li><a class="active" href="Profile.aspx">Profile</a></li>
+                <li><asp:Button runat="server" Text="Log Out" ID="Button_LogOutForDevs" OnClick="Button_LogOut_Click" Height="48px" /></li>
             </ul>
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
@@ -101,6 +102,7 @@
                 <li><a class="active" href="NewProjectTrans.aspx">NewProject</a></li>
                 <li><a class="active" href="ProjectsTrans.aspx">Projects</a></li>
                 <li><a class="active" href="Profile.aspx">Profile</a></li>
+                <li><asp:Button runat="server" Text="Log Out" ID="Button_LogOutForTrans" OnClick="Button_LogOut_Click" Height="48px" /></li>
             </ul>
 
             <asp:ContentPlaceHolder ID="body2" runat="server">

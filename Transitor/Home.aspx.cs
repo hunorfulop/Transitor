@@ -13,14 +13,8 @@ namespace Transitor
         {
             if (Session["role"] == null)
                 Response.Redirect("Login.aspx");
-            lblUserDetails.Text = "Role: " + Session["role"];
-            Label1.Text = "Role: " + Session["role"];
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            Session.Abandon();
-            Response.Redirect("Login.aspx");
+            lblDevs.Text = "Welcome " + Session["role"] + "!";
+            lblTrans.Text = "Welcome " + Session["role"] + "!";
         }
     }
 }

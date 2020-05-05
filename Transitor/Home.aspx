@@ -10,10 +10,9 @@
             background-color:coral;
         }
     </style>
-        <div>
-            <asp:Label ID="lblUserDetails" runat="server" Text=""></asp:Label>
+        <div style="margin-left: auto; margin-right: auto; text-align: center;">
+            <asp:Label ID="lblDevs" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
             <br />
-            <asp:Button ID="btnLogout" runat="server" Text="Loggout" OnClick="btnLogout_Click" />
         </div>
     </asp:Content>
 
@@ -23,9 +22,8 @@
             background-color:coral;
         }
     </style>
-        <div>
-            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+        <div style="margin-left: auto; margin-right: auto; text-align: center;">
+            <asp:Label ID="lblTrans" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
             <br />
-            <asp:Button ID="Button1" runat="server" Text="Loggout" OnClick="btnLogout_Click" />
         </div>
     </asp:Content>
