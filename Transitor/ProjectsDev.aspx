@@ -5,6 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
+         <style>
+        body{
+            background-color:coral;
+        }
+    </style>
    <div id="d1" style="padding:0 16px;">
        <center>
        <asp:ListView ID="ListViewProjectsDev" runat="server" GroupPlaceholderID="groupplaceholder" ItemPlaceholderID="itemplaceholder">
