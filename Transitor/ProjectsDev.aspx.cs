@@ -32,10 +32,27 @@ namespace Transitor
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
-            ListViewProjectsDev.DataSource = dataTable;
-            ListViewProjectsDev.DataBind();
+            GridView1.DataSource = dataTable;
+            GridView1.DataBind();
             sqlCon.Close();
 
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+
+                //Reference the GridView Row.
+                GridViewRow row = GridView1.Rows[rowIndex];
+
+                //Fetch value of Name.
+                string projectName = row.Cells[0].Text;
+                Response.Redirect("TransProgresDevs.aspx?test=" + projectName);
+            }
+        }
+
     }
 }

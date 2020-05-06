@@ -11,35 +11,20 @@
         }
     </style>
    <div id="d1" style="padding:0 16px;">
-       <center>
-       <asp:ListView ID="ListViewProjectsDev" runat="server" GroupPlaceholderID="groupplaceholder" ItemPlaceholderID="itemplaceholder">
-            <LayoutTemplate>
-                <table border="1">
-                    <tr>
-                        <th>ProjectName</th>
-                        <th>ProjectFileType</th>
-                        <th>ProjectOriginalLanguage</th>
-                        <th>ProjectTranslationLanguage</th>
-                        <th>IsSomeoneWorkingOnIt</th>
-                        <th>IsItReady</th>
-                    </tr>
-                    <tr id="groupplaceholder" runat="server"></tr>
-                </table>
-            </LayoutTemplate>
-           <GroupTemplate>
-               <tr>
-                   <tr id="itemplaceholder" runat="server"></tr>
-               </tr>
-           </GroupTemplate>
-           <ItemTemplate>
-               <td><%# Eval("ProjectName") %></td>
-               <td><%# Eval("ProjectFileType") %></td>
-               <td><%# Eval("ProjectOriginalLanguage") %></td>
-               <td><%# Eval("ProjectTranslationLanguage") %></td>
-               <td><%# Eval("IsSomeoneWorkingOnIt") %></td>
-               <td><%# Eval("IsItReady") %></td>
-           </ItemTemplate>
-       </asp:ListView>
-       </center>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
+        <Columns>
+            <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
+            <asp:BoundField DataField="ProjectFileType" HeaderText="ProjectFileType" ItemStyle-Width="150px" />
+            <asp:BoundField DataField="ProjectOriginalLanguage" HeaderText="ProjectOriginalLanguage" ItemStyle-Width="150px" />
+            <asp:BoundField DataField="ProjectTranslationLanguage" HeaderText="ProjectTranslationLanguage" ItemStyle-Width="150px" />
+            <asp:BoundField DataField="IsSomeoneWorkingOnIt" HeaderText="IsSomeoneWorkingOnIt" ItemStyle-Width="150px" />
+            <asp:BoundField DataField="IsItReady" HeaderText="IsItReady" ItemStyle-Width="150px" />
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Button Text="Progress" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+        </asp:GridView>
     </div>
     </asp:Content>

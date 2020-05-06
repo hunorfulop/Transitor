@@ -77,6 +77,7 @@
     <Content Include="ProjectsTrans.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="StartProject.aspx" />
+    <Content Include="TransProgresDevs.aspx" />
     <Content Include="Web.config" />
     <Content Include="Translation.aspx" />
   </ItemGroup>
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="Translation.aspx.designer.cs">
       <DependentUpon>Translation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransProgresDevs.aspx.cs">
+      <DependentUpon>TransProgresDevs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransProgresDevs.aspx.designer.cs">
+      <DependentUpon>TransProgresDevs.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
