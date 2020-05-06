@@ -9,9 +9,14 @@
         body{
             background-color:coral;
         }
+        .auto-style1 {
+            width: 243px;
+            height: 40px;
+        }
     </style>
    <div>
                 <asp:HiddenField ID="hfProjectID" runat="server" />
+                <asp:HiddenField ID="hfTranslationLanguageID" runat="server" />
             <table>
 
                 <tr>
@@ -21,6 +26,18 @@
                     <td colspan="2">
                         <asp:TextBox ID="txtProjectName" runat="server" />
                         <asp:Label Text="*" runat="server" ForeColor="Red" />                       
+                    </td>
+                </tr>
+                 
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
                     </td>
                 </tr>
 
@@ -33,6 +50,18 @@
                             <asp:ListItem>Xml</asp:ListItem>
                             <asp:ListItem>Txt</asp:ListItem>
                         </asp:DropDownList>
+                    </td>
+                </tr>
+
+               <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+               <tr>
+                    <td>
+
                     </td>
                 </tr>
 
@@ -49,17 +78,43 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+               <tr>
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+
+
+                </tr>
+
                    <tr>
                     <td>
                         <asp:Label Text="Translation language" runat="server" />
                     </td>
+                    
                     <td colspan="2">
-                        <asp:DropDownList ID="ddlTranslationLanguage" runat="server">
-                            <asp:ListItem>English</asp:ListItem>
-                            <asp:ListItem>Romanian</asp:ListItem>
-                            <asp:ListItem>Hungarian</asp:ListItem>
-                        </asp:DropDownList>
+                        <asp:CheckBoxList ID="CheckBoxLisTransLanguages" runat="server">
+                            <asp:ListItem Text="English" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Romanian" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Hungarian" Value="1"></asp:ListItem>
+                        </asp:CheckBoxList>
                     </td>
+
+                    <td colspan="2">
+                        &nbsp;</td>
                 </tr>
 
                 <tr>
@@ -84,5 +139,6 @@
                 </tr>
 
             </table>
+ 
         </div>
     </asp:Content>

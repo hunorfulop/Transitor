@@ -24,6 +24,15 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.HiddenField hfProjectID;
 
         /// <summary>
+        /// hfTranslationLanguageID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfTranslationLanguageID;
+
+        /// <summary>
         /// txtProjectName control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.DropDownList ddlOriginalLanguage;
 
         /// <summary>
-        /// ddlTranslationLanguage control.
+        /// CheckBoxLisTransLanguages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTranslationLanguage;
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxLisTransLanguages;
 
         /// <summary>
         /// btnRegister control.

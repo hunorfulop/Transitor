@@ -45,22 +45,36 @@ namespace Transitor
 
         private void ReadAndParcelXml(string path)
         {
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(path);
             XmlNodeList nodes = xmlDoc.SelectNodes("/resources/string");
 
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                foreach (XmlNode item in nodes)
+                foreach (DataRow dr in dataTable.Rows)
                 {
-                    sqlCon.Open();
-                    SqlCommand sqlCmd = new SqlCommand("PhraseAddOrEdit", sqlCon);
-                    sqlCmd.CommandType = CommandType.StoredProcedure;
-                    sqlCmd.Parameters.AddWithValue("@PhraseID", Convert.ToInt32(hfPhraseID.Value == "" ? "0" : hfPhraseID.Value));
-                    sqlCmd.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
-                    sqlCmd.Parameters.AddWithValue("@Phrase", item.InnerText);
-                    sqlCmd.ExecuteNonQuery();
-                    sqlCon.Close();
+                    foreach (XmlNode item in nodes)
+                    {
+                        sqlCon.Open();
+                        SqlCommand sqlCmd = new SqlCommand("PhraseAddOrEdit", sqlCon);
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCmd.Parameters.AddWithValue("@PhraseID", Convert.ToInt32(hfPhraseID.Value == "" ? "0" : hfPhraseID.Value));
+                        sqlCmd.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
+                        sqlCmd.Parameters.AddWithValue("@Phrase", item.InnerText);
+                        sqlCmd.Parameters.AddWithValue("@TransLanguage", dr.Field<string>("TranslationLanguage"));
+                        sqlCmd.ExecuteNonQuery();
+                        sqlCon.Close();
+                    }
                 }
             }
 

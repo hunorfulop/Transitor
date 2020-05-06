@@ -24,7 +24,7 @@ namespace Transitor
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT ProjectOriginalLanguage, ProjectTranslationLanguage, UploadDate FROM tblProjects WHERE ProjectName = @ProjectName";
+            string query = "SELECT ProjectOriginalLanguage, UploadDate FROM tblProjects WHERE ProjectName = @ProjectName";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
@@ -33,7 +33,6 @@ namespace Transitor
             {
                 textBoxProjectName.Text = Request.QueryString["test"];
                 textBoxProjectOriginalLanguage.Text = nwReader["ProjectOriginalLanguage"].ToString();
-                textBoxProjectTranslationLanguage.Text = nwReader["ProjectTranslationLanguage"].ToString();
                 textBoxUploadDate.Text = nwReader["UploadDate"].ToString();
             }
             nwReader.Close();

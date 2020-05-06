@@ -19,7 +19,7 @@ namespace Transitor
             {
                 string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon = new SqlConnection(connectionString);
-                string query = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, ProjectTranslationLanguage FROM tblProjects WHERE TraslatorWorkingID IS NULL";
+                string query = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage FROM tblProjects WHERE TraslatorWorkingID IS NULL";
                 sqlCon.Open();
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
