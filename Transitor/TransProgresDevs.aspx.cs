@@ -14,7 +14,8 @@ namespace Transitor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string projectID1;
+            string projectID1,Percentage;
+            int AllWord, TransWord;
             if (!this.IsPostBack)
             {
                 projectID1 = getId();
@@ -29,12 +30,25 @@ namespace Transitor
                 dataAdapter.Fill(dataTable);
                 ListViewPhrasesDev.DataSource = dataTable;
                 ListViewPhrasesDev.DataBind();
-                sqlCon1
-                    .Close();
-            }
+                sqlCon1.Close();
 
-            string getId()
-            {
+                AllWord = countEveryWord(projectID1);
+                TransWord = countEveryTransWord(projectID1);
+                Percentage = getPercentage(AllWord, TransWord);
+
+                LabelPercentage.Text = "The project is at " + Percentage + "% done";
+            }
+        }
+
+        string getPercentage(int allword, int transword)
+        {
+            int percentage;
+            percentage = (transword * 100) / allword;
+            return percentage.ToString();
+        }
+
+        string getId()
+        {
                 string temp = "";
                 string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon = new SqlConnection(connectionString);
@@ -50,8 +64,33 @@ namespace Transitor
                 nwReader.Close();
                 sqlCon.Close();
                 return temp;
-            }
-
         }
+
+        int countEveryWord(String projectID1)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
+            {
+                sqlCon.Open();
+                string query2 = "SELECT COUNT (*) FROM tblPhrase WHERE ProjectID = @ProjectID";
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon);
+                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                return (int)sqlCmd2.ExecuteScalar();
+
+            }
+        }
+
+        int countEveryTransWord(String projectID1)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
+            {
+                sqlCon.Open();
+                string query2 = "SELECT COUNT (*) FROM tblPhrase WHERE ProjectID = @ProjectID AND TranslatedPhrase IS NOT NULL";
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon);
+                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                return (int)sqlCmd2.ExecuteScalar();
+
+            }
+        }
+
     }
 }

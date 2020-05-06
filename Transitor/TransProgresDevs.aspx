@@ -13,8 +13,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-           <div id="d1" style="padding:0 16px;">
+    <div id="d1" style="padding:0 16px;">
        <center>
+
        <asp:ListView ID="ListViewPhrasesDev" runat="server" GroupPlaceholderID="groupplaceholder" ItemPlaceholderID="itemplaceholder">
             <LayoutTemplate>
                 <table border="1">
@@ -35,6 +36,11 @@
                <td><%# Eval("TranslatedPhrase") %></td>
            </ItemTemplate>
        </asp:ListView>
+
+
+           <asp:Label ID="LabelPercentage" runat="server" Text=""></asp:Label>
+
+
        </center>
     </div>
     </form>
