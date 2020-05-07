@@ -16,6 +16,10 @@
     <div id="d1" style="padding:0 16px;">
        <center>
 
+           <asp:DropDownList ID="ddlTransLanguage" runat="server">
+           </asp:DropDownList>
+           <asp:Button ID="btnTransLanguage" runat="server" Text="Select Language" OnClick="btnTransLanguage_Click" />
+
        <asp:ListView ID="ListViewPhrasesDev" runat="server" GroupPlaceholderID="groupplaceholder" ItemPlaceholderID="itemplaceholder">
             <LayoutTemplate>
                 <table border="1">
@@ -36,7 +40,6 @@
                <td><%# Eval("TranslatedPhrase") %></td>
            </ItemTemplate>
        </asp:ListView>
-
 
            <asp:Label ID="LabelPercentage" runat="server" Text=""></asp:Label>
 

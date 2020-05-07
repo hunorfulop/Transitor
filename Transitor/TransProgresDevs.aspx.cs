@@ -14,30 +14,53 @@ namespace Transitor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string projectID1,Percentage;
-            int AllWord, TransWord;
+            string projectID1;
             if (!this.IsPostBack)
             {
+
                 projectID1 = getId();
                 string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-                string query1 = "SELECT Phrase, TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID";
+                string query1 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
                 sqlCon1.Open();
                 SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
                 sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID1);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
-                ListViewPhrasesDev.DataSource = dataTable;
-                ListViewPhrasesDev.DataBind();
-                sqlCon1.Close();
-
-                AllWord = countEveryWord(projectID1);
-                TransWord = countEveryTransWord(projectID1);
-                Percentage = getPercentage(AllWord, TransWord);
-
-                LabelPercentage.Text = "The project is at " + Percentage + "% done";
+                ddlTransLanguage.DataSource = dataTable;
+                ddlTransLanguage.DataValueField = "TranslationLanguage";
+                ddlTransLanguage.DataTextField = "TranslationLanguage";
+                ddlTransLanguage.DataBind();
             }
+        }
+
+        protected void btnTransLanguage_Click(object sender, EventArgs e)
+        {
+            string projectID2, Percentage;
+            int AllWord, TransWord;
+
+            projectID2 = getId();
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT Phrase, TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID AND TransLanguage = @TransLanguage";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+            sqlCmd1.Parameters.AddWithValue("@TransLanguage",ddlTransLanguage.SelectedValue);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            ListViewPhrasesDev.DataSource = dataTable;
+            ListViewPhrasesDev.DataBind();
+            sqlCon1.Close();
+
+            AllWord = countEveryWord(projectID2);
+            TransWord = countEveryTransWord(projectID2);
+            Percentage = getPercentage(AllWord, TransWord);
+
+            LabelPercentage.Text = "The project is at " + Percentage + "% done";
+
         }
 
         string getPercentage(int allword, int transword)
