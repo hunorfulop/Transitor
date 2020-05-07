@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -37,6 +38,24 @@ namespace Transitor
             }
             nwReader.Close();
             sqlCon.Close();
+
+            string projectID1; 
+            projectID1 = getId();
+            string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon2 = new SqlConnection(connectionString2);
+            string query2 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
+            sqlCon.Open();
+            SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
+            sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd2);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            foreach(DataRow dr in dataTable.Rows)
+            {
+                ListBoxTransLanguage.Items.Add(dr["TranslationLanguage"].ToString());
+            }
+
         }
 
         protected void btnStartProject_Click(object sender, EventArgs e)
@@ -61,5 +80,25 @@ namespace Transitor
                 Response.Write("<script language='javascript'>window.alert('Project started sucessfuly!');window.location='Home.aspx';</script>");
             }
         }
+
+        string getId()
+        {
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT ProjectID FROM tblProjects WHERE ProjectName = @ProjectName";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["ProjectID"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
     }
 }

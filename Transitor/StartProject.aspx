@@ -25,9 +25,9 @@
         <asp:TextBox ID="textBoxProjectOriginalLanguage" runat="server"></asp:TextBox>
         <div>
         </div>
-        <br />
         <asp:Label ID="Label3" runat="server" Text="ProjectTranslationLanguage:"></asp:Label>
-        <asp:TextBox ID="textBoxProjectTranslationLanguage" runat="server"></asp:TextBox>
+        <br />
+        <asp:ListBox ID="ListBoxTransLanguage" runat="server" Height="133px" Width="154px"></asp:ListBox>
         <div>
         </div>
         <br />

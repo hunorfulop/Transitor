@@ -15,6 +15,7 @@
         <Columns>
             <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
             <asp:BoundField DataField="ProjectOriginalLanguage" HeaderText="ProjectOriginalLanguage" ItemStyle-Width="150px" />
+            <asp:BoundField DataField="UploadDate" HeaderText="UploadDate" ItemStyle-Width="150px" />
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:Button Text="Select" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
