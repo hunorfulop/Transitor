@@ -44,7 +44,7 @@ namespace Transitor
             string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon2 = new SqlConnection(connectionString2);
             string query2 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
-            sqlCon.Open();
+            sqlCon2.Open();
             SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
             sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd2);

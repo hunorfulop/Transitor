@@ -18,7 +18,7 @@ namespace Transitor
             {
                 string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon = new SqlConnection(connectionString);
-                string query = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, ProjectTranslationLanguage FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID";
+                string query = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, EstimatedFinishDate FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID";
                 sqlCon.Open();
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
                 sqlCmd.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
