@@ -11,6 +11,13 @@
         }
     </style>
     <div id="d1" style="padding:0 16px;">
+        <asp:DropDownList ID="ddlProjectType" runat="server">
+            <asp:ListItem>New Project</asp:ListItem>
+            <asp:ListItem>Check a Project</asp:ListItem>
+        </asp:DropDownList>
+        <asp:Button ID="btnSelectProjectType" runat="server" Text="Select" OnClick="btnSelectProjectType_Click" />
+        <asp:Label ID="lblMessage" runat="server" Visible="false"></asp:Label>
+
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
         <Columns>
             <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />

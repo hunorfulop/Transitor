@@ -17,6 +17,17 @@ namespace Transitor
         {
             if (!this.IsPostBack)
             {
+
+            }
+
+        }
+
+        protected void btnSelectProjectType_Click(object sender, EventArgs e)
+        {
+            lblMessage.Visible = false;
+
+            if(ddlProjectType.SelectedValue == "New Project")
+            {
                 string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon = new SqlConnection(connectionString);
                 string query = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, UploadDate FROM tblProjects WHERE TraslatorWorkingID IS NULL";
@@ -28,8 +39,43 @@ namespace Transitor
                 GridView1.DataSource = dataTable;
                 GridView1.DataBind();
                 sqlCon.Close();
-            }
 
+                if (dataTable != null && dataTable.Rows.Count >0)
+                {
+                    
+                }
+                else
+                {
+                    lblMessage.Visible = true;
+                    lblMessage.Text = "There is no project which needs translation. Please return later";
+                }
+            }
+            else
+            {
+                string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                string query1 = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, UploadDate FROM tblProjects WHERE SubmitedForChecking = @SubmitedForChecking AND TraslatorWorkingID != @TraslatorWorkingID AND TraslatorChekingID IS NULL";
+                sqlCon1.Open();
+                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                sqlCmd1.Parameters.AddWithValue("@SubmitedForChecking", "Yes");
+                sqlCmd1.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
+                SqlDataAdapter dataAdapter1 = new SqlDataAdapter(sqlCmd1);
+                DataTable dataTable1 = new DataTable();
+                dataAdapter1.Fill(dataTable1);
+                GridView1.DataSource = dataTable1;
+                GridView1.DataBind();
+                sqlCon1.Close();
+
+                if (dataTable1 != null && dataTable1.Rows.Count > 0)
+                {
+
+                }
+                else
+                {
+                    lblMessage.Visible = true;
+                    lblMessage.Text = "There is no project which needs cheking. Please return later";
+                }
+            }
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -47,8 +93,6 @@ namespace Transitor
                 Response.Redirect("StartProject.aspx?test=" + projectName);
             }
         }
-
-
 
     }
 }
