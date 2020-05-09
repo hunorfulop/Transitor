@@ -41,6 +41,8 @@
            </ItemTemplate>
        </asp:ListView>
 
+           <asp:Label ID="LabelSelectedLanguagePercentage" runat="server" Text=""></asp:Label>
+           <br />
            <asp:Label ID="LabelPercentage" runat="server" Text=""></asp:Label>
 
 

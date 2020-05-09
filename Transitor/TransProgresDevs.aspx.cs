@@ -55,11 +55,17 @@ namespace Transitor
             ListViewPhrasesDev.DataBind();
             sqlCon1.Close();
 
+            AllWord = countEveryWordSelectedLang(projectID2);
+            TransWord = countEveryTransWordSelectedLang(projectID2);
+            Percentage = getPercentage(AllWord, TransWord);
+
+            LabelSelectedLanguagePercentage.Text = "The project is at " + Percentage + "% translated at the selected language";
+
             AllWord = countEveryWord(projectID2);
             TransWord = countEveryTransWord(projectID2);
             Percentage = getPercentage(AllWord, TransWord);
 
-            LabelPercentage.Text = "The project is at " + Percentage + "% done";
+            LabelPercentage.Text = "The project is at " + Percentage + "% translated in total";
 
         }
 
@@ -110,6 +116,34 @@ namespace Transitor
                 string query2 = "SELECT COUNT (*) FROM tblPhrase WHERE ProjectID = @ProjectID AND TranslatedPhrase IS NOT NULL";
                 SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon);
                 sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                return (int)sqlCmd2.ExecuteScalar();
+
+            }
+        }
+
+        int countEveryWordSelectedLang(String projectID1)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
+            {
+                sqlCon.Open();
+                string query2 = "SELECT COUNT (*) FROM tblPhrase WHERE ProjectID = @ProjectID AND TransLanguage = @TransLanguage";
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon);
+                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                sqlCmd2.Parameters.AddWithValue("@TransLanguage", ddlTransLanguage.SelectedValue);
+                return (int)sqlCmd2.ExecuteScalar();
+
+            }
+        }
+
+        int countEveryTransWordSelectedLang(String projectID1)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
+            {
+                sqlCon.Open();
+                string query2 = "SELECT COUNT (*) FROM tblPhrase WHERE ProjectID = @ProjectID AND TransLanguage = @TransLanguage AND TranslatedPhrase IS NOT NULL";
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon);
+                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                sqlCmd2.Parameters.AddWithValue("@TransLanguage", ddlTransLanguage.SelectedValue);
                 return (int)sqlCmd2.ExecuteScalar();
 
             }
