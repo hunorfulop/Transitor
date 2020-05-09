@@ -26,6 +26,9 @@ namespace Transitor
 
             if (ddlProjectType.SelectedValue == "Translation Projects")
             {
+                GridView1.Visible = true;
+                GridView2.Visible = false;
+
                 string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon = new SqlConnection(connectionString);
                 string query = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, EstimatedFinishDate FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID AND SubmitedForChecking = @SubmitedForChecking";
@@ -52,6 +55,9 @@ namespace Transitor
             }
             else
             {
+                GridView1.Visible = false;
+                GridView2.Visible = true;
+
                 string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon1 = new SqlConnection(connectionString1);
                 string query1 = "SELECT ProjectID, ProjectName, ProjectOriginalLanguage, EstimatedFinishDate FROM tblProjects WHERE SubmitedForChecking = @SubmitedForChecking AND TraslatorChekingID = @TraslatorChekingID AND IsItReady = @IsItReady";

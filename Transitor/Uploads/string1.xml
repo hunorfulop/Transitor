@@ -3,7 +3,4 @@
     <string name="app_name">WeekendPlaner</string>
     <string name="choose_file">Choose file</string>
     <string name="enter_file_name">Enter file name</string>
-    <string name="upload">Upload</string>
-    <string name="firstname">Firstname</string>
-    <string name="lastname">Lastname</string>
 </resources>
