@@ -48,7 +48,7 @@
                     <td colspan="2">
                         <asp:DropDownList ID="ddlUploadedFileType" runat="server">
                             <asp:ListItem>Xml</asp:ListItem>
-                            <asp:ListItem>Txt</asp:ListItem>
+                            <asp:ListItem>ResX</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>
