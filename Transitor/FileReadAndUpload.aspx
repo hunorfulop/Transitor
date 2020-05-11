@@ -10,6 +10,19 @@
             background-color:coral;
         }
     </style>
+
+      <style id="cssStyle" type="text/css" media="all">
+       .Cntrl1
+      {
+       background-color:#abcdef;
+       color: #4CAF50;
+       border: 1px solid #AB00CC;
+       font: Verdana 10px;
+       padding: 1px 4px;
+       font-family: Palatino Linotype, Arial, Helvetica, sans-serif;
+      }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,7 +37,7 @@
             </center>
             <br />
             <asp:Label ID="Label1" runat="server" Text="Choose a file please:"></asp:Label>
-            <asp:FileUpload ID="FileUpload1" runat="server" />
+            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="Cntrl1" />
             <br />
             <br />
             <asp:Button ID="btn_Upload" runat="server" Text="Upload File" OnClick="btn_Upload_Click" />

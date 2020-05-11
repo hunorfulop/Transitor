@@ -13,6 +13,7 @@ namespace Transitor
         {
             if (Session["role"] == null)
                 Response.Redirect("Login.aspx");
+
             lblDevs.Text = "Welcome " + Session["role"] + "!";
             lblTrans.Text = "Welcome " + Session["role"] + "!";
         }

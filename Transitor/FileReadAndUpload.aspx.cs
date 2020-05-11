@@ -16,13 +16,20 @@ namespace Transitor
     {
 
         string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if(Session["projectid"].ToString() == "expired")
+            {
+                Response.Write("<script language='javascript'>window.alert('Session has expired!');window.location='Home.aspx';</script>");
+            }
+
         }
 
         protected void btn_Upload_Click(object sender, EventArgs e)
         {
+            lblMessage.Text = "";
+
             if (FileUpload1.HasFile)
             {
                 if (File.Exists(Server.MapPath("~/Uploads/" + FileUpload1.FileName)))
@@ -32,17 +39,27 @@ namespace Transitor
                 else
                 {
                     FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                    lblMessage.Text = FileUpload1.FileName;
                     string temp = getProjetFileType();
-                    if (temp == "Xml")
+                    FileInfo fi = new FileInfo(FileUpload1.FileName);
+                    string ext = fi.Extension;
+                    if(temp == ext)
                     {
-                        ReadAndParcelXml(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                        Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                        if (temp == ".xml")
+                        {
+                            ReadAndParcelXml(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                            Session["projectid"] = "expired";
+                            Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                        }
+                        else
+                        {
+                            ReadAndParceResX(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                            Session["projectid"] = "expired";
+                            Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                        }
                     }
                     else
                     {
-                        ReadAndParceResX(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                        Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                        lblMessage.Text = "Please upload a file which has the correct extension: " + temp;
                     }
                 }
             }
@@ -123,6 +140,7 @@ namespace Transitor
                     }
                 }
             }
+
         }
 
         string getProjetFileType()

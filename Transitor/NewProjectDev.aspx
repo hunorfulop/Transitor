@@ -103,8 +103,8 @@
                     </td>
                     <td colspan="2">
                         <asp:DropDownList ID="ddlUploadedFileType" runat="server" class="dropdownliststyle">
-                            <asp:ListItem>Xml</asp:ListItem>
-                            <asp:ListItem>ResX</asp:ListItem>
+                            <asp:ListItem>.xml</asp:ListItem>
+                            <asp:ListItem>.resx</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>
