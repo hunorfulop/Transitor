@@ -10,6 +10,38 @@
             background-color:coral;
         }
     </style>
+
+    <style type="text/css">
+        .btnstyle {
+            background-color: #FFCC99;
+            border: 1px solid yellow;
+            cursor: pointer;
+            color: Silver;
+            border-radius: 4px;
+        }
+
+        .btnstyle:hover {
+            background-color: #FF9933;
+            box-shadow: 0 0 10px #FF99CC;
+            color: Menu;
+        }
+
+        .btnstyle:active {
+            background-color: #FF9933;
+            box-shadow: 0 4px #666;
+            transform: translateY(5px);
+        }
+        
+        .txtboxstyle {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background: #FFFFFF no-repeat 2px 2px;
+            padding: 1px 1px 1px 5px;
+            border: 2px solid #FF9933;
+        }
+    </style> 
 </head>
 <body>
     <form id="form1" runat="server">
@@ -22,7 +54,7 @@
                         <asp:Label Text="UserName:" runat="server" />
                     </td>
                     <td colspan="2">
-                        <asp:TextBox ID="txtUserName" runat="server" />
+                        <asp:TextBox ID="txtUserName" runat="server" class="txtboxstyle"/>
                         <asp:Label Text="*" runat="server" ForeColor="Red" />
                     </td>
                 </tr>
@@ -32,7 +64,7 @@
                         <asp:Label Text="Password:" runat="server" />
                     </td>
                     <td colspan="2">
-                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Height="22px" />
+                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Height="17px" class="txtboxstyle"/>
                         <asp:Label Text="*" runat="server" ForeColor="Red" />
                     </td>
                 </tr>
@@ -52,7 +84,7 @@
                 <tr>
                     <td></td>
                     <td colspan="2">
-                        <asp:Button Text="Register" ID="btnRegister" runat="server" OnClick="btnRegister_Click" />
+                        <asp:Button Text="Register" ID="btnRegister" runat="server" OnClick="btnRegister_Click" CssClass="btnstyle" />
                     </td>
                 </tr>
 

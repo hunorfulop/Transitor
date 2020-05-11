@@ -15,6 +15,14 @@
     <form id="form1" runat="server">
         <div>
             <asp:HiddenField ID="hfPhraseID" runat="server" />
+            <br />
+            <center>
+            <asp:Label ID="Label2" runat="server" Text="Welcome to the file upload page!" Font-Bold="true" Font-Size="X-Large"></asp:Label>
+                <br />
+                <br />
+                <br />
+            </center>
+            <br />
             <asp:Label ID="Label1" runat="server" Text="Choose a file please:"></asp:Label>
             <asp:FileUpload ID="FileUpload1" runat="server" />
             <br />

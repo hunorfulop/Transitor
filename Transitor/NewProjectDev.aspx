@@ -9,11 +9,55 @@
         body{
             background-color:coral;
         }
-        .auto-style1 {
-            width: 243px;
-            height: 40px;
-        }
     </style>
+
+    <style type="text/css">
+        .txtboxstyle {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background: #FFFFFF no-repeat 2px 2px;
+            padding: 1px 1px 1px 5px;
+            border: 2px solid #FF9933;
+        }
+
+        .dropdownliststyle
+        {
+            color: #fff;
+            font-size: 15px;
+            padding: 5px 10px;
+            border-radius: 5px 12px;
+            background-color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .checkboxliststyle
+        {
+            font-family:Bell MT;
+            color:#4CAF50;
+            font-style:normal;
+            font-weight:bold;
+            font-size:large;
+            }
+
+        .btnstyle2 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border: none;
+         }
+
+            .btnstyle2:hover {
+                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+                background-color: #FF9933;
+            }
+    </style>
+
    <div>
                 <asp:HiddenField ID="hfProjectID" runat="server" />
                 <asp:HiddenField ID="hfTranslationLanguageID" runat="server" />
@@ -21,10 +65,22 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="Project Name" runat="server" />
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <asp:Label Text="Project Name:" runat="server" />
                     </td>
                     <td colspan="2">
-                        <asp:TextBox ID="txtProjectName" runat="server" />
+                        <asp:TextBox ID="txtProjectName" runat="server" class="txtboxstyle" />
                         <asp:Label Text="*" runat="server" ForeColor="Red" />                       
                     </td>
                 </tr>
@@ -43,10 +99,10 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="Uploaded file type" runat="server" />
+                        <asp:Label Text="Uploaded file type:" runat="server" />
                     </td>
                     <td colspan="2">
-                        <asp:DropDownList ID="ddlUploadedFileType" runat="server">
+                        <asp:DropDownList ID="ddlUploadedFileType" runat="server" class="dropdownliststyle">
                             <asp:ListItem>Xml</asp:ListItem>
                             <asp:ListItem>ResX</asp:ListItem>
                         </asp:DropDownList>
@@ -67,10 +123,10 @@
 
                  <tr>
                     <td>
-                        <asp:Label Text="Original language" runat="server" />
+                        <asp:Label Text="Original language:" runat="server" />
                     </td>
                     <td colspan="2">
-                        <asp:DropDownList ID="ddlOriginalLanguage" runat="server">
+                        <asp:DropDownList ID="ddlOriginalLanguage" runat="server"  class="dropdownliststyle">
                             <asp:ListItem>English</asp:ListItem>
                             <asp:ListItem>Romanian</asp:ListItem>
                             <asp:ListItem>Hungarian</asp:ListItem>
@@ -102,11 +158,11 @@
 
                    <tr>
                     <td>
-                        <asp:Label Text="Translation language" runat="server" />
+                        <asp:Label Text="Translation language:" runat="server" />
                     </td>
                     
                     <td colspan="2">
-                        <asp:CheckBoxList ID="CheckBoxLisTransLanguages" runat="server">
+                        <asp:CheckBoxList ID="CheckBoxLisTransLanguages" runat="server" class="checkboxliststyle">
                             <asp:ListItem Text="English" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Romanian" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Hungarian" Value="1"></asp:ListItem>
@@ -118,9 +174,21 @@
                 </tr>
 
                 <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
                     <td></td>
                     <td colspan="2">
-                        <asp:Button Text="Upload" ID="btnRegister" runat="server" OnClick="btnRegister_Click" />
+                        <asp:Button Text="Upload" ID="btnRegister" runat="server" OnClick="btnRegister_Click" class="btnstyle2"/>
                     </td>
                 </tr>
 

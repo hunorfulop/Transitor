@@ -23,6 +23,7 @@ namespace Transitor
             {
                 Clear();
             }
+
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
