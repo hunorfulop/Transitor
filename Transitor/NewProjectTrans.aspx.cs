@@ -25,8 +25,9 @@ namespace Transitor
         protected void btnSelectProjectType_Click(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
+            CheckProjectsWithNoPhrases();
 
-            if(ddlProjectType.SelectedValue == "New Project")
+            if (ddlProjectType.SelectedValue == "New Project")
             {
                 string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon = new SqlConnection(connectionString);
@@ -91,6 +92,32 @@ namespace Transitor
                 //Fetch value of Name.
                 string projectName = row.Cells[0].Text;
                 Response.Redirect("StartProject.aspx?test=" + projectName);
+            }
+        }
+
+        void CheckProjectsWithNoPhrases()
+        {
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT ProjectID FROM tblProjects WHERE ProjectID NOT IN (SELECT ProjectID FROM tblPhrase)";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            using (SqlConnection sqlCon1 = new SqlConnection(connectionString))
+            {
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    string query1 = "DELETE FROM tblProjects WHERE ProjectID = @ProjectID";
+                    sqlCon1.Open();
+                    SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                    sqlCmd1.Parameters.AddWithValue("@ProjectID", dr.Field<int>("ProjectID"));
+                    sqlCmd1.ExecuteNonQuery();
+                    sqlCon1.Close();
+                }
+
             }
         }
 

@@ -1,25 +1,53 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Translation.aspx.cs" Inherits="Transitor.WebForm1" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Translation.aspx.cs" Inherits="Transitor.WebForm1" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">NewProjectDev
+    </asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="body2" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
+    <br />
+    <br />
+
     <style>
         body{
             background-color:coral;
         }
+
+          .dropdownliststyle
+        {
+            color: #fff;
+            font-size: 15px;
+            padding: 5px 10px;
+            border-radius: 5px 12px;
+            background-color: #4CAF50;
+            font-weight: bold;
+        }
+
+         .btnstyle2 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border: none;
+         }
+
+            btnstyle2:hover {
+                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+                background-color: #FF9933;
+            }
+
     </style>
-     
-    <form id="form1" runat="server">
-        <asp:Label ID="Label1" runat="server" Text="Select Phrase and translation language:"></asp:Label>
+
+    <asp:Label ID="Label1" runat="server" Text="Select Phrase and translation language:"></asp:Label>
         <br />
-        <asp:DropDownList ID="DropDownListPhrases" runat="server" style="width: 150px; max-width: 150px"></asp:DropDownList>
-        <asp:DropDownList ID="DropDownListTransLanguages" runat="server">
+        <asp:DropDownList ID="DropDownListPhrases" runat="server" style="width: 150px; max-width: 150px" CssClass="dropdownliststyle"></asp:DropDownList>
+        <asp:DropDownList ID="DropDownListTransLanguages" runat="server" CssClass="dropdownliststyle">
         </asp:DropDownList>
-        <asp:Button ID="btnSelectPhrase" runat="server" Text="Select" OnClick="btnSelectPhrase_Click" />
+        <asp:Button ID="btnSelectPhrase" runat="server" Text="Select" OnClick="btnSelectPhrase_Click" class="btnstyle2"/>
         <p>
             <asp:Label ID="Label2" runat="server" Text="Selected Phrase:"></asp:Label>
         </p>
@@ -34,7 +62,7 @@
         </p>
         <p>
             <textarea id="TextareaTranslate" runat="server" cols="50" name="S1" rows="10"></textarea>
-            &nbsp;<asp:Button ID="btnTranlate" runat="server" Text="Translate" OnClick="btnTranlate_Click" />
+            &nbsp;<asp:Button ID="btnTranlate" runat="server" Text="Translate" OnClick="btnTranlate_Click" class="btnstyle2"/>
         </p>
         <p>
             <asp:Label ID="Label5" runat="server" Text="Translated words/Number of words in selected language: "></asp:Label>
@@ -47,12 +75,10 @@
             /<asp:Label ID="lblEveryPhraseNumber" runat="server" Text=""></asp:Label>
             </p>
         <p>
-            <asp:Button ID="btnFinishTranslation" runat="server" Text="Submit for checking" OnClick="btnFinishTranslation_Click" />
+            <asp:Button ID="btnFinishTranslation" runat="server" Text="Submit for checking" OnClick="btnFinishTranslation_Click" class="btnstyle2"/>
             </p>
         <p>
             <asp:Label ID="lblErrorMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
             </p>
-    </form>
-     
-</body>
-</html> 
+
+    </asp:Content>

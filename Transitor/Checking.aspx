@@ -1,26 +1,55 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Checking.aspx.cs" Inherits="Transitor.Checking" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Checking.aspx.cs" Inherits="Transitor.Checking" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">NewProjectDev
+    </asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="body2" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
         <style>
         body{
             background-color:coral;
         }
+
+         .dropdownliststyle
+        {
+            color: #fff;
+            font-size: 15px;
+            padding: 5px 10px;
+            border-radius: 5px 12px;
+            background-color: #4CAF50;
+            font-weight: bold;
+        }
+
+         .btnstyle2 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border: none;
+         }
+
+            btnstyle2:hover {
+                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+                background-color: #FF9933;
+            }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+
+    <div>
+            <br />
             <asp:Label ID="Label1" runat="server" Text="Please select a language"></asp:Label>
-            <asp:DropDownList ID="ddlLanguage" runat="server">
+            <asp:DropDownList ID="ddlLanguage" runat="server" CssClass="dropdownliststyle">
             </asp:DropDownList>
-            <asp:Button ID="btnSelectLanguage" runat="server" Text="Select" OnClick="btnSelectLanguage_Click" />
+            <asp:Button ID="btnSelectLanguage" runat="server" Text="Select" OnClick="btnSelectLanguage_Click" class="btnstyle2"/>
+            <br />
+            <br />
         </div>
 
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" HeaderStyle-BackColor="#4CAF50"
+        HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
         <Columns>
             <asp:BoundField DataField="Phrase" HeaderText="Phrase" ItemStyle-Width="150px" />
             <asp:BoundField DataField="TransLanguage" HeaderText="TransLanguage" ItemStyle-Width="150px" />
@@ -28,21 +57,21 @@
         </Columns>
     </asp:GridView>
 
+        <br />
+
         <asp:Label ID="Label2" runat="server" Text="Select the phrase which you want to correct:" Visible="false"></asp:Label>
-        <asp:DropDownList ID="ddlPhrases" runat="server" Visible="false">
+        <asp:DropDownList ID="ddlPhrases" runat="server" Visible="false" CssClass="dropdownliststyle">
         </asp:DropDownList>
-        <asp:Button ID="btnSelectPhrase" runat="server" Text="Select" Visible="false" OnClick="btnSelectPhrase_Click"/>
+        <asp:Button ID="btnSelectPhrase" runat="server" Text="Select" Visible="false" OnClick="btnSelectPhrase_Click" CssClass="btnstyle2"/>
         <br />
         <br />
         <asp:Label ID="Label3" runat="server" Text="Correct the phrase here" Visible="false"></asp:Label>
         <p>
             <textarea id="TextAreaTranslatedPhrase" runat="server" cols="20" name="S1" rows="2" Visible="false"></textarea>
-            <asp:Button ID="btnCorrect" runat="server" Text="Correct" OnClick="btnCorrect_Click" Visible="false" />
+            <asp:Button ID="btnCorrect" runat="server" Text="Correct" OnClick="btnCorrect_Click" Visible="false" CssClass="btnstyle2" />
         </p>
         <p>
-            <asp:Button ID="btnFinishTrans" runat="server" Text="Finish Translation" Visible="false" OnClick="btnFinishTrans_Click"/>
+            <asp:Button ID="btnFinishTrans" runat="server" Text="Finish Translation" Visible="false" OnClick="btnFinishTrans_Click" CssClass="btnstyle2"/>
         </p>
 
-    </form>
-</body>
-</html>
+        </asp:Content>
