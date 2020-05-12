@@ -1,26 +1,57 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TransProgresDevs.aspx.cs" Inherits="Transitor.TransProgresDevs" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="TransProgresDevs.aspx.cs" Inherits="Transitor.TransProgresDevs" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">NewProjectDev
+    </asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style>
+        <style>
         body{
             background-color:coral;
         }
+
+        .dropdownliststyle
+        {
+            color: #fff;
+            font-size: 15px;
+            padding: 5px 10px;
+            border-radius: 5px 12px;
+            background-color: #4CAF50;
+            font-weight: bold;
+        }
+
+         .btnstyle2 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border: none;
+         }
+
+            btnstyle2:hover {
+                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+                background-color: #FF9933;
+            }
+
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
+
     <div id="d1" style="padding:0 16px;">
        <center>
 
-           <asp:DropDownList ID="ddlTransLanguage" runat="server">
-           </asp:DropDownList>
-           <asp:Button ID="btnTransLanguage" runat="server" Text="Select Language" OnClick="btnTransLanguage_Click" />
+           <br />
 
-       <asp:ListView ID="ListViewPhrasesDev" runat="server" GroupPlaceholderID="groupplaceholder" ItemPlaceholderID="itemplaceholder">
+           <asp:DropDownList ID="ddlTransLanguage" runat="server" CssClass="dropdownliststyle">
+           </asp:DropDownList>
+           <asp:Button ID="btnTransLanguage" runat="server" Text="Select Language" OnClick="btnTransLanguage_Click" class="btnstyle2"/>
+
+           <br />
+           <br />
+
+       <asp:ListView ID="ListViewPhrasesDev" runat="server" GroupPlaceholderID="groupplaceholder" ItemPlaceholderID="itemplaceholder" >
             <LayoutTemplate>
                 <table border="1">
                     <tr>
@@ -41,6 +72,8 @@
            </ItemTemplate>
        </asp:ListView>
 
+           <br />
+
            <asp:Label ID="LabelSelectedLanguagePercentage" runat="server" Text=""></asp:Label>
            <br />
            <asp:Label ID="LabelPercentage" runat="server" Text=""></asp:Label>
@@ -48,6 +81,5 @@
 
        </center>
     </div>
-    </form>
-</body>
-</html>
+
+      </asp:Content>
