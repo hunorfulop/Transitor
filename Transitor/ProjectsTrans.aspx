@@ -62,6 +62,7 @@
         </asp:DropDownList>
         <asp:Button ID="btnSelectProjectType" runat="server" Text="Select" OnClick="btnSelectProjectType_Click" class="btnstyle2"/>
          <br />
+         <br />
          <asp:Label ID="lblMessage" runat="server" Visible="false"></asp:Label>
 
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#4CAF50"
@@ -77,8 +78,6 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-
-        <br />
 
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView2_RowCommand" HeaderStyle-BackColor="#4CAF50"
         HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
