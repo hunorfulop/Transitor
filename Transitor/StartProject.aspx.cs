@@ -28,11 +28,11 @@ namespace Transitor
             string query = "SELECT ProjectOriginalLanguage, UploadDate FROM tblProjects WHERE ProjectName = @ProjectName";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Session["projectname"].ToString());
             SqlDataReader nwReader = sqlCmd.ExecuteReader();
             while (nwReader.Read())
             {
-                textBoxProjectName.Text = Request.QueryString["test"];
+                textBoxProjectName.Text = Session["projectname"].ToString();
                 textBoxProjectOriginalLanguage.Text = nwReader["ProjectOriginalLanguage"].ToString();
                 textBoxUploadDate.Text = nwReader["UploadDate"].ToString();
             }
@@ -60,44 +60,54 @@ namespace Transitor
 
         protected void btnStartProject_Click(object sender, EventArgs e)
         {
-            string projtype;
-            projtype = getProjType();
-
-            if(Calendar1.SelectedDate.ToString() == "1/1/0001 12:00:00 AM")
+            if (Session["projectname"].ToString() == "expired")
             {
-                lblErrorMessage.Visible = true;
+                Response.Write("<script language='javascript'>window.alert('This session has expired!');window.location='Home.aspx';</script>");
             }
             else
             {
-                if(projtype == "No")
+
+                string projtype;
+                projtype = getProjType();
+
+                if (Calendar1.SelectedDate.ToString() == "1/1/0001 12:00:00 AM")
                 {
-                    string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-                    SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-                    string query1 = "UPDATE tblProjects SET TraslatorWorkingID = @TraslatorWorkingID, EstimatedFinishDate = @EstimatedFinishDate, IsSomeoneWorkingOnIt = @IsSomeoneWorkingOnIt WHERE ProjectName = @ProjectName";
-                    sqlCon1.Open();
-                    SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-                    sqlCmd1.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
-                    sqlCmd1.Parameters.AddWithValue("@EstimatedFinishDate", Calendar1.SelectedDate.ToString());
-                    sqlCmd1.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
-                    sqlCmd1.Parameters.AddWithValue("@IsSomeoneWorkingOnIt", "Yes");
-                    sqlCmd1.ExecuteNonQuery();
-                    sqlCon1.Close();
-                    Response.Write("<script language='javascript'>window.alert('Project started sucessfuly!');window.location='Home.aspx';</script>");
+                    lblErrorMessage.Visible = true;
                 }
                 else
                 {
-                    string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-                    SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-                    string query1 = "UPDATE tblProjects SET TraslatorChekingID = @TraslatorChekingID, EstimatedFinishDate = @EstimatedFinishDate, IsSomeoneWorkingOnIt = @IsSomeoneWorkingOnIt WHERE ProjectName = @ProjectName";
-                    sqlCon1.Open();
-                    SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-                    sqlCmd1.Parameters.AddWithValue("@TraslatorChekingID", Session["userid"].ToString());
-                    sqlCmd1.Parameters.AddWithValue("@EstimatedFinishDate", Calendar1.SelectedDate.ToString());
-                    sqlCmd1.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
-                    sqlCmd1.Parameters.AddWithValue("@IsSomeoneWorkingOnIt", "Yes");
-                    sqlCmd1.ExecuteNonQuery();
-                    sqlCon1.Close();
-                    Response.Write("<script language='javascript'>window.alert('Project started sucessfuly!');window.location='Home.aspx';</script>");
+                    if (projtype == "No")
+                    {
+                        string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                        SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                        string query1 = "UPDATE tblProjects SET TraslatorWorkingID = @TraslatorWorkingID, EstimatedFinishDate = @EstimatedFinishDate, IsSomeoneWorkingOnIt = @IsSomeoneWorkingOnIt WHERE ProjectName = @ProjectName";
+                        sqlCon1.Open();
+                        SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                        sqlCmd1.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
+                        sqlCmd1.Parameters.AddWithValue("@EstimatedFinishDate", Calendar1.SelectedDate.ToString());
+                        sqlCmd1.Parameters.AddWithValue("@ProjectName", Session["projectname"].ToString());
+                        sqlCmd1.Parameters.AddWithValue("@IsSomeoneWorkingOnIt", "Yes");
+                        sqlCmd1.ExecuteNonQuery();
+                        sqlCon1.Close();
+                        Session["projectname"] = "expired";
+                        Response.Write("<script language='javascript'>window.alert('Project started sucessfuly!');window.location='Home.aspx';</script>");
+                    }
+                    else
+                    {
+                        string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                        SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                        string query1 = "UPDATE tblProjects SET TraslatorChekingID = @TraslatorChekingID, EstimatedFinishDate = @EstimatedFinishDate, IsSomeoneWorkingOnIt = @IsSomeoneWorkingOnIt WHERE ProjectName = @ProjectName";
+                        sqlCon1.Open();
+                        SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                        sqlCmd1.Parameters.AddWithValue("@TraslatorChekingID", Session["userid"].ToString());
+                        sqlCmd1.Parameters.AddWithValue("@EstimatedFinishDate", Calendar1.SelectedDate.ToString());
+                        sqlCmd1.Parameters.AddWithValue("@ProjectName", Session["projectname"].ToString());
+                        sqlCmd1.Parameters.AddWithValue("@IsSomeoneWorkingOnIt", "Yes");
+                        sqlCmd1.ExecuteNonQuery();
+                        sqlCon1.Close();
+                        Session["projectname"] = "expired";
+                        Response.Write("<script language='javascript'>window.alert('Project started sucessfuly!');window.location='Home.aspx';</script>");
+                    }
                 }
             }
         }
@@ -110,7 +120,7 @@ namespace Transitor
             string query = "SELECT ProjectID FROM tblProjects WHERE ProjectName = @ProjectName";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Session["projectname"].ToString());
             SqlDataReader nwReader = sqlCmd.ExecuteReader();
             while (nwReader.Read())
             {
@@ -129,7 +139,7 @@ namespace Transitor
             string query = "SELECT SubmitedForChecking FROM tblProjects WHERE ProjectName = @ProjectName";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Session["projectname"].ToString());
             SqlDataReader nwReader = sqlCmd.ExecuteReader();
             while (nwReader.Read())
             {
