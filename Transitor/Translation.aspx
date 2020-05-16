@@ -39,10 +39,13 @@
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
                 background-color: #FF9933;
             }
+        </style>
 
-    </style>
-
+    <div>
+        <asp:HiddenField ID="hfComentId" runat="server" />
+        <br />
     <asp:Label ID="Label1" runat="server" Text="Select Phrase and translation language:"></asp:Label>
+        <br />
         <br />
         <asp:DropDownList ID="DropDownListPhrases" runat="server" style="width: 150px; max-width: 150px" CssClass="dropdownliststyle"></asp:DropDownList>
         <asp:DropDownList ID="DropDownListTransLanguages" runat="server" CssClass="dropdownliststyle">
@@ -57,6 +60,7 @@
             <asp:Label ID="Label4" runat="server" Text="Selected translation Language: "></asp:Label>
             <asp:Label ID="LabelTransLang" runat="server" Text=""></asp:Label>
         </p>
+
         <p>
             <asp:Label ID="Label3" runat="server" Text="Translate the phrase here:"></asp:Label>
         </p>
@@ -76,9 +80,29 @@
             </p>
         <p>
             <asp:Button ID="btnFinishTranslation" runat="server" Text="Submit for checking" OnClick="btnFinishTranslation_Click" class="btnstyle2"/>
-            </p>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnAddComent" runat="server" Text="Add Coment" class="btnstyle2" OnClick="btnAddComent_Click"/>
+       </p>
         <p>
             <asp:Label ID="lblErrorMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
             </p>
+        <div class="cetered">
+            <br />
+            <asp:Repeater ID="RepeaterComents" runat="server" visible="false">
+                <ItemTemplate>
+                    <hr />
+                    <asp:Label ID="LabelCom1" runat="server" Text='<%#Eval("OwnerID") %>'></asp:Label>
+                    <asp:Label ID="LabeCom2" runat="server" Text='<%#Eval("ComentDate") %>'></asp:Label>
+                    <br />
+                    <div runat="server" innerText = '<%#Eval("Coment") %>'>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <br />
+            <br />
+            <textarea id="TextareaComent" runat="server" name="S1" class="auto-style1" visible="false"></textarea>
+            <asp:Button ID="btnSendComent" runat="server" Text="Send Coment" class="btnstyle2" OnClick="btnSendComent_Click" Visible="false"/>
+        </div>
+        </div>
 
     </asp:Content>

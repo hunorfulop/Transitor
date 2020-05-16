@@ -15,6 +15,15 @@ namespace Transitor
     {
 
         /// <summary>
+        /// hfComentId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfComentId;
+
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -177,6 +186,15 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.Button btnFinishTranslation;
 
         /// <summary>
+        /// btnAddComent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddComent;
+
+        /// <summary>
         /// lblErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -184,5 +202,32 @@ namespace Transitor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorMessage;
+
+        /// <summary>
+        /// RepeaterComents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterComents;
+
+        /// <summary>
+        /// TextareaComent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextareaComent;
+
+        /// <summary>
+        /// btnSendComent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSendComent;
     }
 }

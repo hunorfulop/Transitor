@@ -12,6 +12,11 @@ namespace Transitor
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        SqlCommand SqlCommandGL = new SqlCommand();
+        SqlConnection SqlConnectionGL = new SqlConnection();
+        SqlDataAdapter SqlDataAdapterGL = new SqlDataAdapter();
+        DataSet dataSetGL = new DataSet(); 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string projectID1, transLang;
@@ -55,6 +60,8 @@ namespace Transitor
                 int tempTransWord = countEveryTransWord(projectID1);
                 lblEveryTransNumber.Text = tempTransWord.ToString();
                 sqlCon1.Close();
+
+                show();
             }
         }
 
@@ -131,6 +138,51 @@ namespace Transitor
             return temp;
         }
 
+        string getPhraseId()
+        {
+            string projectID1;
+            projectID1 = getId();
+
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT PhraseID FROM tblPhrase WHERE Phrase = @Phrase AND ProjectID = @ProjectID";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
+            sqlCmd.Parameters.AddWithValue("@ProjectID", projectID1);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["PhraseID"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
+        string getProjectName()
+        {
+            string projectID1;
+            projectID1 = getId();
+
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT ProjectName FROM tblProjects WHERE ProjectID = @ProjectID";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectID", projectID1);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["ProjectName"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
         string getTransLang()
         {
             string projectID2;
@@ -150,6 +202,8 @@ namespace Transitor
 
         protected void btnSelectPhrase_Click(object sender, EventArgs e)
         {
+            show();
+
             string projectID3;
             projectID3 = getId();
 
@@ -203,9 +257,8 @@ namespace Transitor
 
                 string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-                string query1 = "UPDATE tblPhrase SET TranslatedPhrase = @TranslatedPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase AND TransLanguage = @TransLanguage";
                 sqlCon1.Open();
-                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                SqlCommand sqlCmd1 = new SqlCommand("ComentsAddOrEdit", sqlCon1);
                 sqlCmd1.Parameters.AddWithValue("@TranslatedPhrase", TextareaTranslate.InnerHtml);
                 sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
                 sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
@@ -250,6 +303,55 @@ namespace Transitor
                 lblErrorMessage.Visible = true;
                 lblErrorMessage.Text = "Please translate every pharese in every language before finalization";
             }
+        }
+
+        protected void btnSendComent_Click(object sender, EventArgs e)
+        {
+            string projectID5;
+            projectID5 = getId();
+
+            string projectname;
+            projectname = getProjectName();
+
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand("ComentAddOrEdit", sqlCon1);
+            sqlCmd1.CommandType = CommandType.StoredProcedure;
+            sqlCmd1.Parameters.AddWithValue("@ComentID", Convert.ToInt32(hfComentId.Value == "" ? "0" : hfComentId.Value));
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID5);
+            sqlCmd1.Parameters.AddWithValue("@OwnerID", Session["userid"].ToString());
+            sqlCmd1.Parameters.AddWithValue("@ProjectName", projectname);
+            sqlCmd1.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
+            sqlCmd1.Parameters.AddWithValue("@TranslationLanguage", DropDownListTransLanguages.SelectedValue);
+            sqlCmd1.Parameters.AddWithValue("@Coment", TextareaComent.InnerHtml);
+            sqlCmd1.Parameters.AddWithValue("@ComentStatus", "UnRead");
+            sqlCmd1.Parameters.AddWithValue("@ComentDate", DateTime.Now);
+            sqlCmd1.ExecuteNonQuery();
+            Response.Redirect(Request.Url.AbsoluteUri);
+        }
+        
+        protected void show()
+        {
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection SqlConnectionGL = new SqlConnection(connectionString1);
+            SqlConnectionGL.Open();
+
+            SqlCommandGL.CommandText = "SELECT * FROM tblComents WHERE Phrase = @Phrase AND TranslationLanguage = @TranslationLanguage ORDER BY ComentDate DESC";
+            SqlCommandGL.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
+            SqlCommandGL.Parameters.AddWithValue("@TranslationLanguage", DropDownListTransLanguages.SelectedValue);
+            SqlCommandGL.Connection = SqlConnectionGL;
+            SqlDataAdapterGL.SelectCommand = SqlCommandGL;
+            SqlDataAdapterGL.Fill(dataSetGL, "Coment");
+            RepeaterComents.DataSource = dataSetGL;
+            RepeaterComents.DataBind();
+        }
+
+        protected void btnAddComent_Click(object sender, EventArgs e)
+        {
+            RepeaterComents.Visible = true;
+            TextareaComent.Visible = true;
+            btnSendComent.Visible = true;
         }
     }
 }
