@@ -345,13 +345,12 @@ namespace Transitor
             SqlDataAdapterGL.Fill(dataSetGL, "Coment");
             RepeaterComents.DataSource = dataSetGL;
             RepeaterComents.DataBind();
+
+            if(dataSetGL.Tables[0].Rows.Count == 0)
+            {
+                LabelNoComent.Visible = true;
+            }
         }
 
-        protected void btnAddComent_Click(object sender, EventArgs e)
-        {
-            RepeaterComents.Visible = true;
-            TextareaComent.Visible = true;
-            btnSendComent.Visible = true;
-        }
     }
 }

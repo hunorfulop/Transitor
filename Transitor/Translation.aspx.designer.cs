@@ -186,15 +186,6 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.Button btnFinishTranslation;
 
         /// <summary>
-        /// btnAddComent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddComent;
-
-        /// <summary>
         /// lblErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -202,6 +193,24 @@ namespace Transitor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorMessage;
+
+        /// <summary>
+        /// Label7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
+
+        /// <summary>
+        /// LabelNoComent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelNoComent;
 
         /// <summary>
         /// RepeaterComents control.

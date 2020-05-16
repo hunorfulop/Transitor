@@ -39,6 +39,10 @@
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
                 background-color: #FF9933;
             }
+        .auto-style1 {
+            width: 459px;
+            height: 63px;
+        }
         </style>
 
     <div>
@@ -80,15 +84,22 @@
             </p>
         <p>
             <asp:Button ID="btnFinishTranslation" runat="server" Text="Submit for checking" OnClick="btnFinishTranslation_Click" class="btnstyle2"/>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnAddComent" runat="server" Text="Add Coment" class="btnstyle2" OnClick="btnAddComent_Click"/>
-       </p>
+            &nbsp;</p>
         <p>
             <asp:Label ID="lblErrorMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
             </p>
+        <p>
+            &nbsp;</p>
+
+        <div style="margin-left: auto; margin-right: auto; text-align: center;">
+            <asp:Label ID="Label7" runat="server" Text="Coment Section" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+        </div>
+
+        <asp:Label ID="LabelNoComent" runat="server" Text="There is no coment on this phrase" Visible="false"></asp:Label>
+
         <div class="cetered">
             <br />
-            <asp:Repeater ID="RepeaterComents" runat="server" visible="false">
+            <asp:Repeater ID="RepeaterComents" runat="server">
                 <ItemTemplate>
                     <hr />
                     <asp:Label ID="LabelCom1" runat="server" Text='<%#Eval("OwnerID") %>'></asp:Label>
@@ -100,8 +111,8 @@
             </asp:Repeater>
             <br />
             <br />
-            <textarea id="TextareaComent" runat="server" name="S1" class="auto-style1" visible="false"></textarea>
-            <asp:Button ID="btnSendComent" runat="server" Text="Send Coment" class="btnstyle2" OnClick="btnSendComent_Click" Visible="false"/>
+            <textarea id="TextareaComent" runat="server" name="S1" class="auto-style1" ></textarea>
+            <asp:Button ID="btnSendComent" runat="server" Text="Send Coment" class="btnstyle2" OnClick="btnSendComent_Click" />
         </div>
         </div>
 
