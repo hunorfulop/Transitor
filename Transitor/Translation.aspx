@@ -102,7 +102,7 @@
             <asp:Repeater ID="RepeaterComents" runat="server">
                 <ItemTemplate>
                     <hr />
-                    <asp:Label ID="LabelCom1" runat="server" Text='<%#Eval("OwnerID") %>'></asp:Label>
+                    <asp:Label ID="LabelCom1" runat="server" Text='<%#Eval("ComentOwner") %>'></asp:Label>
                     <asp:Label ID="LabeCom2" runat="server" Text='<%#Eval("ComentDate") %>'></asp:Label>
                     <br />
                     <div runat="server" innerText = '<%#Eval("Coment") %>'>

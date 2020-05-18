@@ -138,29 +138,6 @@ namespace Transitor
             return temp;
         }
 
-        string getPhraseId()
-        {
-            string projectID1;
-            projectID1 = getId();
-
-            string temp = "";
-            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-            SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT PhraseID FROM tblPhrase WHERE Phrase = @Phrase AND ProjectID = @ProjectID";
-            sqlCon.Open();
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
-            sqlCmd.Parameters.AddWithValue("@ProjectID", projectID1);
-            SqlDataReader nwReader = sqlCmd.ExecuteReader();
-            while (nwReader.Read())
-            {
-                temp = nwReader["PhraseID"].ToString();
-            }
-            nwReader.Close();
-            sqlCon.Close();
-            return temp;
-        }
-
         string getProjectName()
         {
             string projectID1;
@@ -305,6 +282,44 @@ namespace Transitor
             }
         }
 
+        string getUserId()
+        {
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT UserID FROM tblProjects WHERE ProjectName = @ProjectName";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["UserID"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
+        string getComentOwner()
+        {
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT Username FROM tblUser WHERE UserID = @UserID";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@UserID", Session["userid"].ToString());
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["Username"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
         protected void btnSendComent_Click(object sender, EventArgs e)
         {
             string projectID5;
@@ -313,6 +328,12 @@ namespace Transitor
             string projectname;
             projectname = getProjectName();
 
+            string userId;
+            userId = getUserId();
+
+            string comentowner;
+            comentowner = getComentOwner();
+
             string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon1 = new SqlConnection(connectionString1);
             sqlCon1.Open();
@@ -320,7 +341,9 @@ namespace Transitor
             sqlCmd1.CommandType = CommandType.StoredProcedure;
             sqlCmd1.Parameters.AddWithValue("@ComentID", Convert.ToInt32(hfComentId.Value == "" ? "0" : hfComentId.Value));
             sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID5);
-            sqlCmd1.Parameters.AddWithValue("@OwnerID", Session["userid"].ToString());
+            sqlCmd1.Parameters.AddWithValue("@UserID", userId);
+            sqlCmd1.Parameters.AddWithValue("@ComentOwnerID", Session["userid"].ToString());
+            sqlCmd1.Parameters.AddWithValue("@ComentOwner", comentowner);
             sqlCmd1.Parameters.AddWithValue("@ProjectName", projectname);
             sqlCmd1.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
             sqlCmd1.Parameters.AddWithValue("@TranslationLanguage", DropDownListTransLanguages.SelectedValue);
@@ -337,9 +360,13 @@ namespace Transitor
             SqlConnection SqlConnectionGL = new SqlConnection(connectionString1);
             SqlConnectionGL.Open();
 
-            SqlCommandGL.CommandText = "SELECT * FROM tblComents WHERE Phrase = @Phrase AND TranslationLanguage = @TranslationLanguage ORDER BY ComentDate DESC";
+            string projectID5;
+            projectID5 = getId();
+
+            SqlCommandGL.CommandText = "SELECT * FROM tblComents WHERE Phrase = @Phrase AND TranslationLanguage = @TranslationLanguage AND ProjectID=@ProjectID ORDER BY ComentDate DESC";
             SqlCommandGL.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
             SqlCommandGL.Parameters.AddWithValue("@TranslationLanguage", DropDownListTransLanguages.SelectedValue);
+            SqlCommandGL.Parameters.AddWithValue("@ProjectID", projectID5);
             SqlCommandGL.Connection = SqlConnectionGL;
             SqlDataAdapterGL.SelectCommand = SqlCommandGL;
             SqlDataAdapterGL.Fill(dataSetGL, "Coment");

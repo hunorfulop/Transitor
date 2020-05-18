@@ -79,6 +79,10 @@
            <asp:Label ID="LabelPercentage" runat="server" Text=""></asp:Label>
 
 
+           <br />
+           <br />
+
+
        </center>
     </div>
 

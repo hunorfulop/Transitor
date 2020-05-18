@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=19.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -68,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Checking.aspx" />
+    <Content Include="DevComents.aspx" />
     <Content Include="FileReadAndUpload.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
@@ -79,6 +84,8 @@
     <Content Include="Register.aspx" />
     <Content Include="StartProject.aspx" />
     <Content Include="TransProgresDevs.aspx" />
+    <Content Include="Uploads\bell.jpg" />
+    <Content Include="Uploads\bell3.jpg" />
     <Content Include="Web.config" />
     <Content Include="Translation.aspx" />
   </ItemGroup>
@@ -89,6 +96,13 @@
     </Compile>
     <Compile Include="Checking.aspx.designer.cs">
       <DependentUpon>Checking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DevComents.aspx.cs">
+      <DependentUpon>DevComents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DevComents.aspx.designer.cs">
+      <DependentUpon>DevComents.aspx</DependentUpon>
     </Compile>
     <Compile Include="FileReadAndUpload.aspx.cs">
       <DependentUpon>FileReadAndUpload.aspx</DependentUpon>
@@ -193,9 +207,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Uploads\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
