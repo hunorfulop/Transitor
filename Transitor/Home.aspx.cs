@@ -28,7 +28,7 @@ namespace Transitor
 
                     int notnumberdev;
                     notnumberdev = CountNotificationNumberDev();
-                    LabelNotNumber.Text = notnumberdev.ToString() + " new notifications";
+                    LabelNotNumber.Text = notnumberdev.ToString() + " new comments";
 
                     FillGridWiew1();
                     FillGridWiew2();
@@ -39,7 +39,7 @@ namespace Transitor
 
                     int notnumbertran;
                     notnumbertran = CountNotificationNumberTrans();
-                    Label3.Text = notnumbertran.ToString() + " new notifications";
+                    Label3.Text = notnumbertran.ToString() + " new comments";
 
                     FillGridWiew3();
                     FillGridWiew4();
@@ -102,11 +102,12 @@ namespace Transitor
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE UserID=@UserID";
+            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE UserID=@UserID AND MsgForDev=@MsgForDev";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@UserID", Session["userid"]);
             sqlCmd.Parameters.AddWithValue("@ComentStatus", "UnRead");
+            sqlCmd.Parameters.AddWithValue("@MsgForDev", "");
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
@@ -137,10 +138,11 @@ namespace Transitor
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID)";
+            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE MsgForTrans = @MsgForTrans AND ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID)";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
+            sqlCmd.Parameters.AddWithValue("@MsgForTrans", "");
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
