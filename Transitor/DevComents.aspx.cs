@@ -22,6 +22,7 @@ namespace Transitor
             if (!Page.IsPostBack)
             {
                 show();
+                updatestatus();
             }
         }
 
@@ -50,6 +51,24 @@ namespace Transitor
             }
         }
 
+        void updatestatus()
+        {
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "UPDATE tblComents SET ComentStatus = @ComentStatus, MsgForDev = @MsgForDev WHERE MsgForDev = @MsgForDevs AND ProjectName = @ProjectName AND Phrase = @Phrase AND TranslationLanguage = @TranslationLanguage";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ComentStatus", "Read");
+            sqlCmd1.Parameters.AddWithValue("@MsgForDevs", "New Comment");
+            sqlCmd1.Parameters.AddWithValue("@ProjectName", Session["notprojdev"].ToString());
+            sqlCmd1.Parameters.AddWithValue("@Phrase", Session["notphrasedev"].ToString());
+            sqlCmd1.Parameters.AddWithValue("@TranslationLanguage", Session["notlangdev"].ToString());
+            sqlCmd1.Parameters.AddWithValue("@MsgForDev", "");
+            sqlCmd1.ExecuteNonQuery();
+            sqlCon1.Close();
+        }
+
+
         protected void btnSendComent_Click(object sender, EventArgs e)
         {
             string projectID5;
@@ -67,7 +86,7 @@ namespace Transitor
             string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon1 = new SqlConnection(connectionString1);
             sqlCon1.Open();
-            SqlCommand sqlCmd1 = new SqlCommand("ComentAddOrEdit", sqlCon1);
+            SqlCommand sqlCmd1 = new SqlCommand("CommentAddOrEdit", sqlCon1);
             sqlCmd1.CommandType = CommandType.StoredProcedure;
             sqlCmd1.Parameters.AddWithValue("@ComentID", Convert.ToInt32(hfComentId.Value == "" ? "0" : hfComentId.Value));
             sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID5);
@@ -80,6 +99,8 @@ namespace Transitor
             sqlCmd1.Parameters.AddWithValue("@Coment", TextareaComent.InnerHtml);
             sqlCmd1.Parameters.AddWithValue("@ComentStatus", "UnRead");
             sqlCmd1.Parameters.AddWithValue("@ComentDate", DateTime.Now);
+            sqlCmd1.Parameters.AddWithValue("@MsgForDev", "");
+            sqlCmd1.Parameters.AddWithValue("@MsgForTrans", "New Coment");
             sqlCmd1.ExecuteNonQuery();
             Response.Redirect(Request.Url.AbsoluteUri);
         }

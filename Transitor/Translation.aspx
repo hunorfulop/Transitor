@@ -102,6 +102,8 @@
             <asp:Repeater ID="RepeaterComents" runat="server">
                 <ItemTemplate>
                     <hr />
+                    <asp:Label ID="Label1" runat="server" ForeColor="Red" Text='<%#Eval("MsgForTrans") %>'></asp:Label>
+                    <br />
                     <asp:Label ID="LabelCom1" runat="server" Text='<%#Eval("ComentOwner") %>'></asp:Label>
                     <asp:Label ID="LabeCom2" runat="server" Text='<%#Eval("ComentDate") %>'></asp:Label>
                     <br />
