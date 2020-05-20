@@ -200,16 +200,17 @@ namespace Transitor
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
 
                 //Reference the GridView Row.
-                GridViewRow row = GridView1.Rows[rowIndex];
+                GridViewRow row = GridView3.Rows[rowIndex];
 
                 //Fetch value of Name.
                 string projectName = row.Cells[0].Text;
                 string phrase = row.Cells[1].Text;
                 string language = row.Cells[2].Text;
+                Session["dir"] = "com";
                 Session["notprojdev"] = projectName;
                 Session["notphrasedev"] = phrase;
                 Session["notlangdev"] = language;
-                Response.Redirect("DevComents.aspx");
+                Response.Redirect("Translation.aspx");
             }
         }
 
@@ -221,16 +222,17 @@ namespace Transitor
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
 
                 //Reference the GridView Row.
-                GridViewRow row = GridView2.Rows[rowIndex];
+                GridViewRow row = GridView4.Rows[rowIndex];
 
                 //Fetch value of Name.
                 string projectName = row.Cells[0].Text;
                 string phrase = row.Cells[1].Text;
                 string language = row.Cells[2].Text;
+                Session["dir"] = "com";
                 Session["notprojdev"] = projectName;
                 Session["notphrasedev"] = phrase;
                 Session["notlangdev"] = language;
-                Response.Redirect("DevComents.aspx");
+                Response.Redirect("Translation.aspx");
             }
         }
 

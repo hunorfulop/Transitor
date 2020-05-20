@@ -97,7 +97,8 @@ namespace Transitor
 
                 //Fetch value of Name.
                 string projectName = row.Cells[0].Text;
-                Response.Redirect("Translation.aspx?test=" + projectName);
+                Session["projectname"] = projectName;
+                Response.Redirect("Translation.aspx");
             }
         }
 

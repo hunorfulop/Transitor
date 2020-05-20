@@ -19,50 +19,104 @@ namespace Transitor
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string projectID1, transLang;
             if (!this.IsPostBack)
             {
-                projectID1 = getId();
-                transLang = getTransLang();
+                if(Session["dir"].ToString() == "com")
+                {
+                    Session["projectname"] = Session["notprojdev"].ToString();
 
-                string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-                SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-                string query1 = "SELECT Phrase FROM tblPhrase WHERE ProjectID = @ProjectID AND TransLanguage = @TransLanguage";
-                sqlCon1.Open();
-                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-                sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID1);
-                sqlCmd1.Parameters.AddWithValue("@TransLanguage", transLang);
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                DropDownListPhrases.DataSource = dataTable;
-                DropDownListPhrases.DataValueField = "Phrase";
-                DropDownListPhrases.DataTextField = "Phrase";
-                DropDownListPhrases.DataBind();
+                    string projectID1, transLang;
 
-                string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-                SqlConnection sqlCon2 = new SqlConnection(connectionString2);
-                string query2 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
-                sqlCon2.Open();
-                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
-                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
-                SqlDataAdapter dataAdapter2 = new SqlDataAdapter(sqlCmd2);
-                DataTable dataTable2 = new DataTable();
-                dataAdapter2.Fill(dataTable2);
-                DropDownListTransLanguages.DataSource = dataTable2;
-                DropDownListTransLanguages.DataValueField = "TranslationLanguage";
-                DropDownListTransLanguages.DataTextField = "TranslationLanguage";
-                DropDownListTransLanguages.DataBind();
+                    projectID1 = getId();
+                    transLang = getTransLang();
 
-                int tempEveryWord = countEveryWord(projectID1);
-                lblEveryPhraseNumber.Text = tempEveryWord.ToString();
+                    string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                    SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                    string query1 = "SELECT Phrase FROM tblPhrase WHERE ProjectID = @ProjectID AND TransLanguage = @TransLanguage";
+                    sqlCon1.Open();
+                    SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                    sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID1);
+                    sqlCmd1.Parameters.AddWithValue("@TransLanguage", transLang);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    DropDownListPhrases.DataSource = dataTable;
+                    DropDownListPhrases.DataValueField = "Phrase";
+                    DropDownListPhrases.DataTextField = "Phrase";
+                    DropDownListPhrases.DataBind();
 
-                int tempTransWord = countEveryTransWord(projectID1);
-                lblEveryTransNumber.Text = tempTransWord.ToString();
-                sqlCon1.Close();
+                    string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                    SqlConnection sqlCon2 = new SqlConnection(connectionString2);
+                    string query2 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
+                    sqlCon2.Open();
+                    SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
+                    sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                    SqlDataAdapter dataAdapter2 = new SqlDataAdapter(sqlCmd2);
+                    DataTable dataTable2 = new DataTable();
+                    dataAdapter2.Fill(dataTable2);
+                    DropDownListTransLanguages.DataSource = dataTable2;
+                    DropDownListTransLanguages.DataValueField = "TranslationLanguage";
+                    DropDownListTransLanguages.DataTextField = "TranslationLanguage";
+                    DropDownListTransLanguages.DataBind();
 
-                show();
+                    int tempEveryWord = countEveryWord(projectID1);
+                    lblEveryPhraseNumber.Text = tempEveryWord.ToString();
 
+                    int tempTransWord = countEveryTransWord(projectID1);
+                    lblEveryTransNumber.Text = tempTransWord.ToString();
+                    sqlCon1.Close();
+
+                    DropDownListPhrases.SelectedValue = Session["notphrasedev"].ToString();
+                    DropDownListTransLanguages.SelectedValue = Session["notlangdev"].ToString();
+                    
+                    show();
+                    updatestatus();
+                }
+                else
+                {
+                    string projectID1, transLang;
+
+                    projectID1 = getId();
+                    transLang = getTransLang();
+
+                    string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                    SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                    string query1 = "SELECT Phrase FROM tblPhrase WHERE ProjectID = @ProjectID AND TransLanguage = @TransLanguage";
+                    sqlCon1.Open();
+                    SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                    sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID1);
+                    sqlCmd1.Parameters.AddWithValue("@TransLanguage", transLang);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    DropDownListPhrases.DataSource = dataTable;
+                    DropDownListPhrases.DataValueField = "Phrase";
+                    DropDownListPhrases.DataTextField = "Phrase";
+                    DropDownListPhrases.DataBind();
+
+                    string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                    SqlConnection sqlCon2 = new SqlConnection(connectionString2);
+                    string query2 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
+                    sqlCon2.Open();
+                    SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
+                    sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID1);
+                    SqlDataAdapter dataAdapter2 = new SqlDataAdapter(sqlCmd2);
+                    DataTable dataTable2 = new DataTable();
+                    dataAdapter2.Fill(dataTable2);
+                    DropDownListTransLanguages.DataSource = dataTable2;
+                    DropDownListTransLanguages.DataValueField = "TranslationLanguage";
+                    DropDownListTransLanguages.DataTextField = "TranslationLanguage";
+                    DropDownListTransLanguages.DataBind();
+
+                    int tempEveryWord = countEveryWord(projectID1);
+                    lblEveryPhraseNumber.Text = tempEveryWord.ToString();
+
+                    int tempTransWord = countEveryTransWord(projectID1);
+                    lblEveryTransNumber.Text = tempTransWord.ToString();
+                    sqlCon1.Close();
+
+                    show();
+                }
             }
         }
 
@@ -128,7 +182,7 @@ namespace Transitor
             string query = "SELECT ProjectID FROM tblProjects WHERE ProjectName = @ProjectName";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Session["projectname"].ToString());
             SqlDataReader nwReader = sqlCmd.ExecuteReader();
             while (nwReader.Read())
             {
@@ -291,7 +345,7 @@ namespace Transitor
             string query = "SELECT UserID FROM tblProjects WHERE ProjectName = @ProjectName";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Session["projectname"].ToString());
             SqlDataReader nwReader = sqlCmd.ExecuteReader();
             while (nwReader.Read())
             {
@@ -386,15 +440,15 @@ namespace Transitor
         {
             string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-            string query1 = "UPDATE tblComents SET ComentStatus = @ComentStatus, MsgForTrans = @MsgForTrans WHERE ComentOwner != @ComentOwner AND ProjectName = @ProjectName AND Phrase = @Phrase AND TranslationLanguage = @TranslationLanguage";
+            string query1 = "UPDATE tblComents SET ComentStatus = @ComentStatus, MsgForTrans = @MsgForTrans WHERE ProjectName = @ProjectName AND Phrase = @Phrase AND TranslationLanguage = @TranslationLanguage AND MsgForTrans = @MsgForTranss";
             sqlCon1.Open();
             SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
             sqlCmd1.Parameters.AddWithValue("@ComentStatus", "Read");
-            sqlCmd1.Parameters.AddWithValue("@ComentOwner", Session["userid"].ToString());
             sqlCmd1.Parameters.AddWithValue("@ProjectName", Session["notprojdev"].ToString());
             sqlCmd1.Parameters.AddWithValue("@Phrase", Session["notphrasedev"].ToString());
             sqlCmd1.Parameters.AddWithValue("@TranslationLanguage", Session["notlangdev"].ToString());
             sqlCmd1.Parameters.AddWithValue("@MsgForTrans", "");
+            sqlCmd1.Parameters.AddWithValue("@MsgForTranss", "New Coment");
             sqlCmd1.ExecuteNonQuery();
             sqlCon1.Close();
         }

@@ -35,6 +35,7 @@ namespace Transitor
                     string Userid = nwReader["UserID"].ToString();
                     Session["role"] = Role;
                     Session["userid"] = Userid;
+                    Session["dir"] = "no";
                 }
                 nwReader.Close();
 
