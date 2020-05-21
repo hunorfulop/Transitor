@@ -1,6 +1,24 @@
-<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WeekendPlaner</string>
-    <string name="choose_file">Choose file</string>
-    <string name="enter_file_name">Enter file name</string>
+  <string name="app_name">WeekendPlaner</string>
+  <string name="choose_file">Choose file</string>
+  <string name="enter_file_name">Enter file name</string>
+  <string>adas</string>
+  <string>asdsa</string>
+  <string>dsadas</string>
+  <string>sadasd</string>
+  <string>sdasada</string>
+  <string>dsada</string>
+  <string>adas</string>
+  <string>asdsa</string>
+  <string>dsadas</string>
+  <string>sadasd</string>
+  <string>sdasada</string>
+  <string>dsada</string>
+  <string>adas</string>
+  <string>asdsa</string>
+  <string>dsadas</string>
+  <string>sadasd</string>
+  <string>sdasada</string>
+  <string>dsada</string>
 </resources>

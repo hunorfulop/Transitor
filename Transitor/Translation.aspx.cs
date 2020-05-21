@@ -289,13 +289,15 @@ namespace Transitor
 
                 string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
                 SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                string query1 = "UPDATE tblPhrase SET TranslatedPhrase = @TranslatedPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase AND TransLanguage = @TransLanguage";
                 sqlCon1.Open();
-                SqlCommand sqlCmd1 = new SqlCommand("ComentsAddOrEdit", sqlCon1);
+                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
                 sqlCmd1.Parameters.AddWithValue("@TranslatedPhrase", TextareaTranslate.InnerHtml);
                 sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
                 sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
                 sqlCmd1.Parameters.AddWithValue("@TransLanguage", LabelTransLang.Text);
                 sqlCmd1.ExecuteNonQuery();
+
 
                 lblErrorMessage.Visible = false;
                 TextareaPhrase.InnerHtml = "";

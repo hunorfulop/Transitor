@@ -77,6 +77,14 @@
            <asp:Label ID="LabelSelectedLanguagePercentage" runat="server" Text=""></asp:Label>
            <br />
            <asp:Label ID="LabelPercentage" runat="server" Text=""></asp:Label>
+           <br />
+           <br />
+           <asp:Label ID="LabelIsItChecked" runat="server" Text=""></asp:Label>
+
+
+           <br />
+           <br />
+           <asp:Button ID="btnDownload" runat="server" Text="Download" class="btnstyle2" Visible="false" OnClick="btnDownload_Click"/>
 
 
            <br />

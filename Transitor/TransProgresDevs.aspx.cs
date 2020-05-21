@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Transitor
 {
@@ -47,7 +48,7 @@ namespace Transitor
             sqlCon1.Open();
             SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
             sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
-            sqlCmd1.Parameters.AddWithValue("@TransLanguage",ddlTransLanguage.SelectedValue);
+            sqlCmd1.Parameters.AddWithValue("@TransLanguage", ddlTransLanguage.SelectedValue);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
@@ -67,6 +68,18 @@ namespace Transitor
 
             LabelPercentage.Text = "The project is at " + Percentage + "% translated in total";
 
+            string isitready;
+            isitready = getIsItReady();
+            if (isitready == "No")
+            {
+                LabelIsItChecked.Text = "The project hasn`t been checked by another translator!";
+            }
+            else
+            {
+                LabelIsItChecked.Text = "The project is ready to download";
+                btnDownload.Visible = true;
+            }
+
         }
 
         string getPercentage(int allword, int transword)
@@ -78,21 +91,21 @@ namespace Transitor
 
         string getId()
         {
-                string temp = "";
-                string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-                SqlConnection sqlCon = new SqlConnection(connectionString);
-                string query = "SELECT ProjectID FROM tblProjects WHERE ProjectName = @ProjectName";
-                sqlCon.Open();
-                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
-                SqlDataReader nwReader = sqlCmd.ExecuteReader();
-                while (nwReader.Read())
-                {
-                    temp = nwReader["ProjectID"].ToString();
-                }
-                nwReader.Close();
-                sqlCon.Close();
-                return temp;
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT ProjectID FROM tblProjects WHERE ProjectName = @ProjectName";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["ProjectID"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
         }
 
         int countEveryWord(String projectID1)
@@ -148,6 +161,125 @@ namespace Transitor
 
             }
         }
+
+        string getIsItReady()
+        {
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT IsItReady FROM tblProjects WHERE ProjectName = @ProjectName";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["IsItReady"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
+        protected void btnDownload_Click(object sender, EventArgs e)
+        {
+
+            string filetype = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT ProjectFileType FROM tblProjects WHERE ProjectName = @ProjectName";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                filetype = nwReader["ProjectFileType"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+
+            if (filetype == ".xml")
+            {
+                CreateDownloadableXml();
+                string filename = "1.xml";
+                string Filpath = Server.MapPath("~/Uploads/" + filename);
+                DownLoad(Filpath);
+
+            }
+            else
+            {
+                CreateDownloadableResx();
+
+            }
+
+        }
+
+        void CreateDownloadableXml()
+        {
+            string projectID2;
+            projectID2 = getId();
+
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            string file = MapPath("~/Uploads/1.xml");
+            XDocument doc = XDocument.Load(file);
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                XElement ele = new XElement("string", dr.Field<string>("TranslatedPhrase"));
+                doc.Root.Add(ele);
+                doc.Save(file);
+            }
+        }
+
+        void CreateDownloadableResx()
+        {
+            string projectID2;
+            projectID2 = getId();
+
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            string file = MapPath("~/Uploads/a.resx");
+            XDocument doc = XDocument.Load(file);
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                XElement ele = new XElement("data", new XElement("value", dr.Field<string>("TranslatedPhrase")));
+                doc.Root.Add(ele);
+                doc.Save(file);
+            }
+        }
+
+        public void DownLoad(string FName)
+        {
+            string path = FName;
+            System.IO.FileInfo file = new System.IO.FileInfo(path);
+            if (file.Exists)
+            {
+                Response.Clear();
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + file.Name); Response.AddHeader("Content-Length", file.Length.ToString());
+                Response.ContentType = "application/octet-stream"; // download […]
+            }
+
+        }
+
 
     }
 }
