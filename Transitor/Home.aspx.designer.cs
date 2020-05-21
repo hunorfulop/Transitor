@@ -69,6 +69,15 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
+        /// Labelhiden1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labelhiden1;
+
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace Transitor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
+
+        /// <summary>
+        /// Labelhiden2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labelhiden2;
 
         /// <summary>
         /// GridView2 control.
@@ -159,6 +177,15 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
+        /// Labelhiden3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labelhiden3;
+
+        /// <summary>
         /// GridView3 control.
         /// </summary>
         /// <remarks>
@@ -175,6 +202,15 @@ namespace Transitor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
+
+        /// <summary>
+        /// Labelhiden4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labelhiden4;
 
         /// <summary>
         /// GridView4 control.

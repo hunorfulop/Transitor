@@ -32,6 +32,16 @@ namespace Transitor
 
                     FillGridWiew1();
                     FillGridWiew2();
+
+                    if (GridView1.Rows.Count == 0)
+                    {
+                        Labelhiden1.Visible = true;
+                    }
+
+                    if (GridView2.Rows.Count == 0)
+                    {
+                        Labelhiden2.Visible = true;
+                    }
                 }
                 else
                 {
@@ -43,6 +53,16 @@ namespace Transitor
 
                     FillGridWiew3();
                     FillGridWiew4();
+
+                    if(GridView3.Rows.Count == 0)
+                    {
+                        Labelhiden3.Visible = true;
+                    }
+
+                    if (GridView4.Rows.Count == 0)
+                    {
+                        Labelhiden4.Visible = true;
+                    }
                 }
             }
         }
@@ -241,11 +261,16 @@ namespace Transitor
         protected void PopupClose_Click(object sender, EventArgs e)
         {
             ModalPopupExtender1.Hide();
+            Labelhiden1.Visible = false;
+            Labelhiden2.Visible = false;
+
         }
 
         protected void PopupClose2_Click(object sender, EventArgs e)
         {
             ModalPopupExtender2.Hide();
+            Labelhiden3.Visible = false;
+            Labelhiden4.Visible = false;
         }
     }
 }

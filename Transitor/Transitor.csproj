@@ -84,8 +84,7 @@
     <Content Include="Register.aspx" />
     <Content Include="StartProject.aspx" />
     <Content Include="TransProgresDevs.aspx" />
-    <Content Include="Uploads\bell.jpg" />
-    <Content Include="Uploads\bell3.jpg" />
+    <Content Include="Uploads\imbox.png" />
     <Content Include="Web.config" />
     <Content Include="Translation.aspx" />
   </ItemGroup>

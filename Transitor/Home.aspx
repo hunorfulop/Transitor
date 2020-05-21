@@ -45,23 +45,40 @@
             height: 400px; 
         }
 
+                .btnstyleclose {
+            background-color: red;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border: none;
+         }
+
+            .btnstyleclose:hover {
+                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+                background-color: #FF9933;
+            }
     </style>
+
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
+            <br />
+            <br />
             <asp:Label ID="lblDevs" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
-            <br />
-            <br />
-            <br />
         </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
             <asp:Label ID="LabelNotNumber" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
-            <asp:ImageButton ID="ImageButton2" runat="server" Height="23px" ImageUrl="~/Uploads/bell3.jpg" Width="35px" />
+            <asp:ImageButton ID="ImageButton2" runat="server" Height="29px" ImageUrl="~/Uploads/imbox.png" Width="36px"/>
 
             <asp:Panel ID="Panel" runat="server" CssClass="popup roundedcorner">
                 <center>
                 <asp:Label ID="Label1" runat="server" Text="New comments on this projects:"></asp:Label>
                     <br />
+                    <br />
+                    <asp:Label ID="Labelhiden1" runat="server" Text="There are no new comments!" visible="false" ForeColor="Red"></asp:Label>
                 </center>
                 <br />
 
@@ -80,9 +97,13 @@
                 </asp:GridView>
                 <br />
 
+                <hr></hr>
 
                 <center>
                 <asp:Label ID="Label2" runat="server" Text="All comments:"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label ID="Labelhiden2" runat="server" Text="There are no comments!" visible="false" ForeColor="Red"></asp:Label>
                     <br />
                 </center>
 
@@ -99,8 +120,9 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-
-                <asp:Button ID="PopupClose" runat="server" Text="Close" OnClick="PopupClose_Click" />
+                <br />
+                <br />
+                <asp:Button ID="PopupClose" runat="server" Text="Close" OnClick="PopupClose_Click"  class="btnstyleclose"/>
             </asp:Panel>
 
         <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="ImageButton2" PopupControlID="Panel" BackgroundCssClass="background"></ajaxToolkit:ModalPopupExtender>
@@ -111,21 +133,21 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="body2" runat="server">
     <style>
-        body{
-            background-color:coral;
+        body {
+            background-color: coral;
         }
 
-         .roundedcorner{
-            font-size:11pt;
-            margin-left:auto;
-            margin-right:auto;
-            margin-top:1px;
-            margin-bottom:1px;
-            padding:3px;
-            border-top:1px solid;
-            border-left:1px solid;
-            border-right:1px solid;
-            border-bottom:1px solid;
+        .roundedcorner {
+            font-size: 11pt;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1px;
+            margin-bottom: 1px;
+            padding: 3px;
+            border-top: 1px solid;
+            border-left: 1px solid;
+            border-right: 1px solid;
+            border-bottom: 1px solid;
             -moz-border-radius: 8px;
             -webkit-border-radius: 8px;
         }
@@ -148,20 +170,42 @@
             height: 400px; 
         }
 
+         .btnstyleclose2 {
+            background-color: red;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border: none;
+         }
+
+            .btnstyleclose2:hover {
+                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+                background-color: #FF9933;
+            }
+
     </style>
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
+            <br />
+            <br />
             <asp:Label ID="lblTrans" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            <br />
             <br />
         </div>
 
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
+            <br />
             <asp:Label ID="Label3" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
-            <asp:ImageButton ID="ImageButton1" runat="server" Height="23px" ImageUrl="~/Uploads/bell3.jpg" Width="35px" />
+            <asp:ImageButton ID="ImageButton1" runat="server" Height="29px" ImageUrl="~/Uploads/imbox.png" Width="36px"/>
 
             <asp:Panel ID="Panel1" runat="server" CssClass="popup roundedcorner">
                 <center>
                 <asp:Label ID="Label4" runat="server" Text="New comments on this projects:"></asp:Label>
                     <br />
+                    <br />
+                    <asp:Label ID="Labelhiden3" runat="server" Text="There are no new comments!" visible="false" ForeColor="Red"></asp:Label>
                 </center>
                 <br />
 
@@ -180,10 +224,13 @@
                 </asp:GridView>
                 <br />
 
+               <hr></hr>
 
                 <center>
                 <asp:Label ID="Label5" runat="server" Text="All comments:"></asp:Label>
                     <br />
+                    <br />
+                    <asp:Label ID="Labelhiden4" runat="server" Text="There are no comments!" visible="false" ForeColor="Red"></asp:Label>
                 </center>
 
                 <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView4_RowCommand" HeaderStyle-BackColor="#4CAF50"
@@ -194,13 +241,14 @@
                         <asp:BoundField DataField="TranslationLanguage" HeaderText="TranslationLanguage" ItemStyle-Width="150px" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button Text="Select" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" CssClass="btnstyle3" />
+                                <asp:Button Text="Select" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" CssClass="btnstyle3"  />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-
-                <asp:Button ID="Button1" runat="server" Text="Close" OnClick="PopupClose2_Click" />
+                <br />
+                <br />
+                <asp:Button ID="Button1" runat="server" Text="Close" OnClick="PopupClose2_Click" class="btnstyleclose2"/>
             </asp:Panel>
 
         <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender2" runat="server" TargetControlID="ImageButton1" PopupControlID="Panel1" BackgroundCssClass="background"></ajaxToolkit:ModalPopupExtender>
