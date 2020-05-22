@@ -52,10 +52,12 @@ namespace Transitor
                             if (temp == ".xml")
                             {
                                 ShowInListBoxXml(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                                AddFileName(FileUpload1.FileName);
                             }
                             else
                             {
                                 ShowInListBoxResx(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                                AddFileName(FileUpload1.FileName);
                             }
                         }
                         else
@@ -199,6 +201,19 @@ namespace Transitor
             }
 
         }
+
+        void AddFileName(string name)
+        {
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "UPDATE tblProjects SET ProjectFileName = @ProjectFileName WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectFileName", name);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
+            sqlCmd1.ExecuteNonQuery();
+        }
+
 
         string getProjetFileType()
         {

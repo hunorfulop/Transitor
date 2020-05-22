@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
@@ -108,6 +109,25 @@ namespace Transitor
             return temp;
         }
 
+        string getFileName()
+        {
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT ProjectFileName FROM tblProjects WHERE ProjectName = @ProjectName";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["ProjectFileName"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
         int countEveryWord(String projectID1)
         {
             using (SqlConnection sqlCon = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
@@ -201,21 +221,23 @@ namespace Transitor
 
             if (filetype == ".xml")
             {
-                CreateDownloadableXml();
-                string filename = "1.xml";
-                string Filpath = Server.MapPath("~/Uploads/" + filename);
+                string filename1 = getFileName();
+                CreateDownloadableXml(filename1);
+                string Filpath = Server.MapPath("~/Uploads/" + filename1);
                 DownLoad(Filpath);
 
             }
             else
             {
-                CreateDownloadableResx();
-
+                string filename1 = getFileName();
+                CreateDownloadableResx(filename1);
+                string Filpath = Server.MapPath("~/Uploads/" + filename1);
+                DownLoad(Filpath);
             }
 
         }
 
-        void CreateDownloadableXml()
+        void CreateDownloadableXml(string filename)
         {
             string projectID2;
             projectID2 = getId();
@@ -230,18 +252,18 @@ namespace Transitor
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
 
-            string file = MapPath("~/Uploads/1.xml");
+            string file = MapPath("~/Uploads/" + filename);
             XDocument doc = XDocument.Load(file);
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                XElement ele = new XElement("string", dr.Field<string>("TranslatedPhrase"));
+                XElement ele = new XElement("TranslatedString", dr.Field<string>("TranslatedPhrase"));
                 doc.Root.Add(ele);
                 doc.Save(file);
             }
         }
 
-        void CreateDownloadableResx()
+       void CreateDownloadableResx(string filename)
         {
             string projectID2;
             projectID2 = getId();
@@ -256,12 +278,12 @@ namespace Transitor
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
 
-            string file = MapPath("~/Uploads/a.resx");
+            string file = MapPath("~/Uploads/" + filename);
             XDocument doc = XDocument.Load(file);
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                XElement ele = new XElement("data", new XElement("value", dr.Field<string>("TranslatedPhrase")));
+                XElement ele = new XElement("data", new XElement("TranslatedValue", dr.Field<string>("TranslatedPhrase")));
                 doc.Root.Add(ele);
                 doc.Save(file);
             }
@@ -269,17 +291,25 @@ namespace Transitor
 
         public void DownLoad(string FName)
         {
-            string path = FName;
-            System.IO.FileInfo file = new System.IO.FileInfo(path);
+            string filePath = FName;
+            FileInfo file = new FileInfo(filePath);
             if (file.Exists)
             {
+                // Clear Rsponse reference  
                 Response.Clear();
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + file.Name); Response.AddHeader("Content-Length", file.Length.ToString());
-                Response.ContentType = "application/octet-stream"; // download […]
+                // Add header by specifying file name  
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + file.Name);
+                // Add header for content length  
+                Response.AddHeader("Content-Length", file.Length.ToString());
+                // Specify content type  
+                Response.ContentType = "text/plain";
+                // Clearing flush  
+                Response.Flush();
+                // Transimiting file  
+                Response.TransmitFile(file.FullName);
+                Response.End();
             }
-
         }
-
 
     }
 }

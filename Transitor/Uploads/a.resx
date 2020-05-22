@@ -119,7 +119,7 @@
   </resheader>
   <data name="String1" xml:space="preserve">
     <value>Close</value>
-   </data>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>Open</value>
   </data>
@@ -128,5 +128,29 @@
   </data>
   <data name="String4" xml:space="preserve">
     <value>Goodbye</value>
+  </data>
+  <data>
+    <TranslatedValue>adsa</TranslatedValue>
+  </data>
+  <data>
+    <TranslatedValue>dasdsa</TranslatedValue>
+  </data>
+  <data>
+    <TranslatedValue>asdas</TranslatedValue>
+  </data>
+  <data>
+    <TranslatedValue>asdas</TranslatedValue>
+  </data>
+  <data>
+    <TranslatedValue>dsadasd</TranslatedValue>
+  </data>
+  <data>
+    <TranslatedValue>asdsada</TranslatedValue>
+  </data>
+  <data>
+    <TranslatedValue>dasdsa</TranslatedValue>
+  </data>
+  <data>
+    <TranslatedValue>dsadsa</TranslatedValue>
   </data>
 </root>

@@ -16,7 +16,7 @@ namespace Transitor
         {
             if (!this.IsPostBack)
             {
-
+                Session["dir"] = "no";
             }
         }
 
