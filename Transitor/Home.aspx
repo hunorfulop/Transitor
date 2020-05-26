@@ -128,7 +128,6 @@
         <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="ImageButton2" PopupControlID="Panel" BackgroundCssClass="background"></ajaxToolkit:ModalPopupExtender>
 
     </div>
-
     </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="body2" runat="server">

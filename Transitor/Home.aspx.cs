@@ -42,6 +42,8 @@ namespace Transitor
                     {
                         Labelhiden2.Visible = true;
                     }
+
+
                 }
                 else
                 {

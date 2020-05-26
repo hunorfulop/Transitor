@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ProjectsDev.aspx.cs" Inherits="Transitor.ProjectsDev" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">NewProjectDev
-    </asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">NewProjectDev</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
@@ -41,9 +40,13 @@
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:Button Text="Progress" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" class="btnstyle3"/>
+                    <asp:Button Text="Delete" runat="server" CommandName="Delete" CommandArgument="<%# Container.DataItemIndex %>" class="btnstyle3"/>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
         </asp:GridView>
+       <center>
+        <asp:Label ID="LabelEmptyMessage" runat="server" Text="You have no projects! If you want to create one please visit the NewProject menu" Visible="false"></asp:Label>
+       </center>
     </div>
     </asp:Content>

@@ -203,7 +203,6 @@ namespace Transitor
 
         protected void btnDownload_Click(object sender, EventArgs e)
         {
-
             string filetype = "";
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
@@ -225,7 +224,6 @@ namespace Transitor
                 CreateDownloadableXml(filename1);
                 string Filpath = Server.MapPath("~/Uploads/" + filename1);
                 DownLoad(Filpath);
-
             }
             else
             {
@@ -233,8 +231,8 @@ namespace Transitor
                 CreateDownloadableResx(filename1);
                 string Filpath = Server.MapPath("~/Uploads/" + filename1);
                 DownLoad(Filpath);
-            }
 
+            }
         }
 
         void CreateDownloadableXml(string filename)
@@ -295,21 +293,16 @@ namespace Transitor
             FileInfo file = new FileInfo(filePath);
             if (file.Exists)
             {
-                // Clear Rsponse reference  
                 Response.Clear();
-                // Add header by specifying file name  
                 Response.AddHeader("Content-Disposition", "attachment; filename=" + file.Name);
-                // Add header for content length  
                 Response.AddHeader("Content-Length", file.Length.ToString());
-                // Specify content type  
                 Response.ContentType = "text/plain";
-                // Clearing flush  
                 Response.Flush();
-                // Transimiting file  
-                Response.TransmitFile(file.FullName);
+                Response.WriteFile(file.FullName);
                 Response.End();
             }
         }
+
 
     }
 }
