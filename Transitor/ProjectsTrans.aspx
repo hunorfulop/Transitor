@@ -51,10 +51,32 @@
             background-color: #4CAF50
          }
 
+        .labelstyle {
+          color:black;
+          font-size:xx-large;
+          font-family:'Arial';
+          background-color:#4CAF50;
+          font-style:italic;
+        }
+
+        .labelstyle2 {
+          color:black;
+          font-size:x-large;
+          font-family:'	Arial';
+          font-style:italic;
+        }
+
     </style>
     <div id="d1" style="padding:0 16px;">
-
+        <center>
         <br />
+
+            <asp:Label ID="Label1" runat="server" Text="Welcome to the projects menu!" CssClass="labelstyle"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Please the project type on which you want to work:" CssClass="labelstyle2"></asp:Label>
+            <br />
+            <br />
 
         <asp:DropDownList ID="ddlProjectType" runat="server" CssClass="dropdownliststyle">
             <asp:ListItem>Translation Projects</asp:ListItem>
@@ -63,7 +85,7 @@
         <asp:Button ID="btnSelectProjectType" runat="server" Text="Select" OnClick="btnSelectProjectType_Click" class="btnstyle2"/>
          <br />
          <br />
-         <asp:Label ID="lblMessage" runat="server" Visible="false"></asp:Label>
+         <asp:Label ID="lblMessage" runat="server" Visible="false" CssClass="labelstyle2"></asp:Label>
 
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#4CAF50"
         HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
@@ -92,5 +114,6 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    </center>
     </div>
     </asp:Content>

@@ -28,12 +28,19 @@ namespace Transitor
 
         protected void show()
         {
+            LabelNoComent.Visible = false;
+
             string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection SqlConnectionGL = new SqlConnection(connectionString1);
             SqlConnectionGL.Open();
 
             string projectID5;
             projectID5 = getId();
+
+            string projectname;
+            projectname = getProjectName();
+
+            LabelName.Text = "Comments on the phrase " + Session["notphrasedev"].ToString() + ", in the " + Session["notlangdev"].ToString() + " language, from the " + projectname + " project:";
 
             SqlCommandGL.CommandText = "SELECT * FROM tblComents WHERE Phrase = @Phrase AND TranslationLanguage = @TranslationLanguage AND ProjectID=@ProjectID ORDER BY ComentDate DESC";
             SqlCommandGL.Parameters.AddWithValue("@Phrase", Session["notphrasedev"].ToString());

@@ -50,7 +50,7 @@ namespace Transitor
                 else
                 {
                     lblMessage.Visible = true;
-                    lblMessage.Text = "You have no translation projects at the moment. Please start one from the NewProject menu";
+                    lblMessage.Text = "You have no translation projects at the moment. Please start one from the NewProject menu.";
                 }
             }
             else
@@ -80,7 +80,7 @@ namespace Transitor
                 else
                 {
                     lblMessage.Visible = true;
-                    lblMessage.Text = "You have no checking projects at the moment. Please start one from the NewProject menu";
+                    lblMessage.Text = "You have no checking projects at the moment. Please start one from the NewProject menu.";
                 }
             }
         }

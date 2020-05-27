@@ -46,38 +46,89 @@
                 background-color: #FF9933;
             }
 
+
+                    .labelstyle {
+          color:black;
+          font-size:xx-large;
+          font-family:'Arial';
+          background-color:#4CAF50;
+          font-style:italic;
+        }
+
+        .labelstyle2 {
+          color:black;
+          font-size:x-large;
+          font-family:'	Arial';
+          font-style:italic;
+        }
+
     </style>
 
     <div>
         </div>
         <br />
+    <center>
+    <asp:Label ID="Label6" runat="server" Text="Welcome to the Start project page!" CssClass="labelstyle"></asp:Label>
+        <br />
+    <asp:Label ID="Label7" runat="server" Text="Here further details are avaliable about a project and it can be started." CssClass="labelstyle2"></asp:Label>
+    </center>
+    <br />
+        <br />
+        <table style="border:5px solid green">
+
+        <tr>
+        <td>
         <asp:Label ID="Label1" runat="server" Text="Project name:"></asp:Label>
         <asp:TextBox ID="textBoxProjectName" runat="server" CssClass="txtboxstyle"></asp:TextBox>
-        <div>
-        </div>
-        <br />
+        </td>
+        </tr>
+
+        <tr>
+        <td>
         <asp:Label ID="Label2" runat="server" Text="ProjectOriginalLanguage:"></asp:Label>
         <asp:TextBox ID="textBoxProjectOriginalLanguage" runat="server" CssClass="txtboxstyle"></asp:TextBox>
-        <br />
-        <div>
-            <br />
-        </div>
-        <asp:Label ID="Label3" runat="server" Text="ProjectTranslationLanguage:"></asp:Label>
-        <br />
+        </td>
+        </tr>
+        
+        <tr>
+            <td>
+               <asp:Label ID="Label3" runat="server" Text="ProjectTranslationLanguage:"></asp:Label>
+            </td>
+        </tr>
+
+        <tr>
+        <td>
         <asp:ListBox ID="ListBoxTransLanguage" runat="server" Height="133px" Width="154px" CssClass="ListBoxstyle"></asp:ListBox>
-        <div>
-        </div>
+        </td>
+        </tr>
+        </table>
+
         <br />
+
+        <table style="border:5px solid green">
+
+        <tr>
+        <td>
         <asp:Label ID="Label5" runat="server" Text="Upload date:"></asp:Label>
         <asp:TextBox ID="textBoxUploadDate" runat="server" CssClass="txtboxstyle"></asp:TextBox>
-        <div>
-        </div>
-        <br />
-        <asp:Label ID="Label4" runat="server" Text="Select a finish date:"></asp:Label>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <asp:Label ID="Label4" runat="server" Text="Please select a finish date:"></asp:Label>
         <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+        </td>
+        </tr>
+
+        </table>
+
+         <br />
+
          <asp:Label ID="lblErrorMessage" runat="server" Text="Select an end data please" ForeColor="Red"></asp:Label>
         <p>
             <asp:Button ID="btnStartProject" runat="server" Text="Start Project" OnClick="btnStartProject_Click" class="btnstyle2"/>
         </p>
+
 
     </asp:Content>

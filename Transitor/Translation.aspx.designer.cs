@@ -15,6 +15,15 @@ namespace Transitor
     {
 
         /// <summary>
+        /// Label33 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label33;
+
+        /// <summary>
         /// hfComentId control.
         /// </summary>
         /// <remarks>
@@ -177,15 +186,6 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.Label lblEveryPhraseNumber;
 
         /// <summary>
-        /// btnFinishTranslation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFinishTranslation;
-
-        /// <summary>
         /// lblErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -193,6 +193,15 @@ namespace Transitor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorMessage;
+
+        /// <summary>
+        /// btnFinishTranslation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFinishTranslation;
 
         /// <summary>
         /// Label7 control.

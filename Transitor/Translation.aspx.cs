@@ -415,6 +415,8 @@ namespace Transitor
         
         protected void show()
         {
+            LabelNoComent.Visible = false;
+
             string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection SqlConnectionGL = new SqlConnection(connectionString1);
             SqlConnectionGL.Open();

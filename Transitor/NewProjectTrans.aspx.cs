@@ -43,12 +43,13 @@ namespace Transitor
 
                 if (dataTable != null && dataTable.Rows.Count >0)
                 {
-                    
+                    lblMessage.Visible = true;
+                    lblMessage.Text = "Now select a project from the list:";
                 }
                 else
                 {
                     lblMessage.Visible = true;
-                    lblMessage.Text = "There is no project which needs translation. Please return later";
+                    lblMessage.Text = "There is no project which needs translation. Please return later.";
                 }
             }
             else
@@ -74,7 +75,7 @@ namespace Transitor
                 else
                 {
                     lblMessage.Visible = true;
-                    lblMessage.Text = "There is no project which needs cheking. Please return later";
+                    lblMessage.Text = "There is no project which needs cheking. Please return later.";
                 }
             }
         }

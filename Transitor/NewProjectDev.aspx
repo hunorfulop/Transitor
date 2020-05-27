@@ -69,7 +69,6 @@
           color:black;
           font-size:x-large;
           font-family:'	Arial';
-          background-color:#4CAF50;
           font-style:italic;
         }
     </style>

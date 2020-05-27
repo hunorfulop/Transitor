@@ -40,7 +40,7 @@
             border-color:black;
             padding-top:10px;
             padding-left:10px;
-            width:550px;
+            width:525px;
             overflow : auto ;
             height: 400px; 
         }
@@ -60,6 +60,21 @@
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
                 background-color: #FF9933;
             }
+
+                  .btnstyle3 {
+           display: inline-block;
+           cursor: pointer;
+           text-align: center;
+           outline: 1px;
+           color: #fff;
+           background-color: #b5dfb7;
+           border: none;
+           border-radius: 10px;
+         }
+
+         .btnstyle3:hover {
+            background-color: #4CAF50
+         }
     </style>
 
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
@@ -100,7 +115,7 @@
                 <hr></hr>
 
                 <center>
-                <asp:Label ID="Label2" runat="server" Text="All comments:"></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text="All previous projects which contain comments:"></asp:Label>
                     <br />
                     <br />
                     <asp:Label ID="Labelhiden2" runat="server" Text="There are no comments!" visible="false" ForeColor="Red"></asp:Label>
@@ -164,7 +179,7 @@
             border-color:black;
             padding-top:10px;
             padding-left:10px;
-            width:550px;
+            width:525px;
             overflow : auto ;
             height: 400px; 
         }
@@ -184,6 +199,21 @@
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
                 background-color: #FF9933;
             }
+
+                  .btnstyle3 {
+           display: inline-block;
+           cursor: pointer;
+           text-align: center;
+           outline: 1px;
+           color: #fff;
+           background-color: #b5dfb7;
+           border: none;
+           border-radius: 10px;
+         }
+
+         .btnstyle3:hover {
+            background-color: #4CAF50
+         }
 
     </style>
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
