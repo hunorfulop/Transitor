@@ -41,7 +41,8 @@ namespace Transitor
 
             if (dataTable != null && dataTable.Rows.Count > 0)
             {
-
+                Label2.Visible = true;
+                Label3.Visible = true;
             }
             else
             {

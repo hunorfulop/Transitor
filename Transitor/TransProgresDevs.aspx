@@ -37,11 +37,34 @@
                 background-color: #FF9933;
             }
 
+        .labelstyle {
+          color:black;
+          font-size:xx-large;
+          font-family:'Arial';
+          background-color:#4CAF50;
+          font-style:italic;
+        }
+
+        .labelstyle2 {
+          color:black;
+          font-size:large;
+          font-family:'Arial';
+          font-style:italic;
+        }
+
     </style>
 
     <div id="d1" style="padding:0 16px;">
        <center>
 
+           <br />
+
+           <asp:Label ID="Label1" runat="server" Text="Welcome to the Translation progress page!" CssClass="labelstyle"></asp:Label>
+           <br />
+           <br />
+
+           <asp:Label ID="Label2" runat="server" Text="Please select a language in which you want to see the translations progress:" CssClass="labelstyle2"></asp:Label>
+           <br />
            <br />
 
            <asp:DropDownList ID="ddlTransLanguage" runat="server" CssClass="dropdownliststyle">

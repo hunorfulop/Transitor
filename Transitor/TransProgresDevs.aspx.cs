@@ -34,6 +34,8 @@ namespace Transitor
                 ddlTransLanguage.DataValueField = "TranslationLanguage";
                 ddlTransLanguage.DataTextField = "TranslationLanguage";
                 ddlTransLanguage.DataBind();
+                sqlCon1.Close();
+
             }
         }
 
@@ -71,14 +73,59 @@ namespace Transitor
 
             string isitready;
             isitready = getIsItReady();
-            if (isitready == "No")
-            {
-                LabelIsItChecked.Text = "The project hasn`t been checked by another translator!";
-            }
-            else
+            if (isitready == "Yes")
             {
                 LabelIsItChecked.Text = "The project is ready to download";
                 btnDownload.Visible = true;
+
+                string filetype = "";
+                string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon = new SqlConnection(connectionString);
+                string query = "SELECT ProjectFileType FROM tblProjects WHERE ProjectName = @ProjectName";
+                sqlCon.Open();
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+                SqlDataReader nwReader = sqlCmd.ExecuteReader();
+                while (nwReader.Read())
+                {
+                    filetype = nwReader["ProjectFileType"].ToString();
+                }
+                nwReader.Close();
+                sqlCon.Close();
+
+                if (filetype == ".xml")
+                {
+                    string filename1 = getFileName();
+                    CreateDownloadableXml(filename1);
+                }
+                else
+                {
+                    string filename1 = getFileName();
+                    CreateDownloadableResx(filename1);
+
+                }
+
+                string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon2 = new SqlConnection(connectionString2);
+                string query2 = "UPDATE tblProjects SET IsItReady = @IsItReady WHERE ProjectName = @ProjectName";
+                sqlCon2.Open();
+                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
+                sqlCmd2.Parameters.AddWithValue("@IsItReady", "Generated");
+                sqlCmd2.Parameters.AddWithValue("@ProjectName", Request.QueryString["test"]);
+                sqlCmd2.ExecuteNonQuery();
+
+            }
+            else
+            {
+                if (isitready == "Generated")
+                {
+                    LabelIsItChecked.Text = "The project is ready to download";
+                    btnDownload.Visible = true;
+                }
+                else
+                {
+                    LabelIsItChecked.Text = "The project hasn`t been checked by another translator!";
+                }
             }
 
         }
@@ -218,21 +265,9 @@ namespace Transitor
             nwReader.Close();
             sqlCon.Close();
 
-            if (filetype == ".xml")
-            {
-                string filename1 = getFileName();
-                CreateDownloadableXml(filename1);
-                string Filpath = Server.MapPath("~/Uploads/" + filename1);
-                DownLoad(Filpath);
-            }
-            else
-            {
-                string filename1 = getFileName();
-                CreateDownloadableResx(filename1);
-                string Filpath = Server.MapPath("~/Uploads/" + filename1);
-                DownLoad(Filpath);
-
-            }
+            string filename1 = getFileName();
+            string Filpath = Server.MapPath("~/Uploads/" + filename1);
+            DownLoad(Filpath);
         }
 
         void CreateDownloadableXml(string filename)

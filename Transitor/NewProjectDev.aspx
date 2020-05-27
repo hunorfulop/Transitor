@@ -56,12 +56,39 @@
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
                 background-color: #FF9933;
             }
+
+        .labelstyle {
+          color:black;
+          font-size:xx-large;
+          font-family:'Arial';
+          background-color:#4CAF50;
+          font-style:italic;
+        }
+
+        .labelstyle2 {
+          color:black;
+          font-size:x-large;
+          font-family:'	Arial';
+          background-color:#4CAF50;
+          font-style:italic;
+        }
     </style>
 
    <div>
                 <asp:HiddenField ID="hfProjectID" runat="server" />
                 <asp:HiddenField ID="hfTranslationLanguageID" runat="server" />
-            <table>
+
+                <br />
+                <center>
+                <asp:Label ID="Label1" runat="server" Text="Welcome to the project creation page!" CssClass="labelstyle"></asp:Label>
+                    <br />
+                <asp:Label ID="Label2" runat="server" Text="Set up you'r project and click the upload button to advance!" CssClass="labelstyle2"></asp:Label>
+                    <br />
+                    <br />
+                </center>
+                <br />
+
+            <table style="border:5px solid green">
 
                 <tr>
                     <td>
@@ -155,12 +182,15 @@
 
 
                 </tr>
+               </table>
+
+               <table style="                       border: 5px solid green">
 
                    <tr>
                     <td>
                         <asp:Label Text="Translation language:" runat="server" />
                     </td>
-                    
+                <br />
                     <td colspan="2">
                         <asp:CheckBoxList ID="CheckBoxLisTransLanguages" runat="server" class="checkboxliststyle">
                             <asp:ListItem Text="English" Value="1"></asp:ListItem>
@@ -184,7 +214,11 @@
 
                     </td>
                 </tr>
+                </table>
 
+                <br />
+
+                <table>
                 <tr>
                     <td></td>
                     <td colspan="2">

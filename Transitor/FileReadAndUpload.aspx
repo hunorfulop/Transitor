@@ -32,6 +32,37 @@
             font-size:large;
             font-style:italic;
             }
+
+        .labelstyle {
+          color:black;
+          font-size:xx-large;
+          font-family:'Arial';
+          background-color:#4CAF50;
+          font-style:italic;
+        }
+
+        .labelstyle2 {
+          color:black;
+          font-size:large;
+          font-family:'Arial';
+          font-style:italic;
+        }
+
+        .btnstyle2 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border: none;
+        }
+
+            .btnstyle2:hover {
+                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+                background-color: #FF9933;
+            }
     </style>
 
 </head>
@@ -41,32 +72,35 @@
             <asp:HiddenField ID="hfPhraseID" runat="server" />
             <br />
             <center>
-            <asp:Label ID="Label2" runat="server" Text="Welcome to the file upload page!" Font-Bold="true" Font-Size="X-Large"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Welcome to the file upload page!" Class="labelstyle"></asp:Label>
                 <br />
                 <br />
                 <br />
             </center>
             <br />
-            <asp:Label ID="Label1" runat="server" Text="Choose a file please: "></asp:Label>
+            <center>
+            <asp:Label ID="Label1" runat="server" Text="Please choose a file: "></asp:Label>
             <asp:FileUpload ID="FileUpload1" runat="server" CssClass="Cntrl1" />
             <br />
             <br />
-            <asp:Button ID="btn_Upload" runat="server" Text="Upload File" OnClick="btn_Upload_Click" />
+            <asp:Button ID="btn_Upload" runat="server" Text="Upload File" OnClick="btn_Upload_Click" CssClass="btnstyle2" />
             <br />
             <asp:Label ID="lblMessage" runat="server" Font-Bold="true" ></asp:Label>
+            </center>
             <br />
             <br />
             <center>
-            <asp:Label ID="LabelMsg1" runat="server" Text="Please make sure that this are all the phrases which you want to get translated!" visible="false"></asp:Label>
+            <asp:Label ID="LabelMsg1" runat="server" Text="Please make sure that this are all the phrases which you want to get translated!" visible="false" CssClass="labelstyle2"></asp:Label>
                 <br />
-            <asp:Label ID="LabelMsg2" runat="server" Text="If something is not right please check that your file matches our templates." Visible="false"></asp:Label>
+                <br />
+            <asp:Label ID="LabelMsg2" runat="server" Text="If something is not right please check that your file matches our templates." Visible="false" CssClass="labelstyle2"></asp:Label>
             </center>
             <br />
             <center>
             <asp:ListBox ID="ListBoxPhrases" runat="server" Height="211px" Width="215px" visible="false" CssClass="ListBoxstyle"></asp:ListBox>
                 <br />
                 <br />
-                <asp:Button ID="btn_Confirm" runat="server" Text="Confirm" visible="false" OnClick="btn_Confirm_Click"/>
+                <asp:Button ID="btn_Confirm" runat="server" Text="Confirm" visible="false" OnClick="btn_Confirm_Click" CssClass="btnstyle2"/>
             </center>
         </div>
     </form>
