@@ -98,6 +98,9 @@
             <textarea id="TextAreaTranslatedPhrase" runat="server" name="S1" Visible="false" class="auto-style1"></textarea>
             </p>
         <p>
+            <asp:Label ID="lblErrorMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+            </p>
+        <p>
             <asp:Button ID="btnCorrect" runat="server" Text="Correct" OnClick="btnCorrect_Click" Visible="false" CssClass="btnstyle2" />
         </p>
         <p>

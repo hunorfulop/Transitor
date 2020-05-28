@@ -1,12 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" ?>
 <resources>
-  <string name="app_name">WeekendPlaner</string>
-  <string name="action_settings">Settings</string>
-  <string name="action_open">Open</string>
-  <TranslatedString>asdsa</TranslatedString>
-  <TranslatedString>adssa</TranslatedString>
-  <TranslatedString>asdsa</TranslatedString>
-  <TranslatedString>asdas</TranslatedString>
-  <TranslatedString>sadas</TranslatedString>
-  <TranslatedString>dasdas</TranslatedString>
+    <string name="app_name">WeekendPlaner</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_open">Open</string>
 </resources>

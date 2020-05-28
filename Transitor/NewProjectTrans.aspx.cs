@@ -70,7 +70,8 @@ namespace Transitor
 
                 if (dataTable1 != null && dataTable1.Rows.Count > 0)
                 {
-
+                    lblMessage.Visible = true;
+                    lblMessage.Text = "Now select a project from the list:";
                 }
                 else
                 {
