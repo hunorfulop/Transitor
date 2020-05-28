@@ -90,12 +90,12 @@ namespace Transitor
             using (SqlConnection sqlConSameProjectName = new SqlConnection(WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString))
             {
                 sqlConSameProjectName.Open();
-                string querySameProjectName = "SELECT COUNT (*) FROM tblComents WHERE MsgForTrans = @MsgForTrans AND ComentStatus=@ComentStatus AND ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID)";
+                string querySameProjectName = "SELECT COUNT (*) FROM tblComents WHERE MsgForTrans = @MsgForTrans AND ComentStatus=@ComentStatus AND ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID AND SubmitedForChecking = @SubmitedForChecking)";
                 SqlCommand sqlCmdSameProjectName = new SqlCommand(querySameProjectName, sqlConSameProjectName);
                 sqlCmdSameProjectName.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
                 sqlCmdSameProjectName.Parameters.AddWithValue("@ComentStatus", "UnRead");
                 sqlCmdSameProjectName.Parameters.AddWithValue("@MsgForTrans", "New Coment");
-
+                sqlCmdSameProjectName.Parameters.AddWithValue("@SubmitedForChecking", "No");
                 return (int)sqlCmdSameProjectName.ExecuteScalar();
 
             }
@@ -142,12 +142,13 @@ namespace Transitor
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE MsgForTrans = @MsgForTrans AND ComentStatus=@ComentStatus AND ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID)";
+            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE MsgForTrans = @MsgForTrans AND ComentStatus=@ComentStatus AND ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID AND SubmitedForChecking = @SubmitedForChecking)";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@ComentStatus", "UnRead");
             sqlCmd.Parameters.AddWithValue("@MsgForTrans", "New Coment");
             sqlCmd.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
+            sqlCmd.Parameters.AddWithValue("@SubmitedForChecking", "No");
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
@@ -160,11 +161,12 @@ namespace Transitor
         {
             string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE MsgForTrans = @MsgForTrans AND ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID)";
+            string query = "SELECT DISTINCT ProjectName, Phrase, TranslationLanguage FROM tblComents WHERE MsgForTrans = @MsgForTrans AND ProjectName IN (SELECT ProjectName FROM tblProjects WHERE TraslatorWorkingID = @TraslatorWorkingID AND SubmitedForChecking = @SubmitedForChecking)";
             sqlCon.Open();
             SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
             sqlCmd.Parameters.AddWithValue("@TraslatorWorkingID", Session["userid"].ToString());
             sqlCmd.Parameters.AddWithValue("@MsgForTrans", "");
+            sqlCmd.Parameters.AddWithValue("@SubmitedForChecking", "No");
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);

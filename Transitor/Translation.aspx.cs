@@ -229,113 +229,142 @@ namespace Transitor
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
 
+            if(dataTable.Rows[0][0].ToString() == null)
+            {
+                return "ez";
+            }
+
             return dataTable.Rows[0][0].ToString();
         }
 
         protected void btnSelectPhrase_Click(object sender, EventArgs e)
         {
-            show();
-
-            string projectID3;
-            projectID3 = getId();
-
-            lblErrorMessage.Visible = false;
-            TextareaPhrase.InnerHtml = DropDownListPhrases.SelectedValue;
-            LabelTransLang.Text = DropDownListTransLanguages.SelectedValue;
-
-            int temp3 = countEveryWordSelectedLang(projectID3);
-            int temp2 = countEveryTransWordSelectedLang(projectID3);
-
-            lblSelectedLangPhraseNumber.Text = temp3.ToString();
-            lblSelectedLangTransNumber.Text = temp2.ToString();
-
-            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-            SqlConnection sqlCon = new SqlConnection(connectionString);
-            string query = "SELECT TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase AND TransLanguage = @TransLanguage";
-            sqlCon.Open();
-            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-            sqlCmd.Parameters.AddWithValue("@ProjectID", projectID3);
-            sqlCmd.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
-            sqlCmd.Parameters.AddWithValue("@TransLanguage", LabelTransLang.Text);
-            SqlDataReader nwReader = sqlCmd.ExecuteReader();
-            while (nwReader.Read())
+            if (Session["projectname"].ToString() == "expired")
             {
-               string temp = nwReader["TranslatedPhrase"].ToString();
-               if(temp != null)
-                {
-                    TextareaTranslate.InnerHtml = temp;
-                }
+                Response.Write("<script language='javascript'>window.alert('This session has expired!');window.location='Home.aspx';</script>");
             }
-            nwReader.Close();
-            sqlCon.Close();
+            else
+            {
+
+                show();
+
+                string projectID3;
+                projectID3 = getId();
+
+                lblErrorMessage.Visible = false;
+                TextareaPhrase.InnerHtml = DropDownListPhrases.SelectedValue;
+                LabelTransLang.Text = DropDownListTransLanguages.SelectedValue;
+
+                int temp3 = countEveryWordSelectedLang(projectID3);
+                int temp2 = countEveryTransWordSelectedLang(projectID3);
+
+                lblSelectedLangPhraseNumber.Text = temp3.ToString();
+                lblSelectedLangTransNumber.Text = temp2.ToString();
+
+                string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon = new SqlConnection(connectionString);
+                string query = "SELECT TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase AND TransLanguage = @TransLanguage";
+                sqlCon.Open();
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.Parameters.AddWithValue("@ProjectID", projectID3);
+                sqlCmd.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
+                sqlCmd.Parameters.AddWithValue("@TransLanguage", LabelTransLang.Text);
+                SqlDataReader nwReader = sqlCmd.ExecuteReader();
+                while (nwReader.Read())
+                {
+                    string temp = nwReader["TranslatedPhrase"].ToString();
+                    if (temp != null)
+                    {
+                        TextareaTranslate.InnerHtml = temp;
+                    }
+                }
+                nwReader.Close();
+                sqlCon.Close();
+            }
         }
 
         protected void btnTranlate_Click(object sender, EventArgs e)
         {
-            if(TextareaPhrase.InnerHtml == "")
+            if (Session["projectname"].ToString() == "expired")
             {
-                lblErrorMessage.Text = "Please select a phrase which you want to translate";
-                lblErrorMessage.Visible = true;
-            }
-            else if (TextareaTranslate.InnerHtml == "")
-            {
-                lblErrorMessage.Visible = true;
-                lblErrorMessage.Text = "Please translate the phrase!";
+                Response.Write("<script language='javascript'>window.alert('This session has expired!');window.location='Home.aspx';</script>");
             }
             else
             {
-                string projectID2;
-                projectID2 = getId();
 
-                string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-                SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-                string query1 = "UPDATE tblPhrase SET TranslatedPhrase = @TranslatedPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase AND TransLanguage = @TransLanguage";
-                sqlCon1.Open();
-                SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
-                sqlCmd1.Parameters.AddWithValue("@TranslatedPhrase", TextareaTranslate.InnerHtml);
-                sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
-                sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
-                sqlCmd1.Parameters.AddWithValue("@TransLanguage", LabelTransLang.Text);
-                sqlCmd1.ExecuteNonQuery();
+                if (TextareaPhrase.InnerHtml == "")
+                {
+                    lblErrorMessage.Text = "Please select a phrase which you want to translate";
+                    lblErrorMessage.Visible = true;
+                }
+                else if (TextareaTranslate.InnerHtml == "")
+                {
+                    lblErrorMessage.Visible = true;
+                    lblErrorMessage.Text = "Please translate the phrase!";
+                }
+                else
+                {
+                    string projectID2;
+                    projectID2 = getId();
+
+                    string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                    SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                    string query1 = "UPDATE tblPhrase SET TranslatedPhrase = @TranslatedPhrase WHERE ProjectID = @ProjectID AND Phrase = @Phrase AND TransLanguage = @TransLanguage";
+                    sqlCon1.Open();
+                    SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+                    sqlCmd1.Parameters.AddWithValue("@TranslatedPhrase", TextareaTranslate.InnerHtml);
+                    sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+                    sqlCmd1.Parameters.AddWithValue("@Phrase", TextareaPhrase.InnerHtml);
+                    sqlCmd1.Parameters.AddWithValue("@TransLanguage", LabelTransLang.Text);
+                    sqlCmd1.ExecuteNonQuery();
 
 
-                lblErrorMessage.Visible = false;
-                TextareaPhrase.InnerHtml = "";
-                TextareaTranslate.InnerHtml = "";
-                LabelTransLang.Text = "";
+                    lblErrorMessage.Visible = false;
+                    TextareaPhrase.InnerHtml = "";
+                    TextareaTranslate.InnerHtml = "";
+                    LabelTransLang.Text = "";
 
-                int tempTransWord = countEveryTransWord(projectID2);
-                lblEveryTransNumber.Text = tempTransWord.ToString();
+                    int tempTransWord = countEveryTransWord(projectID2);
+                    lblEveryTransNumber.Text = tempTransWord.ToString();
 
-                int tempSelectedTransWord = countEveryTransWordSelectedLang(projectID2);
-                lblSelectedLangTransNumber.Text = tempSelectedTransWord.ToString();
+                    int tempSelectedTransWord = countEveryTransWordSelectedLang(projectID2);
+                    lblSelectedLangTransNumber.Text = tempSelectedTransWord.ToString();
 
-                sqlCon1.Close();
+                    sqlCon1.Close();
+                }
             }
         }
 
         protected void btnFinishTranslation_Click(object sender, EventArgs e)
         {
-            if(lblEveryTransNumber.Text == lblEveryPhraseNumber.Text)
+            if (Session["projectname"].ToString() == "expired")
             {
-                string projectID4;
-                projectID4 = getId();
-
-                string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-                SqlConnection sqlCon2 = new SqlConnection(connectionString2);
-                string query2 = "UPDATE tblProjects SET SubmitedForChecking = @SubmitedForChecking WHERE ProjectID = @ProjectID";
-                sqlCon2.Open();
-                SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
-                sqlCmd2.Parameters.AddWithValue("@SubmitedForChecking", "Yes");
-                sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID4);
-                sqlCmd2.ExecuteNonQuery();
-
-                Response.Write("<script language='javascript'>window.alert('Project submited for checking sucessfuly!');window.location='Home.aspx';</script>");
+                Response.Write("<script language='javascript'>window.alert('This session has expired!');window.location='Home.aspx';</script>");
             }
             else
             {
-                lblErrorMessage.Visible = true;
-                lblErrorMessage.Text = "Please translate every pharese in every language before finalization";
+
+                if (lblEveryTransNumber.Text == lblEveryPhraseNumber.Text)
+                {
+                    string projectID4;
+                    projectID4 = getId();
+
+                    string connectionString2 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                    SqlConnection sqlCon2 = new SqlConnection(connectionString2);
+                    string query2 = "UPDATE tblProjects SET SubmitedForChecking = @SubmitedForChecking WHERE ProjectID = @ProjectID";
+                    sqlCon2.Open();
+                    SqlCommand sqlCmd2 = new SqlCommand(query2, sqlCon2);
+                    sqlCmd2.Parameters.AddWithValue("@SubmitedForChecking", "Yes");
+                    sqlCmd2.Parameters.AddWithValue("@ProjectID", projectID4);
+                    sqlCmd2.ExecuteNonQuery();
+                    Session["projectname"] = "expired";
+                    Response.Write("<script language='javascript'>window.alert('Project submited for checking sucessfuly!');window.location='Home.aspx';</script>");
+                }
+                else
+                {
+                    lblErrorMessage.Visible = true;
+                    lblErrorMessage.Text = "Please translate every pharese in every language before finalization";
+                }
             }
         }
 
@@ -379,38 +408,45 @@ namespace Transitor
 
         protected void btnSendComent_Click(object sender, EventArgs e)
         {
-            string projectID5;
-            projectID5 = getId();
+            if (Session["projectname"].ToString() == "expired")
+            {
+                Response.Write("<script language='javascript'>window.alert('This session has expired!');window.location='Home.aspx';</script>");
+            }
+            else
+            {
+                string projectID5;
+                projectID5 = getId();
 
-            string projectname;
-            projectname = getProjectName();
+                string projectname;
+                projectname = getProjectName();
 
-            string userId;
-            userId = getUserId();
+                string userId;
+                userId = getUserId();
 
-            string comentowner;
-            comentowner = getComentOwner();
+                string comentowner;
+                comentowner = getComentOwner();
 
-            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
-            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
-            sqlCon1.Open();
-            SqlCommand sqlCmd1 = new SqlCommand("CommentAddOrEdit", sqlCon1);
-            sqlCmd1.CommandType = CommandType.StoredProcedure;
-            sqlCmd1.Parameters.AddWithValue("@ComentID", Convert.ToInt32(hfComentId.Value == "" ? "0" : hfComentId.Value));
-            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID5);
-            sqlCmd1.Parameters.AddWithValue("@UserID", userId);
-            sqlCmd1.Parameters.AddWithValue("@ComentOwnerID", Session["userid"].ToString());
-            sqlCmd1.Parameters.AddWithValue("@ComentOwner", comentowner);
-            sqlCmd1.Parameters.AddWithValue("@ProjectName", projectname);
-            sqlCmd1.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
-            sqlCmd1.Parameters.AddWithValue("@TranslationLanguage", DropDownListTransLanguages.SelectedValue);
-            sqlCmd1.Parameters.AddWithValue("@Coment", TextareaComent.InnerHtml);
-            sqlCmd1.Parameters.AddWithValue("@ComentStatus", "UnRead");
-            sqlCmd1.Parameters.AddWithValue("@ComentDate", DateTime.Now);
-            sqlCmd1.Parameters.AddWithValue("@MsgForDev", "New Comment");
-            sqlCmd1.Parameters.AddWithValue("@MsgForTrans", "");
-            sqlCmd1.ExecuteNonQuery();
-            Response.Redirect(Request.Url.AbsoluteUri);
+                string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+                SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+                sqlCon1.Open();
+                SqlCommand sqlCmd1 = new SqlCommand("CommentAddOrEdit", sqlCon1);
+                sqlCmd1.CommandType = CommandType.StoredProcedure;
+                sqlCmd1.Parameters.AddWithValue("@ComentID", Convert.ToInt32(hfComentId.Value == "" ? "0" : hfComentId.Value));
+                sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID5);
+                sqlCmd1.Parameters.AddWithValue("@UserID", userId);
+                sqlCmd1.Parameters.AddWithValue("@ComentOwnerID", Session["userid"].ToString());
+                sqlCmd1.Parameters.AddWithValue("@ComentOwner", comentowner);
+                sqlCmd1.Parameters.AddWithValue("@ProjectName", projectname);
+                sqlCmd1.Parameters.AddWithValue("@Phrase", DropDownListPhrases.SelectedValue);
+                sqlCmd1.Parameters.AddWithValue("@TranslationLanguage", DropDownListTransLanguages.SelectedValue);
+                sqlCmd1.Parameters.AddWithValue("@Coment", TextareaComent.InnerHtml);
+                sqlCmd1.Parameters.AddWithValue("@ComentStatus", "UnRead");
+                sqlCmd1.Parameters.AddWithValue("@ComentDate", DateTime.Now);
+                sqlCmd1.Parameters.AddWithValue("@MsgForDev", "New Comment");
+                sqlCmd1.Parameters.AddWithValue("@MsgForTrans", "");
+                sqlCmd1.ExecuteNonQuery();
+                Response.Redirect(Request.Url.AbsoluteUri);
+            }
         }
         
         protected void show()
