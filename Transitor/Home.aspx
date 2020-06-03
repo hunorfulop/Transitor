@@ -81,13 +81,57 @@
             <br />
             <br />
             <asp:Label ID="lblDevs" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            <br />
+            <br />
+            <br />
+            <div style="margin-left: auto; margin-right: auto; text-align: right;">
+            <asp:Label ID="LabelNotNumber" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            <asp:ImageButton ID="ImageButton2" runat="server" Height="29px" ImageUrl="~/Icons/imbox.png" Width="36px"/>
+                <br />
+           </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="ResLabel1" runat="server" Text=""></asp:Label>
+            <br />
+            <asp:Label ID="ResLabel2" runat="server" Text=""></asp:Label>
+            <br />
+            <asp:Label ID="ResLabel3" runat="server" Text=""></asp:Label>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
+
+    <asp:Label ID="ResLabel4" runat="server" Text=""></asp:Label>
+    <br />
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Label ID="ResLabel5" runat="server" Text=""></asp:Label>
+        <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="ResLabel6" runat="server" Text=""></asp:Label>
+         <asp:HyperLink  Target="_blank" runat="server" ID="linkXmlPdf" Text=" Open Xml template PDF"
+                 NavigateUrl="~/PdfTemplates/Xml file template.pdf"></asp:HyperLink>
+    <br />
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Label ID="ResLabel7" runat="server" Text=""></asp:Label>
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Label ID="ResLabel8" runat="server" Text=""></asp:Label>
+     <asp:HyperLink  Target="_blank" runat="server" ID="linkResXPdf" Text=" Open ResX template PDF"
+                 NavigateUrl="~/PdfTemplates/ResX file template.pdf"></asp:HyperLink>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
-            <asp:Label ID="LabelNotNumber" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
-            <asp:ImageButton ID="ImageButton2" runat="server" Height="29px" ImageUrl="~/Uploads/imbox.png" Width="36px"/>
-
+            <br />
+            <br />
             <asp:Panel ID="Panel" runat="server" CssClass="popup roundedcorner">
                 <center>
                 <asp:Label ID="Label1" runat="server" Text="New comments on this projects:"></asp:Label>
@@ -227,7 +271,7 @@
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
             <br />
             <asp:Label ID="Label3" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
-            <asp:ImageButton ID="ImageButton1" runat="server" Height="29px" ImageUrl="~/Uploads/imbox.png" Width="36px"/>
+            <asp:ImageButton ID="ImageButton1" runat="server" Height="29px" ImageUrl="~/Icons/imbox.png" Width="36px"/>
 
             <asp:Panel ID="Panel1" runat="server" CssClass="popup roundedcorner">
                 <center>

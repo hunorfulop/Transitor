@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CommandLine.Text;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Resources;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -32,6 +34,17 @@ namespace Transitor
 
                     FillGridWiew1();
                     FillGridWiew2();
+
+                    ResXResourceSet resxSet = new ResXResourceSet(Server.MapPath("~/StringResources/Resource.resx"));
+                    ResLabel1.Text = resxSet.GetString("String1");
+                    ResLabel2.Text = resxSet.GetString("String2");
+                    ResLabel3.Text = resxSet.GetString("String3");
+                    ResLabel4.Text = resxSet.GetString("String4");
+                    ResLabel5.Text = resxSet.GetString("String5");
+                    ResLabel6.Text = resxSet.GetString("String6");
+                    ResLabel7.Text = resxSet.GetString("String7");
+                    ResLabel8.Text = resxSet.GetString("String6");
+
 
                     if (GridView1.Rows.Count == 0)
                     {
