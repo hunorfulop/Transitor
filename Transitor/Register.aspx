@@ -46,7 +46,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-                <asp:HiddenField ID="hfUserID" runat="server" />
+                <asp:HiddenField ID="hfUserID" runat="server" OnValueChanged="hfUserID_ValueChanged" />
             <table>
 
                 <tr>
@@ -80,7 +80,39 @@
                         </asp:DropDownList>
                     </td>
                 </tr>
+                </table>
 
+                <br />
+                <hr />
+                <br />
+
+                <table>
+                <tr>
+                    <td>
+                        <asp:Label Text="Preview of you'r profile picture:" ID="LabelMessageImage" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Image ID="Image1" runat="server" Height="100" Width="100" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <asp:FileUpload ID="FileUpload1" runat="server"  />
+                    </td>
+                    <td>
+                        <asp:Button Text="Upload picture" ID="btnBrowsePicture" runat="server" OnClick="btnBrowsePicture_Click" CssClass="btnstyle" />
+                    </td>
+                </tr>
+                </table>
+
+                <br />
+                <hr />
+                <br />
+
+                <table>
                 <tr>
                     <td></td>
                     <td colspan="2">
@@ -104,6 +136,7 @@
 
             </table>
         </div>
+        <input id="Hidden1" type="hidden"  runat="server"  value=""/>
     </form>
 </body>
 </html>

@@ -83,6 +83,7 @@
     <Content Include="NewProjectDev.aspx" />
     <Content Include="NewProjectTrans.aspx" />
     <Content Include="Profile.aspx" />
+    <Content Include="ProfilePics\defaultpic.png" />
     <Content Include="ProjectsDev.aspx" />
     <Content Include="ProjectsTrans.aspx" />
     <Content Include="Register.aspx" />

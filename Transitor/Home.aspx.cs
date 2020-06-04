@@ -45,7 +45,6 @@ namespace Transitor
                     ResLabel7.Text = resxSet.GetString("String7");
                     ResLabel8.Text = resxSet.GetString("String6");
 
-
                     if (GridView1.Rows.Count == 0)
                     {
                         Labelhiden1.Visible = true;
@@ -64,12 +63,18 @@ namespace Transitor
 
                     int notnumbertran;
                     notnumbertran = CountNotificationNumberTrans();
-                    Label3.Text = notnumbertran.ToString() + " new comments";
+                    LabeNotNumberTrans.Text = notnumbertran.ToString() + " new comments";
 
                     FillGridWiew3();
                     FillGridWiew4();
 
-                    if(GridView3.Rows.Count == 0)
+                    ResXResourceSet resxSet = new ResXResourceSet(Server.MapPath("~/StringResources/Resource.resx"));
+                    ResLabelTrans1.Text = resxSet.GetString("String8");
+                    ResLabelTrans2.Text = resxSet.GetString("String9");
+                    ResLabelTrans3.Text = resxSet.GetString("String10");
+
+
+                    if (GridView3.Rows.Count == 0)
                     {
                         Labelhiden3.Visible = true;
                     }

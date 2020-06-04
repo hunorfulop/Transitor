@@ -266,13 +266,27 @@
             <asp:Label ID="lblTrans" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
             <br />
             <br />
+            <br />
+            <div style="margin-left: auto; margin-right: auto; text-align: right;">
+            <asp:Label ID="LabeNotNumberTrans" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            <asp:ImageButton ID="ImageButton1" runat="server" Height="29px" ImageUrl="~/Icons/imbox.png" Width="36px"/>
+            <br />
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="ResLabelTrans1" runat="server" Text=""></asp:Label>
+            <br />
+            <asp:Label ID="ResLabelTrans2" runat="server" Text=""></asp:Label>
+            <br />
+            <asp:Label ID="ResLabelTrans3" runat="server" Text=""></asp:Label>
         </div>
 
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
             <br />
-            <asp:Label ID="Label3" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
-            <asp:ImageButton ID="ImageButton1" runat="server" Height="29px" ImageUrl="~/Icons/imbox.png" Width="36px"/>
-
             <asp:Panel ID="Panel1" runat="server" CssClass="popup roundedcorner">
                 <center>
                 <asp:Label ID="Label4" runat="server" Text="New comments on this projects:"></asp:Label>

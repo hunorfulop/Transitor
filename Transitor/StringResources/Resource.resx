@@ -120,6 +120,9 @@
   <data name="String1" xml:space="preserve">
     <value>On this website you get the chance to translate your texts from you'r application. Simply you have to create a project and upload a file which contains your text.</value>
   </data>
+  <data name="String10" xml:space="preserve">
+    <value>Every translated project will be checked by a second translator. If he finds a mistake he can correct it.</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>The uploaded texts will be translated by other users who choose the role of Translator. After the translation it will be checked for mistakes by another user and finalized.</value>
   </data>
@@ -137,5 +140,11 @@
   </data>
   <data name="String7" xml:space="preserve">
     <value>2. File type: .resx</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>On this website you get the chance to do some translation work on texts of applications. You will be translating for application developers</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>You can start a project from the NewProject menu. Here you can choose between translation or cheking projects. </value>
   </data>
 </root>

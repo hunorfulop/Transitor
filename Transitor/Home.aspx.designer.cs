@@ -231,13 +231,13 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.Label lblTrans;
 
         /// <summary>
-        /// Label3 control.
+        /// LabeNotNumberTrans control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label LabeNotNumberTrans;
 
         /// <summary>
         /// ImageButton1 control.
@@ -247,6 +247,33 @@ namespace Transitor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+
+        /// <summary>
+        /// ResLabelTrans1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResLabelTrans1;
+
+        /// <summary>
+        /// ResLabelTrans2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResLabelTrans2;
+
+        /// <summary>
+        /// ResLabelTrans3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResLabelTrans3;
 
         /// <summary>
         /// Panel1 control.
