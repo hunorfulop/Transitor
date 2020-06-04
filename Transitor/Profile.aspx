@@ -10,9 +10,30 @@
             background-color:coral;
         }
     </style>
-        <div>
-            <h2>Profile here!!!!</h2>
-        </div>
+        
+    <table style="border:5px solid green">
+
+        <tr>
+        <td>
+        <asp:Label ID="Label1" runat="server" Text="UserName:"></asp:Label>
+        <asp:TextBox ID="textBoxUserName" runat="server"></asp:TextBox>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <asp:Label ID="Label2" runat="server" Text="Role:"></asp:Label>
+        <asp:TextBox ID="textBoxRole" runat="server" CssClass="txtboxstyle"></asp:TextBox>
+        </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <asp:Image ID="Image1" runat="server" Height="100" Width="100" />
+            </td>
+        </tr>
+        </table>
+
     </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="body2" runat="server">
@@ -21,7 +42,28 @@
             background-color:coral;
         }
     </style>
-        <div>
-            <h2>Profile here!!!!</h2>
-        </div>
+
+        <table style="border:5px solid green">
+
+        <tr>
+        <td>
+        <asp:Label ID="Label3" runat="server" Text="UserName:"></asp:Label>
+        <asp:TextBox ID="textBox1" runat="server"></asp:TextBox>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <asp:Label ID="Label4" runat="server" Text="Role:"></asp:Label>
+        <asp:TextBox ID="textBox2" runat="server" CssClass="txtboxstyle"></asp:TextBox>
+        </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <asp:Image ID="Image2" runat="server" Height="100" Width="100" />
+            </td>
+        </tr>
+        </table>
+
     </asp:Content>

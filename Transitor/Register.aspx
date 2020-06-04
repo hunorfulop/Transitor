@@ -46,7 +46,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-                <asp:HiddenField ID="hfUserID" runat="server" OnValueChanged="hfUserID_ValueChanged" />
+                <asp:HiddenField ID="hfUserID" runat="server"/>
             <table>
 
                 <tr>
