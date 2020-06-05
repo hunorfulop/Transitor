@@ -90,6 +90,9 @@ namespace Transitor
             string comentowner;
             comentowner = getComentOwner();
 
+            string profpic;
+            profpic = getProfPic();
+
             string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon1 = new SqlConnection(connectionString1);
             sqlCon1.Open();
@@ -108,6 +111,7 @@ namespace Transitor
             sqlCmd1.Parameters.AddWithValue("@ComentDate", DateTime.Now);
             sqlCmd1.Parameters.AddWithValue("@MsgForDev", "");
             sqlCmd1.Parameters.AddWithValue("@MsgForTrans", "New Coment");
+            sqlCmd1.Parameters.AddWithValue("@ProfilePicPath", profpic);
             sqlCmd1.ExecuteNonQuery();
             Response.Redirect(Request.Url.AbsoluteUri);
         }
@@ -190,5 +194,26 @@ namespace Transitor
             sqlCon.Close();
             return temp;
         }
+
+        string getProfPic()
+        {
+            string temp = "";
+            string connectionString = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(connectionString);
+            string query = "SELECT ProfilePicPath FROM tblUser WHERE UserID = @UserID";
+            sqlCon.Open();
+            SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+            sqlCmd.Parameters.AddWithValue("@UserID", Session["userid"].ToString());
+            SqlDataReader nwReader = sqlCmd.ExecuteReader();
+            while (nwReader.Read())
+            {
+                temp = nwReader["ProfilePicPath"].ToString();
+            }
+            nwReader.Close();
+            sqlCon.Close();
+            return temp;
+        }
+
+
     }
 }

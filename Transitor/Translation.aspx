@@ -163,6 +163,7 @@
                     <hr />
                     <asp:Label ID="Label1" runat="server" ForeColor="Red" Text='<%#Eval("MsgForTrans") %>'></asp:Label>
                     <br />
+                    <asp:Image ID="Image1" runat="server" Height="100" Width="100" ImageUrl='<%#Eval("ProfilePicPath") %>'/>
                     <asp:Label ID="LabelCom1" runat="server" Text='<%#Eval("ComentOwner") %>'></asp:Label>
                     <asp:Label ID="LabeCom2" runat="server" Text='<%#Eval("ComentDate") %>'></asp:Label>
                     <br />
