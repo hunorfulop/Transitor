@@ -75,6 +75,13 @@
          .btnstyle3:hover {
             background-color: #4CAF50
          }
+
+        .labelstyle2 {
+          color:black;
+          font-size:large;
+          font-family:'Arial';
+          font-style:italic;
+        }
     </style>
 
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
@@ -96,11 +103,11 @@
             <br />
             <br />
             <br />
-            <asp:Label ID="ResLabel1" runat="server" Text=""></asp:Label>
+            <asp:Label ID="ResLabel1" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
             <br />
-            <asp:Label ID="ResLabel2" runat="server" Text=""></asp:Label>
+            <asp:Label ID="ResLabel2" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
             <br />
-            <asp:Label ID="ResLabel3" runat="server" Text=""></asp:Label>
+            <asp:Label ID="ResLabel3" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
             <br />
             <br />
             <br />
@@ -108,23 +115,23 @@
             <br />
         </div>
 
-    <asp:Label ID="ResLabel4" runat="server" Text=""></asp:Label>
+    <asp:Label ID="ResLabel4" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
     <br />
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Label ID="ResLabel5" runat="server" Text=""></asp:Label>
+    <asp:Label ID="ResLabel5" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
         <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="ResLabel6" runat="server" Text=""></asp:Label>
+        <asp:Label ID="ResLabel6" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
          <asp:HyperLink  Target="_blank" runat="server" ID="linkXmlPdf" Text=" Open Xml template PDF"
                  NavigateUrl="~/PdfTemplates/Xml file template.pdf"></asp:HyperLink>
     <br />
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Label ID="ResLabel7" runat="server" Text=""></asp:Label>
+    <asp:Label ID="ResLabel7" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Label ID="ResLabel8" runat="server" Text=""></asp:Label>
+    <asp:Label ID="ResLabel8" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
      <asp:HyperLink  Target="_blank" runat="server" ID="linkResXPdf" Text=" Open ResX template PDF"
                  NavigateUrl="~/PdfTemplates/ResX file template.pdf"></asp:HyperLink>
 
@@ -259,6 +266,13 @@
             background-color: #4CAF50
          }
 
+        .labelstyle3 {
+          color:black;
+          font-size:large;
+          font-family:'Arial';
+          font-style:italic;
+        }
+
     </style>
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
             <br />
@@ -278,11 +292,11 @@
             <br />
             <br />
             <br />
-            <asp:Label ID="ResLabelTrans1" runat="server" Text=""></asp:Label>
+            <asp:Label ID="ResLabelTrans1" runat="server" Text="" CssClass="labelstyle3"></asp:Label>
             <br />
-            <asp:Label ID="ResLabelTrans2" runat="server" Text=""></asp:Label>
+            <asp:Label ID="ResLabelTrans2" runat="server" Text="" CssClass="labelstyle3"></asp:Label>
             <br />
-            <asp:Label ID="ResLabelTrans3" runat="server" Text=""></asp:Label>
+            <asp:Label ID="ResLabelTrans3" runat="server" Text="" CssClass="labelstyle3"></asp:Label>
         </div>
 
     <div style="margin-left: auto; margin-right: auto; text-align: right;">

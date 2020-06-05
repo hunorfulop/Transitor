@@ -41,10 +41,61 @@
             padding: 1px 1px 1px 5px;
             border: 2px solid #FF9933;
         }
+
+        .labelstyle {
+          color:black;
+          font-size:xx-large;
+          font-family:'Arial';
+          background-color:#4CAF50;
+          font-style:italic;
+        }
+
+      .Cntrl1
+      {
+       background-color:#abcdef;
+       color: #4CAF50;
+       border: 1px solid #AB00CC;
+       font: Verdana 10px;
+       padding: 1px 4px;
+       font-family: Palatino Linotype, Arial, Helvetica, sans-serif;
+      }
+
+        .dropdownliststyle
+        {
+            color: #fff;
+            font-size: 15px;
+            padding: 5px 10px;
+            border-radius: 5px 12px;
+            background-color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .labelstyle2 {
+          color:black;
+          font-size:large;
+          font-family:'Arial';
+          font-style:italic;
+        }
+
     </style> 
 </head>
 <body>
     <form id="form1" runat="server">
+        <p>
+            <br />
+            <center>
+            <asp:Label ID="Label1" runat="server" Text="Welcome to the registration page!" CssClass="labelstyle"></asp:Label>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </center>
+            <asp:Label ID="Label2" runat="server" Text="Please fill out every field and choose you'r role:" CssClass="labelstyle2"></asp:Label>
+        </p>
+        <hr />
         <div>
                 <asp:HiddenField ID="hfUserID" runat="server"/>
             <table>
@@ -74,7 +125,7 @@
                         <asp:Label Text="Role:" runat="server" />
                     </td>
                     <td colspan="2">
-                        <asp:DropDownList ID="ddlRole" runat="server">
+                        <asp:DropDownList ID="ddlRole" runat="server" CssClass="dropdownliststyle">
                             <asp:ListItem>Developer</asp:ListItem>
                             <asp:ListItem>Translator</asp:ListItem>
                         </asp:DropDownList>
@@ -100,7 +151,7 @@
 
                 <tr>
                     <td>
-                        <asp:FileUpload ID="FileUpload1" runat="server"  />
+                        <asp:FileUpload ID="FileUpload1" runat="server" Height="22px" class="Cntrl1" />
                     </td>
                     <td>
                         <asp:Button Text="Upload picture" ID="btnBrowsePicture" runat="server" OnClick="btnBrowsePicture_Click" CssClass="btnstyle" />
