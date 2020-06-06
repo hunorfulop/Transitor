@@ -32,6 +32,12 @@ namespace Transitor
                 int temp = CheckSameUserName(txtUserName.Text.Trim());
                 if (temp == 0)
                 {
+                    if (Hidden1.Value == "")
+                    {
+                        lblErrorMessage.Text = "Please upload a profile picture!";
+                    }
+                    else
+                    {
                         using (SqlConnection sqlCon = new SqlConnection(connectionString))
                         {
                             sqlCon.Open();
@@ -46,6 +52,7 @@ namespace Transitor
                             lblSuccesMessage.Text = "Register Succesfull";
                             Response.Redirect("Login.aspx");
                         }
+                    }
                 }
                 else
                 {

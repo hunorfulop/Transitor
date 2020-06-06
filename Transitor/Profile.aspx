@@ -60,7 +60,7 @@
         <tr>
         <td>
         <asp:Label ID="Label1" runat="server" Text="UserName:"></asp:Label>
-        <asp:TextBox ID="textBoxUserName" runat="server"></asp:TextBox>
+        <asp:TextBox ID="textBoxUserName" runat="server" Height="22px"></asp:TextBox>
         </td>
             <td>
                 <asp:Button ID="Button1" runat="server" Text="Change UserName" OnClick="ButtonDevs_Click" class="btnstyle"/>
