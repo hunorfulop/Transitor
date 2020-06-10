@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -56,8 +57,19 @@ namespace Transitor
                             }
                             else
                             {
-                                ShowInListBoxResx(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                                AddFileName(FileUpload1.FileName);
+                                if (temp == ".resx")
+                                {
+                                    ShowInListBoxResx(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                                    AddFileName(FileUpload1.FileName);
+                                }
+                                else
+                                {
+                                    if (temp == ".csv")
+                                    {
+                                        ShowInListBoxCsv(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                                        AddFileName(FileUpload1.FileName);
+                                    }
+                                }
                             }
                         }
                         else
@@ -81,7 +93,6 @@ namespace Transitor
             }
             else
             {
-
                 string temp = getProjetFileType();
                 if (temp == ".xml")
                 {
@@ -91,9 +102,21 @@ namespace Transitor
                 }
                 else
                 {
-                    ReadAndParceResX();
-                    Session["projectid"] = "expired";
-                    Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                    if (temp == ".resx")
+                    {
+                        ReadAndParceResX();
+                        Session["projectid"] = "expired";
+                        Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                    }
+                    else
+                    {
+                        if (temp == ".csv")
+                        {
+                            ReadAndParceCsv();
+                            Session["projectid"] = "expired";
+                            Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                        }
+                    }
                 }
             }
         }
@@ -133,6 +156,20 @@ namespace Transitor
                 {
                     ListBoxPhrases.Items.Add(item.InnerText);
                 }
+            }
+        }
+
+        private void ShowInListBoxCsv(string path)
+        {
+            ListBoxPhrases.Visible = true;
+            btn_Confirm.Visible = true;
+
+            var csvRows = System.IO.File.ReadAllLines(path, Encoding.Default).ToList();
+
+            foreach (var row in csvRows)
+            {
+                var columns = row.Split(',');
+                ListBoxPhrases.Items.Add(columns[1]);
             }
         }
 
@@ -200,6 +237,38 @@ namespace Transitor
                 }
             }
 
+        }
+
+        private void ReadAndParceCsv()
+        {
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    for (int loop = 0; loop < ListBoxPhrases.Items.Count; loop++)
+                    {
+                        sqlCon.Open();
+                        SqlCommand sqlCmd = new SqlCommand("PhraseAddOrEdit", sqlCon);
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCmd.Parameters.AddWithValue("@PhraseID", Convert.ToInt32(hfPhraseID.Value == "" ? "0" : hfPhraseID.Value));
+                        sqlCmd.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
+                        sqlCmd.Parameters.AddWithValue("@Phrase", ListBoxPhrases.Items[loop].ToString());
+                        sqlCmd.Parameters.AddWithValue("@TransLanguage", dr.Field<string>("TranslationLanguage"));
+                        sqlCmd.ExecuteNonQuery();
+                        sqlCon.Close();
+                    }
+                }
+            }
         }
 
         void AddFileName(string name)

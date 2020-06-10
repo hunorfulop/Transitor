@@ -131,6 +131,7 @@
                         <asp:DropDownList ID="ddlUploadedFileType" runat="server" class="dropdownliststyle">
                             <asp:ListItem>.xml</asp:ListItem>
                             <asp:ListItem>.resx</asp:ListItem>
+                            <asp:ListItem>.csv</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

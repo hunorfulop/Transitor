@@ -100,8 +100,19 @@ namespace Transitor
                 }
                 else
                 {
-                    string filename1 = getFileName();
-                    CreateDownloadableResx(filename1);
+                    if (filetype == ".resx")
+                    {
+                        string filename1 = getFileName();
+                        CreateDownloadableResx(filename1);
+                    }
+                    else
+                    {
+                        if(filetype == ".csv")
+                        {
+                            string filename1 = getFileName();
+                            CreateDownloadableCsv(filename1);
+                        }
+                    }
 
                 }
 
@@ -320,6 +331,39 @@ namespace Transitor
                 doc.Root.Add(ele);
                 doc.Save(file);
             }
+        }
+
+        void CreateDownloadableCsv(string filename)
+        {
+            string projectID2;
+            projectID2 = getId();
+
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            string filepath = MapPath("~/Uploads/" + filename);
+
+            foreach (DataRow dr in dataTable.Rows) {
+                try
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+                    {
+                        file.WriteLine("TranslatedPhrase" + "," + dr.Field<string>("TranslatedPhrase"));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Exception :", ex);
+                }
+            }
+
         }
 
         public void DownLoad(string FName)

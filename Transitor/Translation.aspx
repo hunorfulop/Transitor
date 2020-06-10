@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Translation.aspx.cs" Inherits="Transitor.WebForm1" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Translation.aspx.cs" Inherits="Transitor.WebForm1" EnableEventValidation="false" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">NewProjectDev
     </asp:Content>
