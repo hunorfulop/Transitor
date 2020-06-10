@@ -123,6 +123,9 @@
   <data name="String10" xml:space="preserve">
     <value>Every translated project will be checked by a second translator. If he finds a mistake he can correct it.</value>
   </data>
+  <data name="String11" xml:space="preserve">
+    <value>3. File type: .csv</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>The uploaded texts will be translated by other users who choose the role of Translator. After the translation it will be checked for mistakes by another user and finalized.</value>
   </data>

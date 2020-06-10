@@ -44,6 +44,8 @@ namespace Transitor
                     ResLabel6.Text = resxSet.GetString("String6");
                     ResLabel7.Text = resxSet.GetString("String7");
                     ResLabel8.Text = resxSet.GetString("String6");
+                    ResLabel9.Text = resxSet.GetString("String11");
+                    ResLabel10.Text = resxSet.GetString("String6");
 
                     if (GridView1.Rows.Count == 0)
                     {
