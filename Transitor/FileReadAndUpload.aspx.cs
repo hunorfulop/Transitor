@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -69,6 +71,14 @@ namespace Transitor
                                         ShowInListBoxCsv(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
                                         AddFileName(FileUpload1.FileName);
                                     }
+                                    else
+                                    {
+                                        if(temp == ".json")
+                                        {
+                                            ShowInListBoxJson(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                                            AddFileName(FileUpload1.FileName);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -115,6 +125,15 @@ namespace Transitor
                             ReadAndParceCsv();
                             Session["projectid"] = "expired";
                             Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                        }
+                        else
+                        {
+                            if (temp == ".json")
+                            {
+                                ReadAndParceJson();
+                                Session["projectid"] = "expired";
+                                Response.Write("<script language='javascript'>window.alert('Upload Sucessful!');window.location='Home.aspx';</script>");
+                            }
                         }
                     }
                 }
@@ -173,6 +192,37 @@ namespace Transitor
             }
         }
 
+        private void ShowInListBoxJson(string path)
+        {
+            ListBoxPhrases.Visible = true;
+            btn_Confirm.Visible = true;
+
+            JObject jObject = ReadJSONData(path);
+            foreach(var item in jObject["employee"])
+            {
+                ListBoxPhrases.Items.Add(item["name"].ToString());
+            }
+
+        }
+
+        public JObject ReadJSONData(string jsonFilename)
+        {
+            try
+            {
+                JObject jObject;
+                using (StreamReader file = System.IO.File.OpenText(jsonFilename))
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
+                    jObject = (JObject)JToken.ReadFrom(reader);
+                }
+                return jObject;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error Occurred : " + ex.Message);
+                return null;
+            }
+        }
 
         private void ReadAndParcelXml()
         {
@@ -240,6 +290,38 @@ namespace Transitor
         }
 
         private void ReadAndParceCsv()
+        {
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT TranslationLanguage FROM tblTranslationLanguages WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    for (int loop = 0; loop < ListBoxPhrases.Items.Count; loop++)
+                    {
+                        sqlCon.Open();
+                        SqlCommand sqlCmd = new SqlCommand("PhraseAddOrEdit", sqlCon);
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCmd.Parameters.AddWithValue("@PhraseID", Convert.ToInt32(hfPhraseID.Value == "" ? "0" : hfPhraseID.Value));
+                        sqlCmd.Parameters.AddWithValue("@ProjectID", Session["ProjectID"].ToString());
+                        sqlCmd.Parameters.AddWithValue("@Phrase", ListBoxPhrases.Items[loop].ToString());
+                        sqlCmd.Parameters.AddWithValue("@TransLanguage", dr.Field<string>("TranslationLanguage"));
+                        sqlCmd.ExecuteNonQuery();
+                        sqlCon.Close();
+                    }
+                }
+            }
+        }
+
+        private void ReadAndParceJson()
         {
             string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
             SqlConnection sqlCon1 = new SqlConnection(connectionString1);

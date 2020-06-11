@@ -132,6 +132,7 @@
                             <asp:ListItem>.xml</asp:ListItem>
                             <asp:ListItem>.resx</asp:ListItem>
                             <asp:ListItem>.csv</asp:ListItem>
+                            <asp:ListItem>.json</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

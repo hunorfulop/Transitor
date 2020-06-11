@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -111,6 +112,14 @@ namespace Transitor
                         {
                             string filename1 = getFileName();
                             CreateDownloadableCsv(filename1);
+                        }
+                        else
+                        {
+                            if(filetype == ".json")
+                            {
+                                string filename1 = getFileName();
+                                CreateDownloadableJson(filename1);
+                            }
                         }
                     }
 
@@ -362,6 +371,60 @@ namespace Transitor
                 {
                     throw new ApplicationException("Exception :", ex);
                 }
+            }
+
+        }
+
+        void CreateDownloadableJson(string filename)
+        {
+            string projectID2;
+            projectID2 = getId();
+
+            string connectionString1 = WebConfigurationManager.ConnectionStrings["MyDbConn"].ConnectionString;
+            SqlConnection sqlCon1 = new SqlConnection(connectionString1);
+            string query1 = "SELECT TranslatedPhrase FROM tblPhrase WHERE ProjectID = @ProjectID";
+            sqlCon1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand(query1, sqlCon1);
+            sqlCmd1.Parameters.AddWithValue("@ProjectID", projectID2);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCmd1);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            string filepath = MapPath("~/Uploads/" + filename);
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+            {
+                file.WriteLine("");
+                file.WriteLine("{");
+                file.WriteLine("\"TranslatedPhrases\": [" );
+            }
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                try
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+                    {
+                        if (dataTable.Rows.IndexOf(dr) == dataTable.Rows.Count - 1)
+                        {
+                            file.WriteLine("{\"TranslatedPhrase\": " + " " + "\"" + dr.Field<string>("TranslatedPhrase") + "\"" + "}");
+                        }
+                        else
+                        {
+                            file.WriteLine("{\"TranslatedPhrase\": " + " " + "\"" + dr.Field<string>("TranslatedPhrase") + "\"" + "}" + ",");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Exception :", ex);
+                }
+            }
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+            {
+                file.WriteLine("]");
+                file.WriteLine("}");
             }
 
         }
