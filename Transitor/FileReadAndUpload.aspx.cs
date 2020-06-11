@@ -198,9 +198,9 @@ namespace Transitor
             btn_Confirm.Visible = true;
 
             JObject jObject = ReadJSONData(path);
-            foreach(var item in jObject["employee"])
+            foreach(var item in jObject["phrases"])
             {
-                ListBoxPhrases.Items.Add(item["name"].ToString());
+                ListBoxPhrases.Items.Add(item["string"].ToString());
             }
 
         }

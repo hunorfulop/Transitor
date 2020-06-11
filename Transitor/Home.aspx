@@ -145,6 +145,16 @@
      <asp:HyperLink  Target="_blank" runat="server" ID="linkCsvPdf" Text=" Open CSV template PDF"
                  NavigateUrl="~/PdfTemplates/CSV file template.pdf"></asp:HyperLink>
 
+    <br />
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Label ID="ResLabel11" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Label ID="ResLabel12" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
+     <asp:HyperLink  Target="_blank" runat="server" ID="linkJsonPdf" Text=" Open JSON template PDF"
+                 NavigateUrl="~/PdfTemplates/JSON file template.pdf"></asp:HyperLink>
+
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
             <br />

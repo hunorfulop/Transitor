@@ -159,6 +159,33 @@ namespace Transitor
         protected global::System.Web.UI.WebControls.HyperLink linkCsvPdf;
 
         /// <summary>
+        /// ResLabel11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResLabel11;
+
+        /// <summary>
+        /// ResLabel12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResLabel12;
+
+        /// <summary>
+        /// linkJsonPdf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkJsonPdf;
+
+        /// <summary>
         /// ScriptManager1 control.
         /// </summary>
         /// <remarks>

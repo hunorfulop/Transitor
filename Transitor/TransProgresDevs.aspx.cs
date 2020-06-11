@@ -407,11 +407,11 @@ namespace Transitor
                     {
                         if (dataTable.Rows.IndexOf(dr) == dataTable.Rows.Count - 1)
                         {
-                            file.WriteLine("{\"TranslatedPhrase\": " + " " + "\"" + dr.Field<string>("TranslatedPhrase") + "\"" + "}");
+                            file.WriteLine("{\"TranslatedPhrase\": " + " " + "\"" + dr.Field<string>("TranslatedPhrase") + "\"" + "," + "}");
                         }
                         else
                         {
-                            file.WriteLine("{\"TranslatedPhrase\": " + " " + "\"" + dr.Field<string>("TranslatedPhrase") + "\"" + "}" + ",");
+                            file.WriteLine("{\"TranslatedPhrase\": " + " " + "\"" + dr.Field<string>("TranslatedPhrase") + "\"" + "," + "}" + ",");
                         }
                     }
                 }
