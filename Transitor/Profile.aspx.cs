@@ -62,6 +62,7 @@ namespace Transitor
                 textBox1.Text = nwReader["Username"].ToString();
                 textBox2.Text = nwReader["Role"].ToString();
                 Image2.ImageUrl = nwReader["ProfilePicPath"].ToString();
+                textBox2.Attributes.Add("readonly", "readonly");
             }
             nwReader.Close();
             sqlCon.Close();

@@ -35,6 +35,10 @@ namespace Transitor
                 textBoxProjectName.Text = Session["projectname"].ToString();
                 textBoxProjectOriginalLanguage.Text = nwReader["ProjectOriginalLanguage"].ToString();
                 textBoxUploadDate.Text = nwReader["UploadDate"].ToString();
+                textBoxProjectName.Attributes.Add("readonly", "readonly");
+                textBoxProjectOriginalLanguage.Attributes.Add("readonly", "readonly");
+                textBoxUploadDate.Attributes.Add("readonly", "readonly");
+
             }
             nwReader.Close();
             sqlCon.Close();
