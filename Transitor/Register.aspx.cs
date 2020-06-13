@@ -29,36 +29,53 @@ namespace Transitor
                 lblErrorMessage.Text = "Please Fill Mandatory Fields";
             else
             {
-                int temp = CheckSameUserName(txtUserName.Text.Trim());
-                if (temp == 0)
+                if (txtPassword.Text.Length != 8)
                 {
-                    if (Hidden1.Value == "")
+                    lblErrorMessage.Text = "Please choose a password which is 8 characters long";
+                }
+                else 
+                {
+                    string pass = txtPassword.Text.ToString();
+                    Boolean result = pass.Any(char.IsDigit);
+                    Boolean result2 = pass.Any(char.IsLetter);
+                    if (result == false || result2 == false)
                     {
-                        lblErrorMessage.Text = "Please upload a profile picture!";
+                        lblErrorMessage.Text = "Please choose a password which contains letters and numbers at the same time";
                     }
-                    else
-                    {
-                        using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                    else {
+                        int temp = CheckSameUserName(txtUserName.Text.Trim());
+                        if (temp == 0)
                         {
-                            sqlCon.Open();
-                            SqlCommand sqlCmd = new SqlCommand("UserAddOrEdit", sqlCon);
-                            sqlCmd.CommandType = CommandType.StoredProcedure;
-                            sqlCmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(hfUserID.Value == "" ? "0" : hfUserID.Value));
-                            sqlCmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());
-                            sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
-                            sqlCmd.Parameters.AddWithValue("@Role", ddlRole.SelectedValue);
-                            sqlCmd.Parameters.AddWithValue("@ProfilePicPath", Hidden1.Value);
-                            sqlCmd.ExecuteNonQuery();
-                            lblSuccesMessage.Text = "Register Succesfull";
-                            Response.Redirect("Login.aspx");
+                            if (Hidden1.Value == "")
+                            {
+                                lblErrorMessage.Text = "Please upload a profile picture!";
+                            }
+                            else
+                            {
+                                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                                {
+                                    sqlCon.Open();
+                                    SqlCommand sqlCmd = new SqlCommand("UserAddOrEdit", sqlCon);
+                                    sqlCmd.CommandType = CommandType.StoredProcedure;
+                                    sqlCmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(hfUserID.Value == "" ? "0" : hfUserID.Value));
+                                    sqlCmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());
+                                    sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
+                                    sqlCmd.Parameters.AddWithValue("@Role", ddlRole.SelectedValue);
+                                    sqlCmd.Parameters.AddWithValue("@ProfilePicPath", Hidden1.Value);
+                                    sqlCmd.ExecuteNonQuery();
+                                    lblSuccesMessage.Text = "Register Succesfull";
+                                    Response.Redirect("Login.aspx");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            lblErrorMessage.Text = "Username aleaready exists";
                         }
                     }
                 }
-                else
-                {
-                    lblErrorMessage.Text = "Username aleaready exists";
-                }
             }
+
         }
 
         int CheckSameUserName(string username)

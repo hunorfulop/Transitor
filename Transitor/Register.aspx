@@ -93,7 +93,9 @@
                 <br />
                 <br />
             </center>
-            <asp:Label ID="Label2" runat="server" Text="Please fill out every field and choose you'r role:" CssClass="labelstyle2"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Please fill out every field, choose you'r role and a profile picture!" CssClass="labelstyle2"></asp:Label>
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Make sure that you choose a password which is 8 characters long, contains letteres and numbers as well!" CssClass="labelstyle2"></asp:Label>
         </p>
         <hr />
         <div>
