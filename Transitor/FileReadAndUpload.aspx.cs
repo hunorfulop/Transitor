@@ -142,39 +142,80 @@ namespace Transitor
 
         private void ShowInListBoxXml(string path)
         {
-            LabelMsg1.Visible = true;
-            LabelMsg2.Visible = true;
-            ListBoxPhrases.Visible = true;
-            btn_Confirm.Visible = true;
-
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(path);
-            XmlNodeList nodes = xmlDoc.SelectNodes("/resources/string");
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            try
             {
-                foreach (XmlNode item in nodes)
+                LabelMsg1.Visible = true;
+                LabelMsg2.Visible = true;
+                ListBoxPhrases.Visible = true;
+                btn_Confirm.Visible = true;
+
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(path);
+                XmlNodeList nodes = xmlDoc.SelectNodes("/resources/string");
+
+                if (nodes.Count == 0)
                 {
-                    ListBoxPhrases.Items.Add(item.InnerText);
+                    lblMessage.Text = "Could not read from the uploaded file! Please check if you'r file matches our template";
+                    LabelMsg1.Visible = false;
+                    LabelMsg2.Visible = false;
+                    ListBoxPhrases.Visible = false;
+                    btn_Confirm.Visible = false;
+                }
+                else
+                {
+                    foreach (XmlNode item in nodes)
+                    {
+                        ListBoxPhrases.Items.Add(item.InnerText);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Something is wrong with the uploaded the file";
+                LabelMsg1.Visible = false;
+                LabelMsg2.Visible = false;
+                ListBoxPhrases.Visible = false;
+                btn_Confirm.Visible = false;
+            }
+
         }
 
         private void ShowInListBoxResx(string path)
         {
-            ListBoxPhrases.Visible = true;
-            btn_Confirm.Visible = true;
-
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(path);
-            XmlNodeList nodes = xmlDoc.SelectNodes("/root/data/value");
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            try
             {
-                foreach (XmlNode item in nodes)
+                LabelMsg1.Visible = true;
+                LabelMsg2.Visible = true;
+                ListBoxPhrases.Visible = true;
+                btn_Confirm.Visible = true;
+
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(path);
+                XmlNodeList nodes = xmlDoc.SelectNodes("/root/data/value");
+
+                if (nodes.Count == 0)
                 {
-                    ListBoxPhrases.Items.Add(item.InnerText);
+                    lblMessage.Text = "Could not read from the uploaded file! Please check if you'r file matches our template";
+                    LabelMsg1.Visible = false;
+                    LabelMsg2.Visible = false;
+                    ListBoxPhrases.Visible = false;
+                    btn_Confirm.Visible = false;
                 }
+                else
+                {
+                    foreach (XmlNode item in nodes)
+                    {
+                        ListBoxPhrases.Items.Add(item.InnerText);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                lblMessage.Text = "Something is wrong with the uploaded the file";
+                LabelMsg1.Visible = false;
+                LabelMsg2.Visible = false;
+                ListBoxPhrases.Visible = false;
+                btn_Confirm.Visible = false;
             }
         }
 
