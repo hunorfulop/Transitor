@@ -221,27 +221,77 @@ namespace Transitor
 
         private void ShowInListBoxCsv(string path)
         {
-            ListBoxPhrases.Visible = true;
-            btn_Confirm.Visible = true;
 
-            var csvRows = System.IO.File.ReadAllLines(path, Encoding.Default).ToList();
-
-            foreach (var row in csvRows)
+            try
             {
-                var columns = row.Split(',');
-                ListBoxPhrases.Items.Add(columns[1]);
+                LabelMsg1.Visible = true;
+                LabelMsg2.Visible = true;
+                ListBoxPhrases.Visible = true;
+                btn_Confirm.Visible = true;
+
+                var csvRows = System.IO.File.ReadAllLines(path, Encoding.Default).ToList();
+
+                if (csvRows.Count == 0)
+                {
+
+                    lblMessage.Text = "Could not read from the uploaded file! Please check if you'r file matches our template";
+                    LabelMsg1.Visible = false;
+                    LabelMsg2.Visible = false;
+                    ListBoxPhrases.Visible = false;
+                    btn_Confirm.Visible = false;
+                }
+                else
+                {
+                    foreach (var row in csvRows)
+                    {
+                        var columns = row.Split(',');
+                        ListBoxPhrases.Items.Add(columns[1]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Something is wrong with the uploaded the file";
+                LabelMsg1.Visible = false;
+                LabelMsg2.Visible = false;
+                ListBoxPhrases.Visible = false;
+                btn_Confirm.Visible = false;
             }
         }
 
         private void ShowInListBoxJson(string path)
         {
-            ListBoxPhrases.Visible = true;
-            btn_Confirm.Visible = true;
-
-            JObject jObject = ReadJSONData(path);
-            foreach(var item in jObject["phrases"])
+            try
             {
-                ListBoxPhrases.Items.Add(item["string"].ToString());
+                LabelMsg1.Visible = true;
+                LabelMsg2.Visible = true;
+                ListBoxPhrases.Visible = true;
+                btn_Confirm.Visible = true;
+
+                JObject jObject = ReadJSONData(path);
+                if (jObject == null)
+                {
+                    lblMessage.Text = "Could not read from the uploaded file! Please check if you'r file matches our template";
+                    LabelMsg1.Visible = false;
+                    LabelMsg2.Visible = false;
+                    ListBoxPhrases.Visible = false;
+                    btn_Confirm.Visible = false;
+                }
+                else
+                {
+                    foreach (var item in jObject["phrases"])
+                    {
+                        ListBoxPhrases.Items.Add(item["string"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Something is wrong with the uploaded the file";
+                LabelMsg1.Visible = false;
+                LabelMsg2.Visible = false;
+                ListBoxPhrases.Visible = false;
+                btn_Confirm.Visible = false;
             }
 
         }
