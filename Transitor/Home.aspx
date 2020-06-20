@@ -9,7 +9,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
     <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
 
         .roundedcorner{
@@ -34,7 +34,7 @@
         }
 
         .popup{
-            background-color: #4CAF50;
+            background-color: #3AAFA9;
             border-width:3px;
             border-style:solid;
             border-color:black;
@@ -46,7 +46,7 @@
         }
 
                 .btnstyleclose {
-            background-color: red;
+            background-color: #17252A;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -58,41 +58,49 @@
 
             .btnstyleclose:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
+                background-color: red;
             }
 
-                  .btnstyle3 {
-           display: inline-block;
-           cursor: pointer;
-           text-align: center;
-           outline: 1px;
-           color: #fff;
-           background-color: #b5dfb7;
-           border: none;
-           border-radius: 10px;
-         }
+        .btnstyle3 {
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            outline: 1px;
+            color: #fff;
+            background-color: #17252A;
+            border: none;
+            border-radius: 10px;
+        }
 
          .btnstyle3:hover {
-            background-color: #4CAF50
+            background-color: #2B7A78
          }
 
+        .labelstyle {
+            color: #17252A;
+            font-size: xx-large;
+            font-family: 'Broadway';
+            font-style: italic;
+        }
+
         .labelstyle2 {
-          color:black;
+          color:#17252A;
           font-size:large;
           font-family:'Arial';
           font-style:italic;
         }
     </style>
 
-        <div style="margin-left: auto; margin-right: auto; text-align: center;">
+        <div style="margin-left: auto; margin-right: auto;">
             <br />
             <br />
-            <asp:Label ID="lblDevs" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lblDevs" runat="server" Text="" class="labelstyle"></asp:Label>
             <br />
             <br />
             <br />
             <div style="margin-left: auto; margin-right: auto; text-align: right;">
-            <asp:Label ID="LabelNotNumber" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            <asp:Label ID="LabelNotNumber" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText" ForeColor="#17252A"></asp:Label>
             <asp:ImageButton ID="ImageButton2" runat="server" Height="29px" ImageUrl="~/Icons/imbox.png" Width="36px"/>
                 <br />
            </div>
@@ -103,6 +111,9 @@
             <br />
             <br />
             <br />
+        </div>
+
+        <div style="margin-left: auto; margin-right: auto;">
             <asp:Label ID="ResLabel1" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
             <br />
             <asp:Label ID="ResLabel2" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
@@ -115,6 +126,7 @@
             <br />
         </div>
 
+    <div style="margin-left: auto; margin-right: auto;">
     <asp:Label ID="ResLabel4" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
     <br />
     <br />
@@ -154,6 +166,7 @@
     <asp:Label ID="ResLabel12" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
      <asp:HyperLink  Target="_blank" runat="server" ID="linkJsonPdf" Text=" Open JSON template PDF"
                  NavigateUrl="~/PdfTemplates/JSON file template.pdf"></asp:HyperLink>
+        </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
@@ -168,8 +181,8 @@
                 </center>
                 <br />
 
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#4CAF50"
-                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#2B7A78"
+                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#FEFFFF"  RowStyle-ForeColor="#3AAFA9">
                     <Columns>
                         <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
                         <asp:BoundField DataField="Phrase" HeaderText="Phrase" ItemStyle-Width="150px" />
@@ -193,8 +206,8 @@
                     <br />
                 </center>
 
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView2_RowCommand" HeaderStyle-BackColor="#4CAF50"
-                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView2_RowCommand" HeaderStyle-BackColor="#2B7A78"
+                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#FEFFFF"  RowStyle-ForeColor="#3AAFA9">
                     <Columns>
                         <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
                         <asp:BoundField DataField="Phrase" HeaderText="Phrase" ItemStyle-Width="150px" />
@@ -219,7 +232,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="body2" runat="server">
     <style>
         body {
-            background-color: coral;
+            background-color: #DEF2F1;
         }
 
         .roundedcorner {
@@ -243,20 +256,20 @@
             opacity: 0.8;
         }
 
-        .popup{
-            background-color: #4CAF50;
-            border-width:3px;
-            border-style:solid;
-            border-color:black;
-            padding-top:10px;
-            padding-left:10px;
-            width:525px;
-            overflow : auto ;
-            height: 400px; 
+        .popup {
+            background-color: #3AAFA9;
+            border-width: 3px;
+            border-style: solid;
+            border-color: black;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: 525px;
+            overflow: auto;
+            height: 400px;
         }
 
          .btnstyleclose2 {
-            background-color: red;
+            background-color: #17252A;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -268,7 +281,7 @@
 
             .btnstyleclose2:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
+                background-color: red;
             }
 
                   .btnstyle3 {
@@ -277,32 +290,40 @@
            text-align: center;
            outline: 1px;
            color: #fff;
-           background-color: #b5dfb7;
+           background-color: #17252A;
            border: none;
            border-radius: 10px;
          }
 
          .btnstyle3:hover {
-            background-color: #4CAF50
+            background-color: #2B7A78
          }
 
+        .labelstyle4 {
+            color: #17252A;
+            font-size: xx-large;
+            font-family: 'Broadway';
+            font-style: italic;
+        }
+
         .labelstyle3 {
-          color:black;
+          color:#17252A;
           font-size:large;
           font-family:'Arial';
           font-style:italic;
         }
 
     </style>
-        <div style="margin-left: auto; margin-right: auto; text-align: center;">
+        <div style="margin-left: auto; margin-right: auto;">
             <br />
             <br />
-            <asp:Label ID="lblTrans" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lblTrans" runat="server" Text="" class="labelstyle4"></asp:Label>
             <br />
             <br />
             <br />
             <div style="margin-left: auto; margin-right: auto; text-align: right;">
-            <asp:Label ID="LabeNotNumberTrans" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
+            <asp:Label ID="LabeNotNumberTrans" runat="server" Text="" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText" ForeColor="#17252A"></asp:Label>
             <asp:ImageButton ID="ImageButton1" runat="server" Height="29px" ImageUrl="~/Icons/imbox.png" Width="36px"/>
             <br />
             </div>
@@ -312,11 +333,15 @@
             <br />
             <br />
             <br />
+            <div>
+                <center>
             <asp:Label ID="ResLabelTrans1" runat="server" Text="" CssClass="labelstyle3"></asp:Label>
             <br />
             <asp:Label ID="ResLabelTrans2" runat="server" Text="" CssClass="labelstyle3"></asp:Label>
             <br />
             <asp:Label ID="ResLabelTrans3" runat="server" Text="" CssClass="labelstyle3"></asp:Label>
+                </center>
+            </div>
         </div>
 
     <div style="margin-left: auto; margin-right: auto; text-align: right;">
@@ -330,8 +355,8 @@
                 </center>
                 <br />
 
-                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView3_RowCommand" HeaderStyle-BackColor="#4CAF50"
-                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
+                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView3_RowCommand" HeaderStyle-BackColor="#2B7A78"
+                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#FEFFFF"  RowStyle-ForeColor="#3AAFA9">
                     <Columns>
                         <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
                         <asp:BoundField DataField="Phrase" HeaderText="Phrase" ItemStyle-Width="150px" />
@@ -354,8 +379,8 @@
                     <asp:Label ID="Labelhiden4" runat="server" Text="There are no comments!" visible="false" ForeColor="Red"></asp:Label>
                 </center>
 
-                <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView4_RowCommand" HeaderStyle-BackColor="#4CAF50"
-                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
+                <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView4_RowCommand" HeaderStyle-BackColor="#2B7A78"
+                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#FEFFFF"  RowStyle-ForeColor="#3AAFA9">
                     <Columns>
                         <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
                         <asp:BoundField DataField="Phrase" HeaderText="Phrase" ItemStyle-Width="150px" />

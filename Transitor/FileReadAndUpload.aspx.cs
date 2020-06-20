@@ -246,7 +246,6 @@ namespace Transitor
                     {
                         var columns = row.Split(',');
                         ListBoxPhrases.Items.Add(columns[1]);
-                        //
                     }
                 }
             }

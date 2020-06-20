@@ -15,7 +15,7 @@
             margin:0;
             padding:0;
             overflow:hidden;
-            background-color:#333;
+            background-color:#DEF2F1;
         }
         li{
             float:left
@@ -28,21 +28,19 @@
             padding:14px 16px;
             text-decoration:none;
         }
-        li a:hover, dropdown:hover .dropbtn
-        {
-            background-color:red;
-        }
+            li a:hover, dropdown:hover .dropbtn {
+                background-color: #17252A;
+            }
 
         li.dropdown
         {
             display:inline-block;
         }
-        .dropdown-content
-        {
-            display:none;
-            position:absolute;
-            background-color:#f9f9f9;
-            min-width:160px;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
@@ -62,19 +60,19 @@
         }
         ul.topnav li a.active
         {
-            background-color:#4CAF50;
+            background-color:#3AAFA9;
         }
         li.right{
             float:right;
-            background-color:red;
+            background-color:#17252A;
         }
         a.active
         {
-            background-color:#4CAF50
+            background-color:#3AAFA9
         }
 
         .btnstyle {
-            background-color: #4CAF50; /* Green */
+            background-color: #3AAFA9; /* Green */
             color: white;
             text-align: center;
             text-decoration: none;
@@ -82,13 +80,12 @@
             cursor: pointer;
             transition-duration: 0.4s;
             border: none;
-         }
+        }
 
             .btnstyle:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: red;
+                background-color: #17252A;
             }
-
     </style>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -97,12 +94,12 @@
 <body>
     <form ID="MenuForDevs" runat="server">
         <div>
-            <ul>
+            <ul style="margin:0px auto; display:block; width:500px;">
                 <li><a class="active" href="Home.aspx">Home</a></li>
                 <li><a class="active" href="NewProjectDev.aspx">NewProject</a></li>
                 <li><a class="active" href="ProjectsDev.aspx">Projects</a></li>
                 <li><a class="active" href="Profile.aspx">Profile</a></li>
-                <li><asp:Button runat="server" Text="Log Out" ID="Button_LogOutForDevs" OnClick="Button_LogOut_Click" Height="47px" CssClass="btnstyle" /></li>
+                <li><asp:Button runat="server" Text="Log Out" ID="Button_LogOutForDevs" OnClick="Button_LogOut_Click" Height="46px" CssClass="btnstyle" /></li>
             </ul>
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
@@ -112,12 +109,12 @@
 
      <form ID="MenuForTranslators" runat="server" Visible="false">
         <div>
-            <ul>
+            <ul style="margin:0px auto; display:block; width:500px;">
                 <li><a class="active" href="Home.aspx">Home</a></li>
                 <li><a class="active" href="NewProjectTrans.aspx">NewProject</a></li>
                 <li><a class="active" href="ProjectsTrans.aspx">Projects</a></li>
                 <li><a class="active" href="Profile.aspx">Profile</a></li>
-                <li><asp:Button runat="server" Text="Log Out" ID="Button_LogOutForTrans" OnClick="Button_LogOut_Click" Height="47px" CssClass="btnstyle" /></li>
+                <li><asp:Button runat="server" Text="Log Out" ID="Button_LogOutForTrans" OnClick="Button_LogOut_Click" Height="46px" CssClass="btnstyle" /></li>
             </ul>
 
             <asp:ContentPlaceHolder ID="body2" runat="server">
@@ -125,6 +122,5 @@
 
         </div>
     </form>
-
 </body>
 </html>

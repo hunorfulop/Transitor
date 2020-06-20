@@ -7,27 +7,27 @@
     <title></title>
     <style>
         body{
-            background-color:coral;
+            background-color:#3AAFA9;
         }
     </style>
 
     <style type="text/css">  
         .btnstyle {
-            background-color: #FFCC99; 
-            border: 1px solid yellow;
+            background-color: #17252A; 
+            border: 1px solid;
             cursor: pointer; 
             color: Silver;
             border-radius: 4px;
          }
 
         .btnstyle:hover {
-            background-color: #FF9933;
-            box-shadow: 0 0 10px #FF99CC;
+            background-color: #2B7A78;
+            box-shadow: 0 0 10px;
             color: Menu;
         }
 
         .btnstyle:active {
-            background-color: #FF9933;
+            background-color: #DEF2F1;
             box-shadow: 0 4px #666;
             transform: translateY(5px);
         }
@@ -39,23 +39,57 @@
             border-bottom-right-radius: 5px;
             background: #FFFFFF no-repeat 2px 2px;
             padding: 1px 1px 1px 5px;
-            border: 2px solid #FF9933;
+            border: 2px solid #17252A;
+        }
+
+        .labelstyle {
+          color:#17252A;
+          font-size:xx-large;
+          font-family:'Broadway';
+          font-style:italic;
+        }
+
+        .labelstyle2 {
+          color:#17252A;
+          font-size:x-large;
+          font-family:'Broadway';
+          font-style:italic;
         }
     </style> 
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-        <table style="margin:auto;border:5px solid white">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <center>
+            <asp:Label ID="Label3" runat="server" Text="Welcome to Transitor!" CssClass="labelstyle"></asp:Label>
+                <br />
+                <br />
+                <asp:Label ID="Label4" runat="server" Text="Fill the form to log in or if you don't have an account hit the Register button." CssClass="labelstyle2"></asp:Label>
+                <br />
+                <br />
+                <br />
+                <br />
+            </center>
+
+        <table style="margin: auto; border: 5px solid; border-color: #17252A">
             <tr>
                 <td>
-                    <asp:Label ID="Label1" runat="server" Text="Username:"></asp:Label></td>
+                    <asp:Label ID="Label1" runat="server" Text="Username:" ForeColor="#FEFFFF"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtUserName" runat="server" class="txtboxstyle"></asp:TextBox></td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label></td>
+                    <asp:Label ID="Label2" runat="server" Text="Password:" ForeColor="#FEFFFF"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" class="txtboxstyle"></asp:TextBox></td>
             </tr>
@@ -73,6 +107,7 @@
                     <asp:Label ID="lblErrorMessage" runat="server" Text="Inncorect User Credentialls" ForeColor="Red"></asp:Label></td>
             </tr>
         </table>
+
         </div>
         <p>
             &nbsp;</p>

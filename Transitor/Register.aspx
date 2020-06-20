@@ -7,31 +7,31 @@
     <title></title>
     <style>
         body{
-            background-color:coral;
+            background-color:#3AAFA9;
         }
     </style>
 
     <style type="text/css">
         .btnstyle {
-            background-color: #FFCC99;
-            border: 1px solid yellow;
+            background-color: #17252A;
+            border: 1px solid;
             cursor: pointer;
             color: Silver;
             border-radius: 4px;
         }
 
-        .btnstyle:hover {
-            background-color: #FF9933;
-            box-shadow: 0 0 10px #FF99CC;
-            color: Menu;
-        }
+            .btnstyle:hover {
+                background-color: #2B7A78;
+                box-shadow: 0 0 10px;
+                color: Menu;
+            }
 
-        .btnstyle:active {
-            background-color: #FF9933;
-            box-shadow: 0 4px #666;
-            transform: translateY(5px);
-        }
-        
+            .btnstyle:active {
+                background-color: #DEF2F1;
+                box-shadow: 0 4px #666;
+                transform: translateY(5px);
+            }
+
         .txtboxstyle {
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -39,26 +39,24 @@
             border-bottom-right-radius: 5px;
             background: #FFFFFF no-repeat 2px 2px;
             padding: 1px 1px 1px 5px;
-            border: 2px solid #FF9933;
+            border: 2px solid #17252A;
         }
 
         .labelstyle {
-          color:black;
-          font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
-          font-style:italic;
+            color: #17252A;
+            font-size: xx-large;
+            font-family: 'Broadway';
+            font-style: italic;
         }
 
-      .Cntrl1
-      {
-       background-color:#abcdef;
-       color: #4CAF50;
-       border: 1px solid #AB00CC;
-       font: Verdana 10px;
-       padding: 1px 4px;
-       font-family: Palatino Linotype, Arial, Helvetica, sans-serif;
-      }
+        .Cntrl1 {
+            background-color: #abcdef;
+            color: #4CAF50;
+            border: 1px solid #AB00CC;
+            font: Verdana 10px;
+            padding: 1px 4px;
+            font-family: Palatino Linotype, Arial, Helvetica, sans-serif;
+        }
 
         .dropdownliststyle
         {
@@ -66,15 +64,19 @@
             font-size: 15px;
             padding: 5px 10px;
             border-radius: 5px 12px;
-            background-color: #4CAF50;
+            background-color: #17252A;
             font-weight: bold;
         }
 
         .labelstyle2 {
-          color:black;
-          font-size:large;
-          font-family:'Arial';
-          font-style:italic;
+            color: #17252A;
+            font-size: x-large;
+            font-family: 'Arial';
+            font-style: italic;
+        }
+
+        .auto-style1 {
+            margin-bottom: 0px;
         }
 
     </style> 
@@ -84,7 +86,7 @@
         <p>
             <br />
             <center>
-            <asp:Label ID="Label1" runat="server" Text="Welcome to the registration page!" CssClass="labelstyle"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Welcome to the Registration page!" CssClass="labelstyle"></asp:Label>
                 <br />
                 <br />
                 <br />
@@ -97,14 +99,14 @@
             <br />
             <asp:Label ID="Label3" runat="server" Text="Make sure that you choose a password which is 8 characters long, contains letteres and numbers as well!" CssClass="labelstyle2"></asp:Label>
         </p>
-        <hr />
+        <hr color="#17252A"/>
         <div>
                 <asp:HiddenField ID="hfUserID" runat="server"/>
             <table>
 
                 <tr>
                     <td>
-                        <asp:Label Text="UserName:" runat="server" />
+                        <asp:Label Text="UserName:" runat="server" ForeColor="#FEFFFF"/>
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtUserName" runat="server" class="txtboxstyle"/>
@@ -114,7 +116,7 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="Password:" runat="server" />
+                        <asp:Label Text="Password:" runat="server" ForeColor="#FEFFFF"/>
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Height="17px" class="txtboxstyle"/>
@@ -124,7 +126,7 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="Role:" runat="server" />
+                        <asp:Label Text="Role:" runat="server" ForeColor="#FEFFFF"/>
                     </td>
                     <td colspan="2">
                         <asp:DropDownList ID="ddlRole" runat="server" CssClass="dropdownliststyle">
@@ -136,13 +138,13 @@
                 </table>
 
                 <br />
-                <hr />
+                <hr color="#17252A"/>
                 <br />
 
                 <table>
                 <tr>
                     <td>
-                        <asp:Label Text="Preview of you'r profile picture:" ID="LabelMessageImage" runat="server" />
+                        <asp:Label Text="Preview of you'r profile picture:" ID="LabelMessageImage" runat="server" ForeColor="#FEFFFF"/>
                     </td>
                 </tr>
                 <tr>
@@ -153,7 +155,7 @@
 
                 <tr>
                     <td>
-                        <asp:FileUpload ID="FileUpload1" runat="server" Height="22px" class="Cntrl1" />
+                        <asp:FileUpload ID="FileUpload1" runat="server" Height="22px" class="Cntrl1" CssClass="auto-style1" />
                     </td>
                     <td>
                         <asp:Button Text="Upload picture" ID="btnBrowsePicture" runat="server" OnClick="btnBrowsePicture_Click" CssClass="btnstyle" />
@@ -162,7 +164,7 @@
                 </table>
 
                 <br />
-                <hr />
+                <hr color="#17252A"/>
                 <br />
 
                 <table>
@@ -176,7 +178,7 @@
                 <tr>
                     <td></td>
                     <td colspan="2">
-                        <asp:Label Text="" ID="lblSuccesMessage" runat="server" ForeColor="Green"/>
+                        <asp:Label Text="" ID="lblSuccesMessage" runat="server" ForeColor="#FEFFFF"/>
                     </td>
                 </tr>
 
