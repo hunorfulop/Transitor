@@ -7,61 +7,58 @@
     <title></title>
     <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
     </style>
 
       <style id="cssStyle" type="text/css" media="all">
-       .Cntrl1
-      {
-       background-color:#abcdef;
-       color: #4CAF50;
-       border: 1px solid #AB00CC;
-       font: Verdana 10px;
-       padding: 1px 4px;
-       font-family: Palatino Linotype, Arial, Helvetica, sans-serif;
-      }
+          .Cntrl1 {
+              background-color: #abcdef;
+              color: #17252A;
+              border: 1px solid #AB00CC;
+              font: Verdana 10px;
+              padding: 1px 4px;
+              font-family: Palatino Linotype, Arial, Helvetica, sans-serif;
+          }
     </style>
 
     <style type="text/css">
         .ListBoxstyle
         {
             color:GhostWhite;
-            background-color:#4CAF50;
+            background-color:#3AAFA9;
             font-family:Courier New;
             font-size:large;
             font-style:italic;
             }
 
         .labelstyle {
-          color:black;
-          font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
-          font-style:italic;
+            color: #17252A;
+            font-size: xx-large;
+            font-family: 'Broadway';
+            font-style: italic;
+        }
         }
 
         .labelstyle2 {
-          color:black;
-          font-size:large;
-          font-family:'Arial';
-          font-style:italic;
+            color: #17252A;
+            font-size: x-large;
+            font-family: 'Broadway';
+            font-style: italic;
         }
 
         .btnstyle2 {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
+            background-color: #17252A;
+            border: 1px solid;
             cursor: pointer;
-            transition-duration: 0.4s;
-            border: none;
+            color: Silver;
+            border-radius: 4px;
         }
 
             .btnstyle2:hover {
-                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
+                background-color: #2B7A78;
+                box-shadow: 0 0 10px;
+                color: Menu;
             }
     </style>
 

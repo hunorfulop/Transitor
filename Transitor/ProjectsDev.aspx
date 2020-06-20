@@ -6,38 +6,37 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
          <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
 
         .btnstyle3 {
-           display: inline-block;
-           cursor: pointer;
-           text-align: center;
-           outline: 1px;
-           color: #fff;
-           background-color: #b5dfb7;
-           border: none;
-           border-radius: 10px;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            outline: 1px;
+            color: #fff;
+            background-color: #17252A;
+            border: none;
+            border-radius: 10px;
          }
 
          .btnstyle3:hover {
-            background-color: #4CAF50
+               background-color: #2B7A78
          }
 
-        .labelstyle {
-          color:black;
-          font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
-          font-style:italic;
-        }
+             .labelstyle {
+                 color: #17252A;
+                 font-size: xx-large;
+                 font-family: 'Broadway';
+                 font-style: italic;
+             }
 
-        .labelstyle2 {
-          color:black;
-          font-size:x-large;
-          font-family:'Arial';
-          font-style:italic;
-        }
+             .labelstyle2 {
+                 color: #17252A;
+                 font-size: x-large;
+                 font-family: 'Broadway';
+                 font-style: italic;
+             }
 
     </style>
 
@@ -51,8 +50,10 @@
            <asp:Label ID="Label1" runat="server" Text="Welcome to the Projects page!" CssClass="labelstyle"></asp:Label>
            <br />
            <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#4CAF50"
-        HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
+           <br />
+           <br />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#2B7A78"
+                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#FEFFFF"  RowStyle-ForeColor="#3AAFA9">
         <Columns>
             <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
             <asp:BoundField DataField="ProjectFileType" HeaderText="ProjectFileType" ItemStyle-Width="150px" />
@@ -70,7 +71,10 @@
         </center>
 
        <center>
-        <asp:Label ID="LabelEmptyMessage" runat="server" Text="You have no projects! If you want to create one please visit the NewProject menu" Visible="false"></asp:Label>
+        <asp:Label ID="LabelEmptyMessage" runat="server" Text="You have no projects! If you want to create one please visit the NewProject menu" Visible="false" ForeColor="#17252A"></asp:Label>
+           <br />
+           <br />
+           <br />
            <br />
        </center>
 

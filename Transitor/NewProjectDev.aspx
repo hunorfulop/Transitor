@@ -7,7 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
     <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
     </style>
 
@@ -19,30 +19,28 @@
             border-bottom-right-radius: 5px;
             background: #FFFFFF no-repeat 2px 2px;
             padding: 1px 1px 1px 5px;
-            border: 2px solid #FF9933;
+            border: 2px solid #17252A;
         }
 
-        .dropdownliststyle
-        {
+        .dropdownliststyle {
             color: #fff;
             font-size: 15px;
             padding: 5px 10px;
             border-radius: 5px 12px;
-            background-color: #4CAF50;
+            background-color: #17252A;
             font-weight: bold;
         }
 
-        .checkboxliststyle
-        {
-            font-family:Bell MT;
-            color:#4CAF50;
-            font-style:normal;
-            font-weight:bold;
-            font-size:large;
-            }
+        .checkboxliststyle {
+            font-family: Bell MT;
+            color: #17252A;
+            font-style: normal;
+            font-weight: bold;
+            font-size: large;
+        }
 
         .btnstyle2 {
-            background-color: #4CAF50;
+            background-color: #17252A;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -50,25 +48,24 @@
             cursor: pointer;
             transition-duration: 0.4s;
             border: none;
-         }
+        }
 
             .btnstyle2:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
+                background-color: #2B7A78;
             }
 
         .labelstyle {
-          color:black;
+          color:#17252A;
           font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
+          font-family:'Broadway';
           font-style:italic;
         }
 
         .labelstyle2 {
-          color:black;
+         color:#17252A;
           font-size:x-large;
-          font-family:'	Arial';
+          font-family:'Broadway';
           font-style:italic;
         }
     </style>
@@ -81,13 +78,18 @@
                 <center>
                 <asp:Label ID="Label1" runat="server" Text="Welcome to the project creation page!" CssClass="labelstyle"></asp:Label>
                     <br />
-                <asp:Label ID="Label2" runat="server" Text="Set up you'r project and click the upload button to advance!" CssClass="labelstyle2"></asp:Label>
                     <br />
                     <br />
-                </center>
+                    <br />
+                    <br />
+                    <br />
+                    </center>
+                <asp:Label ID="Label2" runat="server" Text="Set up you'r project and click the upload button to advance:" CssClass="labelstyle2"></asp:Label>
+                    <br />
+                    <br />
                 <br />
 
-            <table style="border:5px solid green">
+            <table style="border:5px solid; border-color: #17252A"">
 
                 <tr>
                     <td>
@@ -103,7 +105,7 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="Project Name:" runat="server" />
+                        <asp:Label Text="Project Name:" runat="server" ForeColor="#17252A"/>
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtProjectName" runat="server" class="txtboxstyle" />
@@ -125,7 +127,7 @@
 
                 <tr>
                     <td>
-                        <asp:Label Text="Uploaded file type:" runat="server" />
+                        <asp:Label Text="Uploaded file type:" runat="server" ForeColor="#17252A"/>
                     </td>
                     <td colspan="2">
                         <asp:DropDownList ID="ddlUploadedFileType" runat="server" class="dropdownliststyle">
@@ -151,7 +153,7 @@
 
                  <tr>
                     <td>
-                        <asp:Label Text="Original language:" runat="server" />
+                        <asp:Label Text="Original language:" runat="server" ForeColor="#17252A"/>
                     </td>
                     <td colspan="2">
                         <asp:DropDownList ID="ddlOriginalLanguage" runat="server"  class="dropdownliststyle">
@@ -185,11 +187,11 @@
                 </tr>
                </table>
 
-               <table style="                       border: 5px solid green">
+               <table style=" border: 5px solid; border-color: #17252A"">
 
                    <tr>
                     <td>
-                        <asp:Label Text="Translation language:" runat="server" />
+                        <asp:Label Text="Translation language:" runat="server" ForeColor="#17252A"/>
                     </td>
                 <br />
                     <td colspan="2">
@@ -230,7 +232,7 @@
                 <tr>
                     <td></td>
                     <td colspan="2">
-                        <asp:Label Text="" ID="lblSuccesMessage" runat="server" ForeColor="Green"/>
+                        <asp:Label Text="" ID="lblSuccesMessage" runat="server" ForeColor="#17252A"/>
                     </td>
                 </tr>
 

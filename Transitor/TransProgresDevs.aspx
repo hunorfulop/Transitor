@@ -8,7 +8,7 @@
 
         <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
 
         .dropdownliststyle
@@ -17,42 +17,38 @@
             font-size: 15px;
             padding: 5px 10px;
             border-radius: 5px 12px;
-            background-color: #4CAF50;
+            background-color: #17252A;
             font-weight: bold;
         }
 
-         .btnstyle2 {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
+            .btnstyle2 {
+            background-color: #17252A;
+            border: 1px solid;
             cursor: pointer;
-            transition-duration: 0.4s;
-            border: none;
-         }
-
-            btnstyle2:hover {
-                box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
+            color: Silver;
+            border-radius: 4px;
             }
 
-        .labelstyle {
-          color:black;
-          font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
-          font-style:italic;
-        }
+            btnstyle2:hover {
+                background-color: #2B7A78;
+                box-shadow: 0 0 10px;
+                color: Menu;
+            }
 
-        .labelstyle2 {
-          color:black;
-          font-size:large;
-          font-family:'Arial';
-          font-style:italic;
-        }
+            .labelstyle {
+                color: #17252A;
+                font-size: xx-large;
+                font-family: 'Broadway';
+                font-style: italic;
+            }
 
-    </style>
+            .labelstyle2 {
+                color: #17252A;
+                font-size: x-large;
+                font-family: 'Broadway';
+                font-style: italic;
+            }
+        </style>
 
     <div id="d1" style="padding:0 16px;">
        <center>
@@ -60,6 +56,10 @@
            <br />
 
            <asp:Label ID="Label1" runat="server" Text="Welcome to the Translation progress page!" CssClass="labelstyle"></asp:Label>
+           <br />
+           <br />
+           <br />
+           <br />
            <br />
            <br />
 
@@ -97,12 +97,12 @@
 
            <br />
 
-           <asp:Label ID="LabelSelectedLanguagePercentage" runat="server" Text=""></asp:Label>
+           <asp:Label ID="LabelSelectedLanguagePercentage" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
            <br />
-           <asp:Label ID="LabelPercentage" runat="server" Text=""></asp:Label>
+           <asp:Label ID="LabelPercentage" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
            <br />
            <br />
-           <asp:Label ID="LabelIsItChecked" runat="server" Text=""></asp:Label>
+           <asp:Label ID="LabelIsItChecked" runat="server" Text="" CssClass="labelstyle2"></asp:Label>
 
 
            <br />
