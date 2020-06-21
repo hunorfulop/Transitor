@@ -8,7 +8,7 @@
 
     <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
 
         .txtboxstyle {
@@ -18,20 +18,19 @@
             border-bottom-right-radius: 5px;
             background: #FFFFFF no-repeat 2px 2px;
             padding: 1px 1px 1px 5px;
-            border: 2px solid #FF9933;
+            border: 2px solid #17252A;
         }
 
-        .ListBoxstyle
-        {
+        .ListBoxstyle {
             color:GhostWhite;
-            background-color:#4CAF50;
+            background-color:#3AAFA9;
             font-family:Courier New;
             font-size:large;
             font-style:italic;
         }
 
-         .btnstyle2 {
-            background-color: #4CAF50;
+        .btnstyle2 {
+            background-color: #17252A;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -39,29 +38,27 @@
             cursor: pointer;
             transition-duration: 0.4s;
             border: none;
-         }
+        }
 
-            btnstyle2:hover {
+        btnstyle2:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
-            }
+                background-color: #2B7A78;
+        }
 
 
-                    .labelstyle {
-          color:black;
-          font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
-          font-style:italic;
+        .labelstyle {
+            color: #17252A;
+            font-size: xx-large;
+            font-family: 'Broadway';
+            font-style: italic;
         }
 
         .labelstyle2 {
-          color:black;
-          font-size:x-large;
-          font-family:'	Arial';
-          font-style:italic;
+            color: black;
+            font-size: x-large;
+            font-family: '	Arial';
+            font-style: italic;
         }
-
     </style>
 
     <div>
@@ -70,11 +67,12 @@
     <center>
     <asp:Label ID="Label6" runat="server" Text="Welcome to the Start project page!" CssClass="labelstyle"></asp:Label>
         <br />
+        <br />
     <asp:Label ID="Label7" runat="server" Text="Here further details are avaliable about a project and it can be started." CssClass="labelstyle2"></asp:Label>
     </center>
     <br />
         <br />
-        <table style="border:5px solid green">
+        <table style="border:5px solid; border-color: #17252A">
 
         <tr>
         <td>
@@ -105,7 +103,7 @@
 
         <br />
 
-        <table style="border:5px solid green">
+        <table style="border:5px solid; border-color: #17252A">
 
         <tr>
         <td>

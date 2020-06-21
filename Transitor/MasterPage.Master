@@ -86,6 +86,9 @@
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
                 background-color: #17252A;
             }
+        .auto-style2 {
+            width: 407px;
+        }
     </style>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -94,7 +97,7 @@
 <body>
     <form ID="MenuForDevs" runat="server">
         <div>
-            <ul style="margin:0px auto; display:block; width:500px;">
+            <ul style="margin:0px auto; display:block; " class="auto-style2">
                 <li><a class="active" href="Home.aspx">Home</a></li>
                 <li><a class="active" href="NewProjectDev.aspx">NewProject</a></li>
                 <li><a class="active" href="ProjectsDev.aspx">Projects</a></li>
@@ -109,7 +112,7 @@
 
      <form ID="MenuForTranslators" runat="server" Visible="false">
         <div>
-            <ul style="margin:0px auto; display:block; width:500px;">
+            <ul style="margin:0px auto; display:block; " class="auto-style2">
                 <li><a class="active" href="Home.aspx">Home</a></li>
                 <li><a class="active" href="NewProjectTrans.aspx">NewProject</a></li>
                 <li><a class="active" href="ProjectsTrans.aspx">Projects</a></li>

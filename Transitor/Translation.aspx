@@ -11,7 +11,7 @@
 
     <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
 
           .dropdownliststyle
@@ -20,12 +20,12 @@
             font-size: 15px;
             padding: 5px 10px;
             border-radius: 5px 12px;
-            background-color: #4CAF50;
+            background-color: #17252A;
             font-weight: bold;
         }
 
-         .btnstyle2 {
-            background-color: #4CAF50;
+        .btnstyle2 {
+            background-color: #17252A;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -33,12 +33,12 @@
             cursor: pointer;
             transition-duration: 0.4s;
             border: none;
-         }
+        }
 
-            btnstyle2:hover {
+        btnstyle2:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
-            }
+                background-color: #2B7A78;
+        }
 
         .auto-style1 {
             width: 459px;
@@ -46,21 +46,19 @@
         }
 
         .labelstyle {
-          color:black;
+          color:#17252A;
           font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
+          font-family:'Broadway';
           font-style:italic;
         }
 
         .labelstyle2 {
-          color:black;
-          font-size:x-large;
-          font-family:'	Arial';
-          font-style:italic;
+            color: black;
+            font-size: x-large;
+            font-family: '	Arial';
+            font-style: italic;
         }
-
-        </style>
+    </style>
 
     <div>
         <center>
@@ -69,7 +67,7 @@
 
         <asp:HiddenField ID="hfComentId" runat="server" />
 
-    <table  style="border:5px solid green">
+    <table  style="border:5px solid; border-color: #17252A">
     <tr>
     <td>
     <asp:Label ID="Label1" runat="server" Text="Select Phrase and translation language:"></asp:Label>
@@ -95,7 +93,7 @@
     </tr>
         </table>
 
-        <table style="border:5px solid green">
+        <table style="border:5px solid; border-color: #17252A">
     <tr>
     <td>
         <p>
@@ -143,7 +141,7 @@
             &nbsp;</p>
         <p>
             &nbsp;</p>
-                   <hr />
+                   <hr color="#17252A"/>
         <p>
             &nbsp;</p>
 
@@ -160,7 +158,7 @@
             <br />
             <asp:Repeater ID="RepeaterComents" runat="server">
                 <ItemTemplate>
-                    <hr />
+                    <hr color="#17252A"/>
                     <asp:Label ID="Label1" runat="server" ForeColor="Red" Text='<%#Eval("MsgForTrans") %>'></asp:Label>
                     <br />
                     <asp:Image ID="Image1" runat="server" Height="100" Width="100" ImageUrl='<%#Eval("ProfilePicPath") %>'/>

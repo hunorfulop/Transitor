@@ -7,7 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="body2" runat="server">
       <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
 
          .dropdownliststyle
@@ -16,12 +16,12 @@
             font-size: 15px;
             padding: 5px 10px;
             border-radius: 5px 12px;
-            background-color: #4CAF50;
+            background-color: #17252A;
             font-weight: bold;
         }
 
-         .btnstyle2 {
-            background-color: #4CAF50;
+          .btnstyle2 {
+            background-color: #17252A;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -29,48 +29,52 @@
             cursor: pointer;
             transition-duration: 0.4s;
             border: none;
-         }
+          }
 
-            btnstyle2:hover {
+          btnstyle2:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
-            }
+                background-color: #2B7A78;
+          }
 
-            .btnstyle3 {
-           display: inline-block;
-           cursor: pointer;
-           text-align: center;
-           outline: 1px;
-           color: #fff;
-           background-color: #b5dfb7;
-           border: none;
-           border-radius: 10px;
-         }
+          .btnstyle3 {
+              display: inline-block;
+              cursor: pointer;
+              text-align: center;
+              outline: 1px;
+              color: #fff;
+              background-color: #17252A;
+              border: none;
+              border-radius: 10px;
+          }
 
-         .btnstyle3:hover {
-            background-color: #4CAF50
-         }
+              .btnstyle3:hover {
+                  background-color: #2B7A78
+              }
 
-        .labelstyle {
-          color:black;
-          font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
-          font-style:italic;
-        }
+          .labelstyle {
+              color: #17252A;
+              font-size: xx-large;
+              font-family: 'Broadway';
+              font-style: italic;
+          }
 
-        .labelstyle2 {
-          color:black;
-          font-size:x-large;
-          font-family:'	Arial';
-          font-style:italic;
-        }
+          .labelstyle2 {
+              color: black;
+              font-size: x-large;
+              font-family: 'Arial';
+              font-style: italic;
+          }
 
     </style>
     <div id="d1" style="padding:0 16px;">
         <br />
         <center>
         <asp:Label ID="Label1" runat="server" Text="Welcome to the New project page!" CssClass="labelstyle"></asp:Label>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <br />
             <br />
             <br />
@@ -92,8 +96,8 @@
             <br />
             <br />
 
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#4CAF50"
-        HeaderStyle-ForeColor="White" RowStyle-BackColor="#b5dfb7"  RowStyle-ForeColor="#3A3A3A">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" HeaderStyle-BackColor="#2B7A78"
+                    HeaderStyle-ForeColor="White" RowStyle-BackColor="#FEFFFF"  RowStyle-ForeColor="#3AAFA9">
         <Columns>
             <asp:BoundField DataField="ProjectName" HeaderText="ProjectName" ItemStyle-Width="150px" />
             <asp:BoundField DataField="ProjectOriginalLanguage" HeaderText="ProjectOriginalLanguage" ItemStyle-Width="150px" />
