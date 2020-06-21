@@ -59,6 +59,8 @@
     <div>
         <center>
             <br />
+                        <br />
+                        <br />
             <asp:Label ID="Label4" runat="server" Text="Wlecome to the Checking page!" CssClass="labelstyle"></asp:Label>
             <br />
             <br />

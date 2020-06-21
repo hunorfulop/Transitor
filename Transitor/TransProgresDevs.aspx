@@ -45,7 +45,7 @@
             .labelstyle2 {
                 color: #17252A;
                 font-size: x-large;
-                font-family: 'Broadway';
+                font-family: 'Arial';
                 font-style: italic;
             }
         </style>
@@ -54,7 +54,8 @@
        <center>
 
            <br />
-
+           <br />
+           <br />
            <asp:Label ID="Label1" runat="server" Text="Welcome to the Translation progress page!" CssClass="labelstyle"></asp:Label>
            <br />
            <br />

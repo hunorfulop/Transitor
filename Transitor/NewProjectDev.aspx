@@ -75,6 +75,8 @@
                 <asp:HiddenField ID="hfTranslationLanguageID" runat="server" />
 
                 <br />
+                       <br />
+                       <br />
                 <center>
                 <asp:Label ID="Label1" runat="server" Text="Welcome to the project creation page!" CssClass="labelstyle"></asp:Label>
                     <br />
@@ -84,8 +86,13 @@
                     <br />
                     <br />
                     </center>
+       <center>
                 <asp:Label ID="Label2" runat="server" Text="Set up you'r project and click the upload button to advance:" CssClass="labelstyle2"></asp:Label>
                     <br />
+                <br />
+                    <br />
+                    <br />
+                <br />
                     <br />
                 <br />
 
@@ -187,6 +194,10 @@
                 </tr>
                </table>
 
+                <br />
+                <br />
+                <br />
+
                <table style=" border: 5px solid; border-color: #17252A"">
 
                    <tr>
@@ -221,6 +232,8 @@
 
                 <br />
 
+                <br />
+
                 <table>
                 <tr>
                     <td></td>
@@ -244,6 +257,6 @@
                 </tr>
 
             </table>
- 
+ </center>
         </div>
     </asp:Content>

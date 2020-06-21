@@ -57,13 +57,17 @@
         
     <br />
     <center>
+        <br />
+        <br />
     <asp:Label ID="LabelTitelDevs" runat="server" Text="Welcome to the profile page:" CssClass="labelstyle"></asp:Label>
     </center>
     <br />
     <br />
-        
+    <br />
     <br />
         
+    <br />
+      <center>
     <table style="border:5px solid; border-color: #17252A" class="auto-style1">
 
         <tr>
@@ -97,17 +101,24 @@
         </table>
 
     <br />
+          <br />
     <br />
     <hr  color="#17252A"/>
+          <br />
+          <br />
     <br />
     <asp:Label Text="You can change you'r password here:" ID="Label5" runat="server" class="labelstyle2"/>
+          <br />
+          <br />
     <br />
     <br />
     <asp:Label Text="Old password: " ID="Label6" runat="server" class="labelstyle2"/>
-    <asp:TextBox ID="textBoxOldPasswordDevs" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
+    &nbsp;<asp:TextBox ID="textBoxOldPasswordDevs" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
     <br />
     <asp:Label Text="New password: " ID="Label7" runat="server" class="labelstyle2"/>
     <asp:TextBox ID="textBoxNewPasswordDevs" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
+          <br />
+          <br />
     <br />
     <asp:Label Text="Confirm New password: " ID="Label8" runat="server" class="labelstyle2"/>
     <asp:TextBox ID="textBoxConfirmNewPasswordDevs" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
@@ -117,6 +128,7 @@
     <br />
     <br />
     <asp:Button ID="ChangePasswordDevs" runat="server" Text="Change Password" class="btnstyle" OnClick="ChangePasswordDevs_Click"/>
+          </center>
     </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="body2" runat="server">
@@ -172,12 +184,16 @@
 
     <br />
     <center>
+        <br />
+        <br />
     <asp:Label ID="LabelTitelDevs0" runat="server" Text="Welcome to the profile page:" CssClass="labelstyle"></asp:Label>
     </center>
     <br />
+    <br />
+    <br />
     <br />      
     <br />
-
+        <center>
         <table style="border:5px solid; border-color: #17252A">
 
         <tr>
@@ -209,17 +225,24 @@
         </tr>
         </table>
     <br />
+            <br />
     <br />
     <hr color="#17252A"/>
     <br />
+            <br />
+            <br />
     <asp:Label Text="You can change you'r password here:" ID="Label9" runat="server" class="labelstyle2"/>
     <br />
+            <br />
+            <br />
     <br />
     <asp:Label Text="Old password: " ID="Label10" runat="server" class="labelstyle2"/>
-    <asp:TextBox ID="textBoxOldPasswordTrans" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
+    &nbsp;<asp:TextBox ID="textBoxOldPasswordTrans" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
     <br />
     <asp:Label Text="New password: " ID="Label11" runat="server" class="labelstyle2"/>
     <asp:TextBox ID="textBoxNewPasswordTrans" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
+            <br />
+            <br />
     <br />
     <asp:Label Text="Confirm New password: " ID="Label12" runat="server" class="labelstyle2"/>
     <asp:TextBox ID="textBoxConfirmNewPasswordTrans" runat="server" CssClass="txtboxstyle" TextMode="Password"></asp:TextBox>
@@ -229,5 +252,5 @@
     <br />
     <br />
     <asp:Button ID="Button3" runat="server" Text="Change Password" class="btnstyle" OnClick="ChangePasswordTrans_Click"/>
-
+            </center>
     </asp:Content>

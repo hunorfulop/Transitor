@@ -64,14 +64,20 @@
     <div>
         </div>
         <br />
+        <br />
+        <br />
     <center>
     <asp:Label ID="Label6" runat="server" Text="Welcome to the Start project page!" CssClass="labelstyle"></asp:Label>
         <br />
         <br />
+        <br />
     <asp:Label ID="Label7" runat="server" Text="Here further details are avaliable about a project and it can be started." CssClass="labelstyle2"></asp:Label>
+        <br />
+        <br />
     </center>
     <br />
         <br />
+    <center>
         <table style="border:5px solid; border-color: #17252A">
 
         <tr>
@@ -102,6 +108,9 @@
         </table>
 
         <br />
+        <br />
+
+        <br />
 
         <table style="border:5px solid; border-color: #17252A">
 
@@ -122,11 +131,14 @@
         </table>
 
          <br />
+        <br />
+
+         <br />
 
          <asp:Label ID="lblErrorMessage" runat="server" Text="Select an end data please" ForeColor="Red"></asp:Label>
         <p>
             <asp:Button ID="btnStartProject" runat="server" Text="Start Project" OnClick="btnStartProject_Click" class="btnstyle2"/>
         </p>
-
+        </center>
 
     </asp:Content>

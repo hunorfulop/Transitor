@@ -63,10 +63,12 @@
     <div>
         <center>
             <asp:Label ID="Label33" runat="server" Text="Welcome to the Translation page!" CssClass="labelstyle"></asp:Label>
+            <br />
         </center>
 
         <asp:HiddenField ID="hfComentId" runat="server" />
-
+    <center>
+        <br />
     <table  style="border:5px solid; border-color: #17252A">
     <tr>
     <td>
@@ -80,11 +82,14 @@
 
     <tr>
     <td>
+           <center>
         <p>
             <asp:Label ID="Label2" runat="server" Text="Selected Phrase:"></asp:Label>
         </p>
         <p>
-            <textarea id="TextareaPhrase" runat="server" cols="50" name="S1" rows="20"></textarea></p>
+            <textarea id="TextareaPhrase" runat="server" cols="50" name="S1" rows="20"></textarea>
+        </p>
+        </center>
         <p>
             <asp:Label ID="Label4" runat="server" Text="Selected translation Language: "></asp:Label>
             <asp:Label ID="LabelTransLang" runat="server" Text=""></asp:Label>
@@ -92,6 +97,8 @@
     </td>
     </tr>
         </table>
+
+        <br />
 
         <table style="border:5px solid; border-color: #17252A">
     <tr>
@@ -105,7 +112,11 @@
     <tr>
     <td>
         <p>
+            <center>
             <textarea id="TextareaTranslate" runat="server" cols="50" name="S1" rows="10"></textarea>
+                                <br />
+                                </center>
+
             &nbsp;<asp:Button ID="btnTranlate" runat="server" Text="Translate" OnClick="btnTranlate_Click" class="btnstyle2"/>
         </p>
     </td>
@@ -145,7 +156,7 @@
         <p>
             &nbsp;</p>
 
-
+        </center>
         <div style="margin-left: auto; margin-right: auto; text-align: center;">
             <asp:Label ID="Label7" runat="server" Text="Coment Section" Font-Bold="true" Font-Size="X-Large" CssClass="StrongText"></asp:Label>
         </div>
