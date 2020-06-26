@@ -8,30 +8,29 @@
 
     <style>
         body{
-            background-color:coral;
+            background-color:#DEF2F1;
         }
 
-        .labelstyle {
-          color:black;
+            .labelstyle {
+          color:#17252A;
           font-size:xx-large;
-          font-family:'Arial';
-          background-color:#4CAF50;
+          font-family:'Broadway';
           font-style:italic;
-        }
+            }
 
         .labelstyle2 {
-          color:black;
-          font-size:x-large;
-          font-family:'	Arial';
-          font-style:italic;
+                color: black;
+                font-size: x-large;
+                font-family: 'Arial';
+                font-style: italic;
         }
         .auto-style1 {
             width: 425px;
             height: 73px;
         }
 
-                 .btnstyle2 {
-            background-color: #4CAF50;
+        .btnstyle2 {
+            background-color: #17252A;
             color: white;
             text-align: center;
             text-decoration: none;
@@ -39,11 +38,11 @@
             cursor: pointer;
             transition-duration: 0.4s;
             border: none;
-         }
+        }
 
             btnstyle2:hover {
                 box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
-                background-color: #FF9933;
+                background-color: #2B7A78;
             }
     </style>
 
